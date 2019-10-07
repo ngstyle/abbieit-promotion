@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PermissionService } from 'src/app/service/permission.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private permissionService: PermissionService,
+              private router: Router) {
+    if (! this.permissionService.hasPermission('miniso_admin')) {
+      this.router.navigate(['marchant']);
+    }
+  }
 
   ngOnInit() {
   }
