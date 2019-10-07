@@ -1,3 +1,35 @@
-<p>
-  merchant works!
-</p>
+<div style="width: 20%; height: 100%; text-align: center; margin: auto;" class="screen">
+
+  <div style="padding-left: 5%; padding-right: 5%; padding-top: 25%;">
+
+    <form [formGroup]="minisoShopForm">
+      <mat-form-field style="width: 100%; margin-top: 8px">
+        <input matInput placeholder="Mobile" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10"
+          (blur)="validateMobile()" minlength="10" required>
+        <mat-error *ngIf="minisoShopForm.get('mobile').hasError('required')">Mobile is required</mat-error>
+        <mat-error *ngIf="minisoShopForm.get('mobile').hasError('minlength') 
+                        || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile</mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+        <input matInput placeholder="Name" formControlName="userName">
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+        <mat-select formControlName="shop" placeholder="Shop" #singleSelect>
+          <mat-option>
+            <ngx-mat-select-search #searchShop></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let shop of filteredShops | autocompletefilter : searchShop.value" [value]="shop">
+            {{shop.shop}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button [disabled]="minisoShopForm.invalid" (click)="checkUsed()" mat-raised-button color="accent"
+        style="width: 100%; padding: 8px; margin-top: 10%;">Use</button>
+
+    </form>
+  </div>
+
+</div>
