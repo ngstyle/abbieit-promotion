@@ -4,14 +4,19 @@ import { AuthguardService } from './service/authguard.service';
 
 const routes: Routes = [
   {
-    path: 'signin',
-    loadChildren: () => import('./layouts/unauthorized/signin/signin.module').then(mod => mod.SigninModule),
-  },
-  {
     path: '',
     loadChildren: () => import('./layouts/authorized/authorized.module').then(mod => mod.AuthorizedModule),
     canActivate: [AuthguardService]
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./layouts/unauthorized/signin/signin.module').then(mod => mod.SigninModule),
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./layouts/unauthorized/registration/registration.module').then(mod => mod.RegistrationModule),
+    canActivate: [AuthguardService]
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,31 @@
+.background {
+    background-image: url("/assets/images/registration.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    width: 35%;
+    height: 100%;
+    background-size: 100%  100%;
+    margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .background {
+        background-image: url("/assets/images/registration.jpg");
+        background-color: #cccccc;
+        background-repeat: no-repeat;
+        background-size: 100%  100%;
+        width: 100%;
+        margin: auto;
+    }
+}
+
+.form-container {
+    text-align: center;
+    padding-top: 40%;
+}
+
+.field {
+    width: 90%; 
+    padding-left: 5%;
+    padding-right: 5%;
+}

@@ -21,4 +21,8 @@ export class MinisoService {
     return this.http.get(`${environment.API_URL}/miniso/validate`, {params});
   }
 
+  registration(data: any) {
+    return this.http.post(`${environment.API_URL}/miniso/register`, data);
+  }
+
 }
