@@ -89,7 +89,7 @@ export class MerchantComponent implements OnInit {
       this.minisoShopForm.get('mobile').setValue('');
       this.errorMsg = 'Mobile is successfully used.'      
     }, error => {
-      this.errorMsg = 'Noy successfully used. Try again.'
+      this.errorMsg = 'Not successfully used. Try again.'
     });
   }
 

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { TokenService } from './service/token.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     HttpClientModule,
     AngularSvgIconModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
