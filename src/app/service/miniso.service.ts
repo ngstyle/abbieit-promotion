@@ -25,4 +25,8 @@ export class MinisoService {
     return this.http.post(`${environment.API_URL}/miniso/register`, data);
   }
 
+  use(data: any) {
+    return this.http.put(`${environment.API_URL}/miniso/use`, data);
+  }
+
 }

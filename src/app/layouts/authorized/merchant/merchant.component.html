@@ -2,10 +2,12 @@
 
   <div style="padding-left: 5%; padding-right: 5%; padding-top: 25%;">
 
+    <span *ngIf="errorMsg.length" style="margin-bottom: 60px; color: red; font-size: 12px;">{{errorMsg}}</span>
+
     <form [formGroup]="minisoShopForm">
       <mat-form-field style="width: 100%; margin-top: 8px">
         <input matInput placeholder="Mobile" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10"
-          (blur)="validateMobile()" minlength="10" required>
+          minlength="10" required>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('required')">Mobile is required</mat-error>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('minlength') 
                         || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile</mat-error>
@@ -13,21 +15,23 @@
 
       <mat-form-field style="width: 100%;">
         <input matInput placeholder="Name" formControlName="userName">
+        <mat-error>Customer name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field style="width: 100%;">
-        <mat-select formControlName="shop" placeholder="Shop" #singleSelect>
+        <mat-select formControlName="minisoShop" placeholder="Select shop" #singleSelect>
           <mat-option>
             <ngx-mat-select-search #searchShop></ngx-mat-select-search>
           </mat-option>
-          <mat-option *ngFor="let shop of filteredShops | autocompletefilter : searchShop.value" [value]="shop">
+          <mat-option *ngFor="let shop of filteredShops | autocompletefilter : searchShop.value" [value]="shop.id">
             {{shop.shop}}
           </mat-option>
         </mat-select>
+        <mat-error>Select shop</mat-error>
       </mat-form-field>
 
-      <button [disabled]="minisoShopForm.invalid" (click)="checkUsed()" mat-raised-button color="accent"
-        style="width: 100%; padding: 8px; margin-top: 10%;">Use</button>
+      <button [disabled]="minisoShopForm.invalid && !isValidMobile" (click)="use()" mat-raised-button color="accent"
+        style="width: 100%; margin-top: 30px;">Use</button>
 
     </form>
   </div>
