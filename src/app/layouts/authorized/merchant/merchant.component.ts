@@ -1,7 +1,7 @@
 import { MinisoService } from './../../../service/miniso.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSelect, MatSnackBar } from '@angular/material';
+import { MatSelect } from '@angular/material';
 import { Router } from '@angular/router';
 
 
@@ -16,20 +16,20 @@ export class MerchantComponent implements OnInit {
   filteredShops: any;
   errorMsg = '';
   isValidMobile = false;
+  public store: FormControl = new FormControl();
 
   @ViewChild('singleSelect') singleSelect: MatSelect;
 
   constructor(private formBuilder: FormBuilder,
               private minisoService: MinisoService,
-              private router: Router
-  ) { }
+              private router: Router) { }
 
   ngOnInit() {
+    this.store.setValue('');
     this.buildForm();
     this.findAllStore();
     this.minisoShopForm.controls['userName'].disable();
   }
-
 
   buildForm() {
     this.minisoShopForm = this.formBuilder.group({
@@ -44,7 +44,7 @@ export class MerchantComponent implements OnInit {
       this.minisoShopForm.get('userName').setValue('');
       this.errorMsg = '';
       this.isValidMobile = false;
-      if (this.minisoShopForm.get('mobile').value.length === 10){
+      if (this.minisoShopForm.get('mobile').value.length === 10) {
         this.validateMobile();
       }
     });
@@ -87,9 +87,9 @@ export class MerchantComponent implements OnInit {
   use() {
     this.minisoService.use(this.minisoShopForm.value).subscribe(data => {
       this.minisoShopForm.get('mobile').setValue('');
-      this.errorMsg = 'Mobile is successfully used.'      
+      this.errorMsg = 'Mobile is successfully used.';
     }, error => {
-      this.errorMsg = 'Not successfully used. Try again.'
+      this.errorMsg = 'Not successfully used. Try again.';
     });
   }
 

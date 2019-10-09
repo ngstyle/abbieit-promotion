@@ -10,7 +10,7 @@ export class AutocompletefilterPipe implements PipeTransform {
 
     if (!collection) {
       return [];
-    } else if (!value || value === '') {
+    } else if (!value || value === '' || value === 'undefined') {
       return collection;
     }
 

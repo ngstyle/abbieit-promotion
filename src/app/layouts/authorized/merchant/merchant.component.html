@@ -19,9 +19,10 @@
       </mat-form-field>
 
       <mat-form-field style="width: 100%;">
-        <mat-select formControlName="minisoShop" placeholder="Select shop" #singleSelect>
+        <mat-select formControlName="minisoShop" placeholder="Select Store" #singleSelect>
           <mat-option>
-            <ngx-mat-select-search #searchShop></ngx-mat-select-search>
+            <ngx-mat-select-search [formControl]="store" [placeholderLabel]="'Find Store...'"
+              [noEntriesFoundLabel]="'no matching store found'" #searchShop></ngx-mat-select-search>
           </mat-option>
           <mat-option *ngFor="let shop of filteredShops | autocompletefilter : searchShop.value" [value]="shop.id">
             {{shop.shop}}
