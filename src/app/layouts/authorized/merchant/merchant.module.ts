@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MerchantComponent } from './merchant.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatInputModule, MatSelectModule, MatButtonModule  } from '@angular/material';
+import { MatInputModule, MatSelectModule, MatButtonModule, MatAutocompleteModule  } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
@@ -24,7 +24,8 @@ const MarchantRouter = RouterModule.forChild(routes);
     NgxMatSelectSearchModule,
     MatSelectModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatAutocompleteModule
   ],
   declarations: [MerchantComponent, AutocompletefilterPipe]
 })

@@ -1,15 +1,44 @@
 <mat-card class="card">
   <mat-card-content>
-    <form class="ui form">
+    <span *ngIf="errorMsg.length" style="color: red; font-size: 12px;">{{errorMsg}}</span>
+
+    <form [formGroup]="minisoShopForm" class="ui form">
+
       <div class="field">
-        <label>First Name</label>
-        <input type="text" name="first-name" placeholder="First Name">
+        <label>Mobile</label>
+        <input type="text" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10"
+          (blur)="validateMobile()" required>
+        <mat-error *ngIf="minisoShopForm.get('mobile').hasError('required') && minisoShopForm.get('mobile').touched">
+          Mobile is required</mat-error>
+        <mat-error *ngIf="minisoShopForm.get('mobile').hasError('minlength') 
+                        || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile</mat-error>
       </div>
+
       <div class="field">
-        <label>Last Name</label>
-        <input type="text" name="last-name" placeholder="Last Name">
+        <label>Name</label>
+        <input matInput formControlName="userName" readonly="">
+        <mat-error
+          *ngIf="minisoShopForm.get('userName').hasError('required') && minisoShopForm.get('userName').touched">
+          Customer name is required</mat-error>
       </div>
-      <button class="ui button" type="submit">Submit</button>
+
+      <div class="field">
+        <label>Store</label>
+        <input matInput placeholder="Find Store" aria-label="store" [matAutocomplete]="auto"
+          formControlName="minisoShop">
+        <mat-error
+          *ngIf="minisoShopForm.get('minisoShop').hasError('required') && minisoShopForm.get('minisoShop').touched">
+          Select Store</mat-error>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='selectStore($event.option.value)'
+          [displayWith]="displayStore">
+          <mat-option *ngFor="let shop of filteredShops | async" [value]="shop">
+            <span>{{shop.shop}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+
+      <button [disabled]="!(minisoShopForm.valid && isValidMobile)" (click)="use()" mat-raised-button color="accent"
+        class="ui button" type="submit" style="background-color: #e82936;">Submit</button>
     </form>
   </mat-card-content>
 </mat-card>
