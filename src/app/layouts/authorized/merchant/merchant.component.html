@@ -1,8 +1,8 @@
-<div style="width: 20%; height: 100%; text-align: center; margin: auto;" class="screen">
+<div style=" text-align: center; margin: auto;" class="background">
 
-  <div style="padding-left: 5%; padding-right: 5%; padding-top: 25%;">
+  <div style="padding-left: 5%; padding-right: 5%; padding-top: 50%;">
 
-    <span *ngIf="errorMsg.length" style="margin-bottom: 60px; color: red; font-size: 12px;">{{errorMsg}}</span>
+    <span *ngIf="errorMsg.length" style="color: red; font-size: 12px;">{{errorMsg}}</span>
 
     <form [formGroup]="minisoShopForm">
       <mat-form-field style="width: 100%; margin-top: 8px">
@@ -19,7 +19,7 @@
       </mat-form-field>
 
       <mat-form-field style="width: 100%;">
-        <mat-select formControlName="minisoShop" placeholder="Select Store" #singleSelect>
+        <mat-select style="width: 100%;" formControlName="minisoShop" placeholder="Select Store" #singleSelect>
           <mat-option>
             <ngx-mat-select-search [formControl]="store" [placeholderLabel]="'Find Store...'"
               [noEntriesFoundLabel]="'no matching store found'" #searchShop></ngx-mat-select-search>
@@ -28,7 +28,7 @@
             {{shop.shop}}
           </mat-option>
         </mat-select>
-        <mat-error>Select shop</mat-error>
+        <mat-error>Select Store</mat-error>
       </mat-form-field>
 
       <button [disabled]="minisoShopForm.invalid && !isValidMobile" (click)="use()" mat-raised-button color="accent"
