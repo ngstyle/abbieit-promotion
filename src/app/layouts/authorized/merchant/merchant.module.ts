@@ -1,3 +1,4 @@
+import { MatCardModule } from '@angular/material/card';
 import { AutocompletefilterPipe } from './../../../pipe/autocompletefilter.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,8 @@ const MarchantRouter = RouterModule.forChild(routes);
     ReactiveFormsModule,
     NgxMatSelectSearchModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   declarations: [MerchantComponent, AutocompletefilterPipe]
 })
