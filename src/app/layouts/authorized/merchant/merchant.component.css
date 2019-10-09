@@ -2,10 +2,12 @@
     .card {
         width: 100%!important;
         margin: auto;
+        margin-top: 70px;
     }
 }
 
 .card {
     width: 25%;
     margin: auto;
+    margin-top: 70px;
 }
