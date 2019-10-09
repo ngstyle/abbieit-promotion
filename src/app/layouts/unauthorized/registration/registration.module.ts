@@ -1,3 +1,4 @@
+import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration.component';
@@ -21,7 +22,8 @@ const RegistrationRouter = RouterModule.forChild(routes);
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    AgmCoreModule
   ],
   declarations: [RegistrationComponent]
 })

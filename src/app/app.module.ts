@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TokenService } from './service/token.service';
 import {SuiModule} from 'ng2-semantic-ui';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import {SuiModule} from 'ng2-semantic-ui';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularSvgIconModule,
-    SuiModule
+    SuiModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAf0aX6Jgz6HbqvFIhI9BejpKdx3tVhjTk&libraries=places'
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }

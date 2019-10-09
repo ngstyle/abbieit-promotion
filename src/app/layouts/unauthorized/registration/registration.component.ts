@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-registration',
@@ -13,22 +14,68 @@ export class RegistrationComponent implements OnInit {
   registration: FormGroup;
   message: any;
   isMessage = false;
+  private geoCoder;
 
   constructor(private formBuilder: FormBuilder,
-              private minisoService: MinisoService,
-              private route: Router) { }
+    private minisoService: MinisoService,
+    private mapsAPILoader: MapsAPILoader,
+    private route: Router) { }
 
   ngOnInit() {
+    this.mapsAPILoader.load().then(() => {
+      this.geoCoder = new google.maps.Geocoder();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.showPosition(position);
+        });
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
+    });
     this.buildForm();
+  }
+
+  showPosition(position: any) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    this.geoCoder.geocode({ 'location': { lat: lat, lng: lng } }, (results, status) => {
+      if (status === 'OK') {
+
+        for (var j = 0; j < results.length; j++) {
+          if (results[j].types[0] === 'locality') {
+            break;
+          }
+        }
+        if (results[0]) {
+          const data: any = {};
+          for (var i = 0; i < results[j].address_components.length; i++) {
+            if (results[j].address_components[i].types[0] === 'locality') {
+              data.city = results[j].address_components[i];
+            }
+            if (results[j].address_components[i].types[0] === 'administrative_area_level_1') {
+              data.state = results[j].address_components[i].long_name;
+            }
+          }
+          data.address = results[0].formatted_address;
+          this.minisoService.scan(data).subscribe(data => {
+          });
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+
+    });
   }
 
   buildForm() {
     this.registration = this.formBuilder.group({
       userName: ['', Validators.compose([
-                      Validators.required, Validators.maxLength(100), Validators.minLength(3)])],
+        Validators.required, Validators.maxLength(100), Validators.minLength(3)])],
       mobile: ['', Validators.compose([
-                    Validators.required, Validators.maxLength(10), Validators.minLength(10),
-                    Validators.pattern(/(\(?[0-9]{3}\)?-?\s?[0-9]{3}-?[0-9]{4})/)])],
+        Validators.required, Validators.maxLength(10), Validators.minLength(10),
+        Validators.pattern(/(\(?[0-9]{3}\)?-?\s?[0-9]{3}-?[0-9]{4})/)])],
     });
   }
 

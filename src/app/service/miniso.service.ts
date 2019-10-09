@@ -29,4 +29,8 @@ export class MinisoService {
     return this.http.put(`${environment.API_URL}/miniso/use`, data);
   }
 
+  scan(data: any) {
+    return this.http.post(`${environment.API_URL}/miniso/scan`, data);
+  }
+
 }
