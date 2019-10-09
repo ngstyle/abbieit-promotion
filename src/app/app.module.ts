@@ -8,6 +8,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TokenService } from './service/token.service';
 import {SuiModule} from 'ng2-semantic-ui';
 import { AgmCoreModule } from '@agm/core';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAf0aX6Jgz6HbqvFIhI9BejpKdx3tVhjTk&libraries=places'
     }),
+    DeviceDetectorModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }

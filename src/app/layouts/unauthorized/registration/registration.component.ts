@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-registration',
@@ -19,9 +20,12 @@ export class RegistrationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
     private mapsAPILoader: MapsAPILoader,
-    private route: Router) { }
+    private route: Router,
+    private deviceService: DeviceDetectorService
+    ) { }
 
   ngOnInit() {
+    const deviceInfo = this.deviceService.getDeviceInfo();
     this.mapsAPILoader.load().then(() => {
       this.geoCoder = new google.maps.Geocoder();
       if (navigator.geolocation) {
@@ -57,6 +61,7 @@ export class RegistrationComponent implements OnInit {
             }
           }
           data.address = results[0].formatted_address;
+          data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
           this.minisoService.scan(data).subscribe(data => {
           });
         } else {
