@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit {
           const data: any = {};
           for (var i = 0; i < results[j].address_components.length; i++) {
             if (results[j].address_components[i].types[0] === 'locality') {
-              data.city = results[j].address_components[i];
+              data.city = results[j].address_components[i].long_name;
             }
             if (results[j].address_components[i].types[0] === 'administrative_area_level_1') {
               data.state = results[j].address_components[i].long_name;
