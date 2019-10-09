@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TokenService } from './service/token.service';
+import {SuiModule} from 'ng2-semantic-ui';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TokenService } from './service/token.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    SuiModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }
