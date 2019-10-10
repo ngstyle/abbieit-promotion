@@ -1,10 +1,11 @@
 @media screen and (max-width: 600px) {
     .card {
-        width: 45%!important;
-        height: 30%!important;
+        width: 65%!important;
+        height: 50%!important;
+        margin-top: 75px;
+        margin-left: 12%!important;
         border-radius: 25px;
-        float: left;
-        margin: 10px;
+        margin: auto;
     }
 }
 
@@ -12,6 +13,7 @@
     width: 12%;
     height: 25%;
     float: left;
+    margin-top: 75px;
     margin-left: 2%;
     border-radius: 25px;
 }
