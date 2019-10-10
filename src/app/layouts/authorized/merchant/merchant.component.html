@@ -17,9 +17,6 @@
       <div class="field">
         <label>Name</label>
         <input matInput formControlName="userName" readonly="">
-        <mat-error
-          *ngIf="minisoShopForm.get('userName').hasError('required') && minisoShopForm.get('userName').touched">
-          Customer name is required</mat-error>
       </div>
 
       <div class="field">

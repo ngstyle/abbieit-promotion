@@ -1,1 +1,52 @@
-Dashboard
+<div style="margin: auto; width: 100%; float: left;">
+    <mat-card class="card">
+
+        <mat-card-content>
+            QR CODE SCAN
+            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+                [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                [animationDuration]="1000" maxPercent=1000>
+            </circle-progress>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-content>
+            REGISTERED
+            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+                [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                [animationDuration]="1000" maxPercent=1000>
+            </circle-progress>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div style="margin: auto; width: 100%; float: left;">
+    <mat-card class="card">
+        <mat-card-content>
+            COUPON USED
+            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+                [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                [animationDuration]="1000" maxPercent=1000>
+            </circle-progress>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+        <mat-card-content>
+            PENDING COUPON
+            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+                [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                [animationDuration]="1000" maxPercent=1000>
+            </circle-progress>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<br clear="left">
+<button routerLink="/marchant"
+    style="margin-left: 38%; border-radius: px; background-color: #e61523; color: white; width: 21%;" mat-stroked-button
+    color="primary">MARCHANT</button>
+
+<button routerLink="/report"
+    style="margin: 15px; border-radius: 8px; background-color: #e61523; color: white; width: 15%;" mat-stroked-button
+    color="primary">REPORT</button>
