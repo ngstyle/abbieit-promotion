@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class RegistrationComponent implements OnInit {
 
+  isRegistered = false;
+  @ViewChild('videoPlayer') videoplayer: ElementRef;
   registration: FormGroup;
   message: any;
   isMessage = false;
@@ -97,7 +99,9 @@ export class RegistrationComponent implements OnInit {
         this.message = 'Mobile is already registered.';
         this.registration.get('mobile').setValue('');
       } else {
-        this.message = 'You are eligible to claim offer.';
+        this.message = '';
+        this.isRegistered = true;
+        this.videoplayer.nativeElement.play();
       }
       this.isMessage = !this.isMessage;
     });

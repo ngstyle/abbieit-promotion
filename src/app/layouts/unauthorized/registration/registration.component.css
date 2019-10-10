@@ -3,9 +3,9 @@
     background-color: #cccccc;
     background-repeat: no-repeat;
     width: 35%;
-    height: 100%;
     background-size: 100%  100%;
     margin: auto;
+    min-height: 100% !important;
 }
 
 @media screen and (max-width: 600px) {

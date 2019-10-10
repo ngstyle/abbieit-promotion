@@ -15,7 +15,6 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./layouts/unauthorized/registration/registration.module').then(mod => mod.RegistrationModule),
-    canActivate: [AuthguardService]
   }
 ];
 

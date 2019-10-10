@@ -1,28 +1,42 @@
-<div class="background">
-    <div class="form-container">
+<div class="background" [hidden]="isRegistered">
+
+    <div class="form-container" style="padding-top: 50%; min-height: 600px;">
 
         <div *ngIf="isMessage" style="color: red;">
             {{message}}.
             <br>
-            <a href="javascript:void(0);" (click) = "toggle()" style="font-size: 12px;">Try with another mobile</a>
+            <a href="javascript:void(0);" (click)="toggle()" style="font-size: 12px;">Try with another mobile</a>
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage">
 
-            <mat-form-field class = "field">
+            <mat-form-field class="field">
                 <input matInput placeholder="Name" formControlName="userName" maxlength="100" required>
                 <mat-error *ngIf="registration.get('userName').hasError('required')">Name is required</mat-error>
-                <mat-error *ngIf="registration.get('userName').hasError('minlength')">Invalid name (minimum 3 characters long)</mat-error>
+                <mat-error *ngIf="registration.get('userName').hasError('minlength')">Invalid name (minimum 3 characters
+                    long)</mat-error>
             </mat-form-field>
 
-            <mat-form-field class = "field">
-                <input matInput placeholder="Mobile" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
+            <mat-form-field class="field">
+                <input matInput placeholder="Mobile" formControlName="mobile" (keypress)=_keyPress($event)
+                    maxlength="10" minlength="10" required>
                 <mat-error *ngIf="registration.get('mobile').hasError('required')">Mobile is required</mat-error>
-                <mat-error *ngIf="registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('maxlength')">Invalid Mobile</mat-error>
+                <mat-error
+                    *ngIf="registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('maxlength')">
+                    Invalid Mobile</mat-error>
             </mat-form-field>
             <br><br>
-            
-            <button [disabled]="registration.invalid" (click)="doRegister()" mat-raised-button color="accent" class = "field">Get Offer</button>
+
+            <button [disabled]="registration.invalid" (click)="doRegister()" mat-raised-button color="accent"
+                class="field">Get Offer</button>
 
         </form>
     </div>
+
+</div>
+
+<div [hidden]="! isRegistered" class="video" style="margin-left: 2%; margin-right: 2%;">
+    <video controls #videoPlayer style="max-width: 100%; height: auto;" #videoPlayer>
+        <source src="/assets/images/miniso promo.mp4" type="video/mp4" />
+        Browser not supported
+    </video>
 </div>
