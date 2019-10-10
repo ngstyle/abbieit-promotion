@@ -1,6 +1,6 @@
 @media screen and (max-width: 600px) {
     .card {
-        width: 65%!important;
+        width: 80%!important;
         height: 45%!important;
         margin-top: 75px;
         margin-left: 12%!important;
@@ -10,10 +10,16 @@
 }
 
 .card {
-    width: 12%;
+    width: 20%;
     height: 25%;
     float: left;
+    margin: auto;
     margin-top: 75px;
     margin-left: 2%;
     border-radius: 25px;
+}
+
+.cart-container {
+    width: 70%;
+    margin: auto;
 }
