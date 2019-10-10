@@ -1,17 +1,17 @@
 @media screen and (max-width: 600px) {
     .card {
-        width: 40%!important;
-        height: 28%!important;
-        margin-top: 75px;
-        margin-left: 12px;
+        width: 45%!important;
+        height: 30%!important;
         border-radius: 25px;
+        float: left;
+        margin: 10px;
     }
 }
 
 .card {
     width: 12%;
-    height: 22%;
-    margin-top: 75px;
-    margin-left: 30px;
+    height: 25%;
+    float: left;
+    margin-left: 2%;
     border-radius: 25px;
 }

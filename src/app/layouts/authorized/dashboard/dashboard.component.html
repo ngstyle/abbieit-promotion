@@ -1,9 +1,9 @@
-<div style="margin: auto; width: 100%; float: left;">
+<div style="margin-top: 75px;"></div>
     <mat-card class="card">
 
         <mat-card-content>
             QR CODE SCAN
-            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="80" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                 [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
@@ -13,19 +13,19 @@
     <mat-card class="card">
         <mat-card-content>
             REGISTERED
-            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="80" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                 [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
         </mat-card-content>
     </mat-card>
-</div>
 
-<div style="margin: auto; width: 100%; float: left;">
+
+
     <mat-card class="card">
         <mat-card-content>
             COUPON USED
-            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="80" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                 [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
@@ -34,13 +34,15 @@
     <mat-card class="card">
         <mat-card-content>
             PENDING COUPON
-            <circle-progress [percent]="80" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="80" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                 [outerStrokeColor]="'#808080'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
         </mat-card-content>
     </mat-card>
-</div>
+
+
+
 
 <br clear="left">
 <button routerLink="/marchant"
