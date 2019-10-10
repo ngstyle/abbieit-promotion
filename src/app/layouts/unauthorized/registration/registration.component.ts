@@ -25,12 +25,16 @@ export class RegistrationComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    const deviceInfo = this.deviceService.getDeviceInfo();
     this.mapsAPILoader.load().then(() => {
       this.geoCoder = new google.maps.Geocoder();
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
           this.showPosition(position);
+        }, () => {
+          const data: any = {};
+          data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
+          this.minisoService.scan(data).subscribe(data => {
+          });
         });
       } else {
         console.log('Geolocation is not supported by this browser.');
@@ -85,6 +89,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   doRegister() {
+    const data = this.registration.value;
+    data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
     this.minisoService.registration(this.registration.value).subscribe(data => {
       const result: any = data;
       if (result.msg === 'alreadyExists') {
