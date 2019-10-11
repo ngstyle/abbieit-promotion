@@ -114,10 +114,11 @@ export class MerchantComponent implements OnInit {
       mobile: this.minisoShopForm.get('mobile').value,
     };
     this.minisoService.use(UseData).subscribe(data => {
-      this.minisoShopForm.reset();
-      this.errorMsg = 'Mobile is successfully used.';
+      this.minisoShopForm.get('mobile').setValue('');
+      this.minisoShopForm.get('userName').setValue('');
+      this.errorMsg = 'Mobile is successfully used';
     }, error => {
-      this.errorMsg = 'Not successfully used. Try again.';
+      this.errorMsg = 'Not successfully used. Try again';
     });
   }
 
