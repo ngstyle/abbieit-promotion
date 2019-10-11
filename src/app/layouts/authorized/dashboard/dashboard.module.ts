@@ -16,22 +16,19 @@ const DashboardRouter = RouterModule.forChild(routes);
     CommonModule,
     DashboardRouter,
     NgCircleProgressModule.forRoot({
-      backgroundPadding: 7,
+      backgroundPadding: 35,
       radius: 80,
       space: -2,
       outerStrokeWidth: 2,
       outerStrokeColor: "#808080",
       innerStrokeColor: "#e7e8ea",
       innerStrokeWidth: 2,
-      title: [
-        'working',
-        'in',
-        'progress'
-      ],
       subtitle: [
-        '80%'
+        ''
       ],
-      titleFontSize: '12',
+      titleFontSize: '25',
+      titleColor : '#ff0000',
+      titleFontWeight : '400',
       subtitleFontSize: '20',
       animateTitle: false,
       animationDuration: 1000,

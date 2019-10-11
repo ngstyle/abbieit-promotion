@@ -33,4 +33,7 @@ export class MinisoService {
     return this.http.post(`${environment.API_URL}/miniso/scan`, data);
   }
 
+  minisoDashboard() {
+    return this.http.get(`${environment.API_URL}/miniso/dashboard`);
+  }
 }
