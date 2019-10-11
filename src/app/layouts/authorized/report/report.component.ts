@@ -11,7 +11,7 @@ export class ReportComponent implements OnInit {
 
   constructor(private permissionService: PermissionService,
               private router: Router) {
-    if (!this.permissionService.hasPermission('miniso_admin')) {
+    if (!this.permissionService.isAdmin()) {
       this.router.navigate(['marchant']);
     }
   }

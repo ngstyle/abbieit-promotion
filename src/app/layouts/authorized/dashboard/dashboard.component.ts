@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   constructor(private permissionService: PermissionService,
               private router: Router,
               private minisoService: MinisoService) {
-    if (!this.permissionService.hasPermission('miniso_admin')) {
+    if (!this.permissionService.isAdmin()) {
         this.router.navigate(['marchant']);
       }
     }

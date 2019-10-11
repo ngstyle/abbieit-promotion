@@ -79,12 +79,10 @@ export class SigninComponent implements OnInit {
     if (this.loginForm.valid) {
       this.singinService.doLogin(this.loginForm.value).subscribe(data => {
         this.storageServie.setIdentity(data);
-        if (this.permissionService.hasPermission('miniso:login')) {
+        if (this.permissionService.isAdmin()) {
           this.router.navigate(['']);
         } else {
-          this.singinService.doLogout();
-          this.loginForm.reset();
-          alert('Access Denied');
+          this.router.navigate(['marchant']);
         }
       }, error => {
         alert('Invalid Username/password');
