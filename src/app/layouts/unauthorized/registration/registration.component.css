@@ -26,3 +26,7 @@
    padding-right: 15%;
    padding-left: 5%;
 }
+.mat-error {
+    color: white;
+    display: flex;
+}
