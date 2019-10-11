@@ -1,21 +1,18 @@
 .background {
-    background-image: url("/assets/images/registration.jpg");
-    background-color: #cccccc;
+    background-image: url("/assets/images/background.svg");
     background-repeat: no-repeat;
     width: 35%;
-    background-size: 100%  100%;
     margin: auto;
     min-height: 100% !important;
 }
 
 @media screen and (max-width: 600px) {
     .background {
-        background-image: url("/assets/images/registration.jpg");
-        background-color: #cccccc;
+        background-image: url("/assets/images/background.svg");
         background-repeat: no-repeat;
         background-size: 100%  100%;
         width: 100%;
-        margin: auto;
+        margin: auto;    
     }
 }
 
@@ -25,6 +22,7 @@
 
 .field {
     width: 90%; 
-    padding-left: 5%;
-    padding-right: 5%;
+    margin: auto;
+   padding-right: 15%;
+   padding-left: 5%;
 }
