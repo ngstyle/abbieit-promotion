@@ -2,7 +2,7 @@
     <mat-card class="card">
         QR CODE SCAN
         <mat-card-content>
-            <circle-progress [percent]="todayScan" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="todayScan" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                [title]="totalScan" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
@@ -12,7 +12,7 @@
     <mat-card class="card">
         REGISTERED
         <mat-card-content>
-            <circle-progress [percent]="todayRegistartion" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="todayRegistartion" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                 [title]=totalRegistartion [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
@@ -22,7 +22,7 @@
     <mat-card class="card">
         COUPON USED
         <mat-card-content>
-            <circle-progress [percent]="todayShop" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="todayShop" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
             [title]=totalShop [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>
@@ -31,7 +31,7 @@
     <mat-card class="card">
         <mat-card-content>
             PENDING COUPON
-            <circle-progress [percent]="todayNotShop" [radius]="radius" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+            <circle-progress [percent]="todayNotShop" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
             [title]=totalNotShop  [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                 [animationDuration]="1000" maxPercent=1000>
             </circle-progress>

@@ -6,8 +6,7 @@
 
       <div class="field">
         <label>Mobile</label>
-        <input type="text" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10"
-          (blur)="validateMobile()" required>
+        <input type="text" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('required') && minisoShopForm.get('mobile').touched">
           Mobile is required</mat-error>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('minlength') 
