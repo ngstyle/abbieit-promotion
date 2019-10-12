@@ -1,3 +1,6 @@
+import { MarchantDialogComponent } from './layouts/authorized/shared/marchant-dialog/marchant-dialog.component';
+import { MatCardModule } from '@angular/material/card';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,10 +12,14 @@ import { TokenService } from './service/token.service';
 import {SuiModule} from 'ng2-semantic-ui';
 import { AgmCoreModule } from '@agm/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { CommonModule } from '@angular/common';
+import { MatInputModule, MatSelectModule, MatAutocompleteModule, MatToolbarModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MarchantDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,11 +31,21 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAf0aX6Jgz6HbqvFIhI9BejpKdx3tVhjTk&libraries=places'
     }),
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    CommonModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMatSelectSearchModule,
+    MatSelectModule,
+    MatCardModule,
+    MatAutocompleteModule,
+    MatToolbarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MarchantDialogComponent]
 })
 export class AppModule { }

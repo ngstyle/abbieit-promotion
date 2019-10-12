@@ -1,0 +1,13 @@
+.card {
+    width: 95%;
+    margin: auto;
+}
+
+.toolbar {
+    font: 500 16px/18px Roboto, "Helvetica Neue", sans-serif;
+    background: #d60b22;
+    color: white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding-right: 8px;
+  }
