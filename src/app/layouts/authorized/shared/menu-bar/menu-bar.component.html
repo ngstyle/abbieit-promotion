@@ -1,18 +1,23 @@
 <mat-toolbar class="menu-header">
-  <mat-toolbar-row style="padding-left: 20px">
+  <mat-toolbar-row style="padding-left: 25px">
 
     <a routerLink="/dashboard" class="menu-link">
       <img src="assets/images/miniso-logo.png" height="30px;" />
     </a>
 
-    <button routerLink="/marchant" style="margin-left:4%; background-color: #e61523; color: white;" mat-stroked-button
-      color="primary">MARCHANT</button>
+    <a routerLink="/dashboard" routerLinkActive="active" class="menu-link link-order" style="margin-left: 3%;">
+      <button mat-button>DASHBOARD</button>
+    </a>
+    <a routerLink="/report" routerLinkActive="active" class="menu-link link-dashboard" style="margin-left: 1%;">
+      <button mat-button>REPORT</button>
+    </a>
+    <a routerLink="/marchant" routerLinkActive="active" class="menu-link link-order" style="margin-left: 1%;">
+      <button mat-button>MARCHANT</button>
+    </a>
 
-    <button routerLink="/report" style="margin-left: 1%; background-color: #e61523; color: white;" mat-stroked-button
-      color="primary">REPORT</button>
     <span class="example-fill-remaining-space"></span>
 
-    <button mat-button class="background-button" [matMenuTriggerFor]="user" style="width: 32px; height: 32px; margin-right: 8px;">
+    <button mat-button class="background-button" [matMenuTriggerFor]="user" style="width: 32px; height: 32px;">
       <svg-icon src="assets/images/user.svg" [svgStyle]="{ 'width.px':20,'height.px':20}" inline=true>
       </svg-icon>
     </button>

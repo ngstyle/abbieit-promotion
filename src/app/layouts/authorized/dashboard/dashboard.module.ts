@@ -16,7 +16,7 @@ const DashboardRouter = RouterModule.forChild(routes);
     CommonModule,
     DashboardRouter,
     NgCircleProgressModule.forRoot({
-      backgroundPadding: 20,
+      backgroundPadding: 7,
       radius: 80,
       space: -2,
       outerStrokeWidth: 2,

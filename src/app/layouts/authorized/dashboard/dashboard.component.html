@@ -1,58 +1,61 @@
-<div class="card">
-    <mat-card style="height: 55%;">
-        <mat-card-header>
-            <mat-card-title>QR CODE SCAN </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            {{totalScan}}
-        </mat-card-content>
-    </mat-card>
-    <mat-card style="height: 55%; margin-top: 6%;">
-        <mat-card-header>
+<div style="margin-left: 20%; height: 63%;">
+
+    <div class="card">
+        <mat-card style="height: 55%;">
+            <mat-card-header>
+                <mat-card-title>QR CODE SCAN </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalScan}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card style="height: 55%; margin-top: 6%;">
+            <mat-card-header>
+                <mat-card-title>REGISTERED</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalRegistartion}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="card">
+        <mat-card style="height: 55%;">
+            <mat-card-header>
+                <mat-card-title> COUPON USED</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalShop}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card style="height: 55%; margin-top: 6%;">
+            <mat-card-header>
+                <mat-card-title>PENDING COUPON</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalNotShop}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="cart-container">
+        <mat-card class="card">
+            <mat-card-title>QR CODE SCAN</mat-card-title>
+            <mat-card-content>
+                <circle-progress [percent]="scanPercentage" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+                    [title]="scanPercentage" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'"
+                    [animation]="true" [animationDuration]="1000" maxPercent=1000>
+                </circle-progress>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
             <mat-card-title>REGISTERED</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            {{totalRegistartion}}
-        </mat-card-content>
-    </mat-card>
-</div>
-<div class="card">
-    <mat-card style="height: 55%;">
-        <mat-card-header>
-            <mat-card-title> COUPON USED</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            {{totalShop}}
-        </mat-card-content>
-    </mat-card>
-    <mat-card style="height: 55%; margin-top: 6%;">
-        <mat-card-header>
-            <mat-card-title>PENDING COUPON</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            {{totalNotShop}}
-        </mat-card-content>
-    </mat-card>
-</div>
-<div class="cart-container">
-    <mat-card class="card">
-        <mat-card-title>QR CODE SCAN</mat-card-title>
-        <mat-card-content>
-            <circle-progress [percent]="scanPercentage" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
-                [title]="scanPercentage" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'"
-                [animation]="true" [animationDuration]="1000" maxPercent=1000>
-            </circle-progress>
-        </mat-card-content>
-    </mat-card>
+            <mat-card-content>
+                <circle-progress [percent]="registartiontPercentage" [radius]="80" [outerStrokeWidth]="2"
+                    [innerStrokeWidth]="2" [title]=registartiontPercentage [outerStrokeColor]="'#ff0000'"
+                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000" maxPercent=1000>
+                </circle-progress>
+            </mat-card-content>
+        </mat-card>
 
-    <mat-card class="card">
-        <mat-card-title>REGISTERED</mat-card-title>
-        <mat-card-content>
-            <circle-progress [percent]="registartiontPercentage" [radius]="80" [outerStrokeWidth]="2"
-                [innerStrokeWidth]="2" [title]=registartiontPercentage [outerStrokeColor]="'#ff0000'"
-                [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000" maxPercent=1000>
-            </circle-progress>
-        </mat-card-content>
-    </mat-card>
-
+    </div>
 </div>
