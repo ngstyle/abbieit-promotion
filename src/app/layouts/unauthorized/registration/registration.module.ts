@@ -5,6 +5,7 @@ import { RegistrationComponent } from './registration.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatButtonModule, MatFormFieldModule, MatInputBase, MatInputModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const routes: Routes = [
   { path: '', component: RegistrationComponent }
@@ -23,7 +24,7 @@ const RegistrationRouter = RouterModule.forChild(routes);
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    AgmCoreModule
+    AgmCoreModule,
   ],
   declarations: [RegistrationComponent]
 })
