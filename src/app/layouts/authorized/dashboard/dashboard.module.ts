@@ -16,7 +16,7 @@ const DashboardRouter = RouterModule.forChild(routes);
     CommonModule,
     DashboardRouter,
     NgCircleProgressModule.forRoot({
-      backgroundPadding: 35,
+      backgroundPadding: 20,
       radius: 80,
       space: -2,
       outerStrokeWidth: 2,
@@ -27,12 +27,14 @@ const DashboardRouter = RouterModule.forChild(routes);
         ''
       ],
       titleFontSize: '25',
-      titleColor : '#ff0000',
-      titleFontWeight : '400',
+      titleColor: '#ff0000',
+      titleFontWeight: '400',
       subtitleFontSize: '20',
       animateTitle: false,
       animationDuration: 1000,
-      showUnits: false,
+      showUnits: true,
+      unitsFontSize: '25',
+      unitsColor: '#ff0000',
       clockwise: false
     }),
     MatCardModule,

@@ -1,19 +1,22 @@
 <mat-toolbar class="menu-header">
-  <mat-toolbar-row style="padding-left: 0">
-
-    <button mat-button style="width: 64px; height: 64px; color: black;">
-      <i class="material-icons">menu</i>
-    </button>
+  <mat-toolbar-row style="padding-left: 20px">
 
     <a routerLink="/dashboard" class="menu-link">
       <img src="assets/images/miniso-logo.png" height="30px;" />
     </a>
 
+    <button routerLink="/marchant" style="margin-left:4%; background-color: #e61523; color: white;" mat-stroked-button
+      color="primary">MARCHANT</button>
+
+    <button routerLink="/report" style="margin-left: 1%; background-color: #e61523; color: white;" mat-stroked-button
+      color="primary">REPORT</button>
     <span class="example-fill-remaining-space"></span>
 
-    <button mat-button class="nav-button" [matMenuTriggerFor]="user">
-      <svg-icon src="assets/images/user.svg" [svgStyle]="{ 'width.px':24,'height.px':24 }"></svg-icon>
+    <button mat-button class="background-button" [matMenuTriggerFor]="user" style="width: 32px; height: 32px; margin-right: 8px;">
+      <svg-icon src="assets/images/user.svg" [svgStyle]="{ 'width.px':20,'height.px':20}" inline=true>
+      </svg-icon>
     </button>
+
     <mat-menu #user="matMenu">
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>

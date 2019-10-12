@@ -18,30 +18,34 @@ export class DashboardComponent implements OnInit {
   todayNotShop: any;
   totalScan: any;
   todayScan: any;
+  scanPercentage: any;
+  registartiontPercentage: any;
   constructor(private permissionService: PermissionService,
               private router: Router,
               private minisoService: MinisoService) {
     if (!this.permissionService.isAdmin()) {
-        this.router.navigate(['marchant']);
-      }
+      this.router.navigate(['marchant']);
     }
-
-    ngOnInit() {
-      this.minisoDashboard();
-    }
-
-    minisoDashboard() {
-      this.minisoService.minisoDashboard().subscribe(data => {
-        const result: any = data;
-        this.totalRegistartion = result.userDashboard.todayRegistration + '/' + result.userDashboard.totalRegistration;
-        this.todayRegistartion = result.userDashboard.todayRegistration;
-        this.totalShop = result.userDashboard.todayShop + '/' + result.userDashboard.totalShop;
-        this.todayShop = result.userDashboard.todayShop;
-        this.totalNotShop = result.userDashboard.todayNotShop + '/' + result.userDashboard.totalNotShop;
-        this.todayNotShop = result.userDashboard.todayNotShop;
-        this.totalScan = result.scanDashboard.todayTotal + '/' + result.scanDashboard.overallTotal;
-        this.todayScan = result.scanDashboard.todayTotal;
-      });
-    }
-
   }
+
+  ngOnInit() {
+    this.minisoDashboard();
+  }
+
+  minisoDashboard() {
+    this.minisoService.minisoDashboard().subscribe(data => {
+      const result: any = data;
+      this.totalRegistartion = result.userDashboard.totalRegistration;
+      this.todayRegistartion = result.userDashboard.todayRegistration;
+      this.totalShop = result.userDashboard.totalShop;
+      this.todayShop = result.userDashboard.todayShop;
+      this.totalNotShop = result.userDashboard.totalNotShop;
+      this.todayNotShop = result.userDashboard.todayNotShop;
+      this.totalScan = result.scanDashboard.overallTotal;
+      this.todayScan = result.scanDashboard.todayTotal;
+      this.scanPercentage = (parseFloat((this.totalScan / this.totalRegistartion).toString()).toFixed(2));
+      this.registartiontPercentage = (parseFloat((this.totalRegistartion / this.totalShop).toString()).toFixed(2));
+    });
+  }
+
+}
