@@ -11,7 +11,7 @@ export class PermissionService {
   isAdmin(): boolean {
     const identity = this.storageService.getIdentity();
     if (identity) {
-      return identity.isAdmin;
+      return identity.admin;
     }
     return false;
   }

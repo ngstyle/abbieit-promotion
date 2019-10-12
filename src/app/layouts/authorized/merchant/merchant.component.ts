@@ -96,7 +96,6 @@ export class MerchantComponent implements OnInit {
     this.minisoService.validateMobile(mobileNo).subscribe(data => {
       const result: any = data;
       if (result.error) {
-        this.minisoShopForm.get('mobile').setValue('');
         this.errorMsg = result.error;
         this.isValidMobile = false;
       } else {
