@@ -109,7 +109,7 @@ export class MerchantComponent implements OnInit {
 
   use() {
     const UseData = {
-      minisoShop: this.selectedStore.id,
+      minisoShop: this.selectedStore.shop,
       mobile: this.minisoShopForm.get('mobile').value,
     };
     this.minisoService.use(UseData).subscribe(data => {

@@ -1,3 +1,54 @@
-<p>
-  report works!
-</p>
+<div style="margin-top: 5%; margin-left: 60px; width: 95%;">
+
+  <div class="mat-elevation-z2">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="store">
+        <th mat-header-cell *matHeaderCellDef> Store </th>
+        <td mat-cell *matCellDef="let element"> {{element.shop}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isShop">
+        <th mat-header-cell *matHeaderCellDef> Coupon Used </th>
+        <td mat-cell *matCellDef="let element"> {{element.isShop ? 'Yes' : 'No'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="shopTime">
+        <th mat-header-cell *matHeaderCellDef> Shop Time</th>
+        <td mat-cell *matCellDef="let element"> {{element.shopTime}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</div>

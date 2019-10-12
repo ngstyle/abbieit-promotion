@@ -36,4 +36,8 @@ export class MinisoService {
   minisoDashboard() {
     return this.http.get(`${environment.API_URL}/miniso/dashboard`);
   }
+
+  findAll() {
+    return this.http.get(`${environment.API_URL}/miniso`);
+  }
 }
