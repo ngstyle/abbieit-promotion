@@ -13,6 +13,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class RegistrationComponent implements OnInit {
 
   isRegistered = false;
+  scanId: any;
   @ViewChild('videoPlayer') videoplayer: ElementRef;
   registration: FormGroup;
   message: any;
@@ -35,7 +36,8 @@ export class RegistrationComponent implements OnInit {
         }, () => {
           const data: any = {};
           data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-          this.minisoService.scan(data).subscribe(data => {
+          this.minisoService.scan(data).subscribe(result => {
+            this.scanId = result;
           });
         });
       } else {
@@ -68,7 +70,8 @@ export class RegistrationComponent implements OnInit {
           }
           data.address = results[0].formatted_address;
           data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-          this.minisoService.scan(data).subscribe(data => {
+          this.minisoService.scan(data).subscribe(result => {
+            this.scanId = result;
           });
         } else {
           window.alert('No results found');
@@ -93,8 +96,9 @@ export class RegistrationComponent implements OnInit {
   doRegister() {
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-    this.minisoService.registration(this.registration.value).subscribe(data => {
-      const result: any = data;
+    data.scanId = this.scanId;
+    this.minisoService.registration(this.registration.value).subscribe(d => {
+      const result: any = d;
       if (result.msg === 'alreadyExists') {
         this.message = 'Mobile is already registered.';
         this.registration.get('mobile').setValue('');

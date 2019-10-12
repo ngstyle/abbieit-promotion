@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_URL : 'http://localhost:8081/api'
-  // API_URL : 'http://test.ims.abbieit.in/api'
+  // API_URL: 'https://miniso.abbieit.in/api'
 };
 
 /*

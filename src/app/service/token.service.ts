@@ -16,17 +16,13 @@ export class TokenService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const excludePaths: string[] = [
-      '/account/',
-      '/miniso/*'
+      '/registration/*'
     ];
 
     const matchedPath = excludePaths.filter(path => req.url.includes(path));
 
     if (matchedPath.length === 0) {
       const identity: any = this.storageService.getToken();
-      if (!identity) {
-        this.router.navigate(['account/signin']);
-      }
       // Clone the request to add the new header.
       const authReq = req.clone({
                           setHeaders: {
