@@ -6,7 +6,7 @@
                 <mat-card-title>QR CODE SCAN </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{totalScan}}
+                {{scanTotal}}
             </mat-card-content>
         </mat-card>
         <mat-card style="height: 55%; margin-top: 6%;">
@@ -14,7 +14,7 @@
                 <mat-card-title>REGISTERED</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{totalRegistartion}}
+                {{registerTotal}}
             </mat-card-content>
         </mat-card>
     </div>
@@ -24,7 +24,7 @@
                 <mat-card-title> COUPON USED</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{totalShop}}
+                {{usedCouponTotal}}
             </mat-card-content>
         </mat-card>
         <mat-card style="height: 55%; margin-top: 6%;">
@@ -32,7 +32,7 @@
                 <mat-card-title>PENDING COUPON</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{totalNotShop}}
+                {{pendingCouponTotal}}
             </mat-card-content>
         </mat-card>
     </div>
@@ -57,5 +57,17 @@
             </mat-card-content>
         </mat-card>
 
+    </div>
+</div>
+
+<div style="margin-top: -9%;">
+    <div class="card card-accent-info">
+        <div class="card-body">
+            <div style="width: 310%; margin-left: 100%;" ngResizable class="resizable-widget mt-4 pb-4"
+                rzContainment="#container" rzHandles="all">
+                <div class="widget-header">Chart</div>
+                <div echarts [options]="options" [autoResize]="autoResize"></div>
+            </div>
+        </div>
     </div>
 </div>

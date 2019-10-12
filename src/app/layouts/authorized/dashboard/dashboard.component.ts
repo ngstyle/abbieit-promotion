@@ -10,16 +10,36 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  totalRegistartion: any;
-  todayRegistartion: any;
-  totalShop: any;
-  todayShop: any;
-  totalNotShop: any;
-  todayNotShop: any;
-  totalScan: any;
-  todayScan: any;
+  scanTotal: any;
+  registerTotal: any;
+  usedCouponTotal: any;
+  pendingCouponTotal: any;
   scanPercentage: any;
   registartiontPercentage: any;
+
+  options = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      type: 'line'
+    },
+    {
+      data: [855, 999, 1111, 1222, 1333, 1356, 1390],
+      type: 'line'
+    },
+    {
+      data: [999, 1000, 1345, 1543, 1589, 1688, 1700],
+      type: 'line'
+    },
+    ]
+  };
+
   constructor(private permissionService: PermissionService,
               private router: Router,
               private minisoService: MinisoService) {
@@ -35,16 +55,12 @@ export class DashboardComponent implements OnInit {
   minisoDashboard() {
     this.minisoService.minisoDashboard().subscribe(data => {
       const result: any = data;
-      this.totalRegistartion = result.userDashboard.totalRegistration;
-      this.todayRegistartion = result.userDashboard.todayRegistration;
-      this.totalShop = result.userDashboard.totalShop;
-      this.todayShop = result.userDashboard.todayShop;
-      this.totalNotShop = result.userDashboard.totalNotShop;
-      this.todayNotShop = result.userDashboard.todayNotShop;
-      this.totalScan = result.scanDashboard.overallTotal;
-      this.todayScan = result.scanDashboard.todayTotal;
-      this.scanPercentage = (parseFloat((this.totalScan / this.totalRegistartion).toString()).toFixed(2));
-      this.registartiontPercentage = (parseFloat((this.totalRegistartion / this.totalShop).toString()).toFixed(2));
+      this.scanTotal = result.scanTotal;
+      this.registerTotal = result.registerTotal;
+      this.usedCouponTotal = result.usedCouponTotal;
+      this.pendingCouponTotal = result.pendingCouponTotal;
+      this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal).toString()).toFixed(2));
+      this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal).toString()).toFixed(2));
     });
   }
 

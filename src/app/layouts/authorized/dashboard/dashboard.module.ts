@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { NgxEchartsModule } from 'ngx-echarts';
 const routes: Routes = [
   { path: '', component: DashboardComponent }
 ];
@@ -38,7 +39,8 @@ const DashboardRouter = RouterModule.forChild(routes);
       clockwise: false
     }),
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxEchartsModule
   ],
   declarations: [DashboardComponent]
 })
