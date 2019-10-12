@@ -17,28 +17,8 @@ export class DashboardComponent implements OnInit {
   scanPercentage: any;
   registartiontPercentage: any;
 
-  options = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [{
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      type: 'line'
-    },
-    {
-      data: [855, 999, 1111, 1222, 1333, 1356, 1390],
-      type: 'line'
-    },
-    {
-      data: [999, 1000, 1345, 1543, 1589, 1688, 1700],
-      type: 'line'
-    },
-    ]
-  };
+
+  options: any;
 
   constructor(private permissionService: PermissionService,
               private router: Router,
@@ -58,9 +38,33 @@ export class DashboardComponent implements OnInit {
       this.scanTotal = result.scanTotal;
       this.registerTotal = result.registerTotal;
       this.usedCouponTotal = result.usedCouponTotal;
-      this.pendingCouponTotal = result.pendingCouponTotal;
-      this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal).toString()).toFixed(2));
-      this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal).toString()).toFixed(2));
+      this.pendingCouponTotal = result.totalPending;
+      this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal === 0 ? 1 : this.registerTotal).toString()).toFixed(2));
+      this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal === 0
+                                          ? 1 : this.usedCouponTotal).toString()).toFixed(2));
+
+
+      this.options = {
+        xAxis: {
+          type: 'category',
+          data: result.dayes
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          data: result.scanWeek,
+          type: 'line'
+        },
+        {
+          data: result.registerWeek,
+          type: 'line'
+        },
+        {
+          data: result.usedCouponWeek,
+          type: 'line'
+        }]
+      };
     });
   }
 

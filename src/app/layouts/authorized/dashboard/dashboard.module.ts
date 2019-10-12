@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { CountUpModule } from 'countup.js-angular2';
+
 const routes: Routes = [
   { path: '', component: DashboardComponent }
 ];
@@ -40,7 +42,8 @@ const DashboardRouter = RouterModule.forChild(routes);
     }),
     MatCardModule,
     MatButtonModule,
-    NgxEchartsModule
+    NgxEchartsModule,
+    CountUpModule
   ],
   declarations: [DashboardComponent]
 })

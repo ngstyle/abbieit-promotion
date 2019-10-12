@@ -1,48 +1,44 @@
-<div style="margin-left: 20%; height: 63%;">
+<div style="margin-left: 20%;">
 
     <div class="card">
-        <mat-card style="height: 55%;">
+        <mat-card>
             <mat-card-header>
                 <mat-card-title>QR CODE SCAN </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{scanTotal}}
+                <span style="line-height: 100%;"  [countUp]="scanTotal">0</span>
             </mat-card-content>
         </mat-card>
-        <mat-card style="height: 55%; margin-top: 6%;">
+        <mat-card style="margin-top: 6%;">
             <mat-card-header>
                 <mat-card-title>REGISTERED</mat-card-title>
             </mat-card-header>
-            <mat-card-content>
-                {{registerTotal}}
-            </mat-card-content>
+            <mat-card-content style="line-height: 100%;" [countUp]="registerTotal">0</mat-card-content>
         </mat-card>
     </div>
+
     <div class="card">
-        <mat-card style="height: 55%;">
+        <mat-card>
             <mat-card-header>
                 <mat-card-title> COUPON USED</mat-card-title>
             </mat-card-header>
-            <mat-card-content>
-                {{usedCouponTotal}}
-            </mat-card-content>
+            <mat-card-content style="line-height: 99%;" [countUp]="usedCouponTotal">0</mat-card-content>
         </mat-card>
-        <mat-card style="height: 55%; margin-top: 6%;">
+        <mat-card style="margin-top: 6%;">
             <mat-card-header>
                 <mat-card-title>PENDING COUPON</mat-card-title>
             </mat-card-header>
-            <mat-card-content>
-                {{pendingCouponTotal}}
-            </mat-card-content>
+            <mat-card-content style="line-height: 99%;" [countUp]="pendingCouponTotal">0</mat-card-content>
         </mat-card>
     </div>
+
     <div class="cart-container">
         <mat-card class="card">
             <mat-card-title>QR CODE SCAN</mat-card-title>
             <mat-card-content>
                 <circle-progress [percent]="scanPercentage" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                     [title]="scanPercentage" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'"
-                    [animation]="true" [animationDuration]="1000" maxPercent=1000>
+                    [animation]="true" [animationDuration]="1000" maxPercent=1000>{{scanPercentage}}
                 </circle-progress>
             </mat-card-content>
         </mat-card>
@@ -58,16 +54,17 @@
         </mat-card>
 
     </div>
+
+    <br clear="all">
+
 </div>
 
-<div style="margin-top: -9%;">
-    <div class="card card-accent-info">
-        <div class="card-body">
-            <div style="width: 310%; margin-left: 100%;" ngResizable class="resizable-widget mt-4 pb-4"
-                rzContainment="#container" rzHandles="all">
-                <div class="widget-header">Chart</div>
-                <div echarts [options]="options" [autoResize]="autoResize"></div>
-            </div>
+
+<div class="card card-accent-info" style="margin-left: 22%; height: auto; width: 55%!important;">
+    <div class="card-body">
+        <div style="width: 100%!important;" ngResizable class="resizable-widget mt-4 pb-4" rzContainment="#container"
+            rzHandles="all">
+            <div echarts [options]="options" [autoResize]="autoResize"></div>
         </div>
     </div>
 </div>
