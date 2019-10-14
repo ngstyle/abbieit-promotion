@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
       this.scanPercentage = this.getPercent(this.registerTotal, this.scanTotal);
       this.registartiontPercentage = this.getPercent(this.usedCouponTotal, this.registerTotal);
 
+
       this.options = {
         xAxis: {
           type: 'category',
