@@ -21,8 +21,8 @@ export class DashboardComponent implements OnInit {
   options: any;
 
   constructor(private permissionService: PermissionService,
-              private router: Router,
-              private minisoService: MinisoService) {
+    private router: Router,
+    private minisoService: MinisoService) {
     if (!this.permissionService.isAdmin()) {
       this.router.navigate(['marchant']);
     }
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
       this.pendingCouponTotal = result.totalPending;
       this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal === 0 ? 1 : this.registerTotal).toString()).toFixed(2));
       this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal === 0
-                                          ? 1 : this.usedCouponTotal).toString()).toFixed(2));
+        ? 1 : this.usedCouponTotal).toString()).toFixed(2));
 
 
       this.options = {
@@ -52,17 +52,26 @@ export class DashboardComponent implements OnInit {
         yAxis: {
           type: 'value'
         },
+        legend: {
+          x: 'center',
+          y: 'top',
+          data: ['QR Code Scan', 'Registered', 'Coupon Used']
+        },
+        calculable: true,
         series: [{
           data: result.scanWeek,
-          type: 'line'
+          type: 'line',
+          name: 'QR Code Scan'
         },
         {
           data: result.registerWeek,
-          type: 'line'
+          type: 'line',
+          name: 'Registered'
         },
         {
-          data: result.usedCouponWeek,
-          type: 'line'
+          data: result.mysql,
+          type: 'line',
+          name: 'Coupon Used'
         }]
       };
     });
