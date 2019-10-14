@@ -37,9 +37,9 @@ export class DashboardComponent implements OnInit {
       this.registerTotal = result.registerTotal;
       this.usedCouponTotal = result.usedCouponTotal;
       this.pendingCouponTotal = result.totalPending;
-      this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal === 0 ? 1 : this.registerTotal).toString()).toFixed(2));
-      this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal === 0
-        ? 1 : this.usedCouponTotal).toString()).toFixed(2));
+      this.scanPercentage = (parseFloat((this.scanTotal / (this.registerTotal === 0 ? 1 : this.registerTotal)).toString()).toFixed(2));
+      this.registartiontPercentage = (parseFloat((this.registerTotal / (this.usedCouponTotal === 0
+        ? 1 : this.usedCouponTotal).toString()).toFixed(2)));
 
       this.options = {
         xAxis: {
