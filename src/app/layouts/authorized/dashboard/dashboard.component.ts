@@ -16,13 +16,11 @@ export class DashboardComponent implements OnInit {
   pendingCouponTotal: any;
   scanPercentage: any;
   registartiontPercentage: any;
-
-
   options: any;
 
   constructor(private permissionService: PermissionService,
-    private router: Router,
-    private minisoService: MinisoService) {
+              private router: Router,
+              private minisoService: MinisoService) {
     if (!this.permissionService.isAdmin()) {
       this.router.navigate(['marchant']);
     }
@@ -42,7 +40,6 @@ export class DashboardComponent implements OnInit {
       this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal === 0 ? 1 : this.registerTotal).toString()).toFixed(2));
       this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal === 0
         ? 1 : this.usedCouponTotal).toString()).toFixed(2));
-
 
       this.options = {
         xAxis: {
@@ -76,5 +73,4 @@ export class DashboardComponent implements OnInit {
       };
     });
   }
-
 }
