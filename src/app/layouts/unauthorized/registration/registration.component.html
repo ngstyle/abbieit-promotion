@@ -2,10 +2,10 @@
 
     <div class="form-container" style="padding-top: 55%; min-height: 600px;">
 
-        <div *ngIf="isMessage" style="color: white;">
+        <div *ngIf="isMessage" style="padding-top:10%; color: white; font-size: 15px; margin-right: 14%;">
             {{message}}.
             <br>
-            <a href="javascript:void(0);" (click)="toggle()" style="font-size: 12px;">Try with another mobile</a>
+            <a href="javascript:void(0);" (click)="toggle()" style="font-size: 18px; margin-right: 2%;">Try with another mobile number</a>
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
 

@@ -100,7 +100,7 @@ export class RegistrationComponent implements OnInit {
     this.minisoService.registration(this.registration.value).subscribe(d => {
       const result: any = d;
       if (result.msg === 'alreadyExists') {
-        this.message = 'Mobile is already registered.';
+        this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
       } else {
         this.message = '';
