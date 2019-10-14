@@ -11,18 +11,24 @@
 
             <div class="field">
                 <input matInput placeholder="Name*" formControlName="userName" maxlength="100" required>
-                <mat-error *ngIf="registration.get('userName').hasError('required') && registration.get('userName').touched">*Name is required</mat-error>
-                <mat-error *ngIf="registration.get('userName').hasError('minlength') && registration.get('userName').touched">Invalid(minimum 3 characters
-                    long)</mat-error>
+                <mat-error
+                    *ngIf="registration.get('userName').hasError('required') && registration.get('userName').touched">
+                    *Name is required</mat-error>
+                <mat-error
+                    *ngIf="registration.get('userName').hasError('minlength') && registration.get('userName').touched">
+                    Should be minimum 3 characters
+                </mat-error>
             </div>
 
             <div class="field">
-                <input matInput placeholder="Mobile*" formControlName="mobile" (keypress)=_keyPress($event)
+                <input matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
                     maxlength="10" minlength="10" required>
-                <mat-error *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">*Mobile is required</mat-error>
+                <mat-error
+                    *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">
+                    *Mobile Number is required</mat-error>
                 <mat-error
                     *ngIf="(registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('maxlength')) && registration.get('mobile').touched">
-                    Invalid Mobile</mat-error>
+                    Invalid Mobile Number</mat-error>
             </div>
 
             <button style="width: 70%; margin-right: 20%;" [disabled]="registration.invalid" (click)="doRegister()"
@@ -35,7 +41,7 @@
 
 <div [hidden]="! isRegistered" class="video" style="margin-left: 2%; margin-right: 2%;">
     <video controls #videoPlayer style="max-width: 100%; height: auto;" #videoPlayer>
-        <source src="/assets/images/miniso promo.mp4" type="video/mp4" />
+        <source src="/assets/images/miniso_register.mp4" type="video/mp4" />
         Browser not supported
     </video>
 </div>
