@@ -116,9 +116,9 @@ export class MerchantComponent implements OnInit {
       this.minisoShopForm.get('mobile').setValue('');
       this.minisoShopForm.get('userName').setValue('');
       this.minisoShopForm.clearValidators();
-      this.errorMsg = 'Mobile is successfully used';
+      this.errorMsg = 'Mobile Number is successfully used';
     }, error => {
-      this.errorMsg = 'Not successfully used. Try again';
+      this.errorMsg = 'Mobile Number Not successfully used. Try again';
     });
   }
 

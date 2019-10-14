@@ -5,12 +5,12 @@
     <form [formGroup]="minisoShopForm" class="ui form">
 
       <div class="field">
-        <label>Mobile</label>
+        <label>Mobile Number</label>
         <input type="text" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('required') && minisoShopForm.get('mobile').touched">
-          *Mobile is required</mat-error>
+          *Mobile Number is required</mat-error>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('minlength') 
-                        || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile</mat-error>
+                        || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile Number</mat-error>
       </div>
 
       <div class="field">
