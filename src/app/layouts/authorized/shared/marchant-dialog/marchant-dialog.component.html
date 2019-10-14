@@ -5,7 +5,7 @@
 <mat-card class="card">
   <mat-card-content>
     <span *ngIf="errorMsg.length" style="color: red; font-size: 12px; margin-left: 37%;">{{errorMsg}}</span>
-    <span *ngIf="done" style="color: red; font-size: 12px; margin-left: 37%;">Mobile is successfully used</span>
+    <span *ngIf="done" style="color: red; font-size: 12px; margin-left: 37%;">Mobile Number is successfully used</span>
 
     <form [formGroup]="minisoShopForm" class="ui form">
 
@@ -15,7 +15,7 @@
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('required') && minisoShopForm.get('mobile').touched">
           *Mobile is required</mat-error>
         <mat-error *ngIf="minisoShopForm.get('mobile').hasError('minlength') 
-                          || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile</mat-error>
+                          || minisoShopForm.get('mobile').hasError('maxlength')">Invalid Mobile Number</mat-error>
       </div>
 
       <div class="field">

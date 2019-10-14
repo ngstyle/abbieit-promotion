@@ -69,20 +69,25 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef [ngStyle]="{'font-weight' :'bold', 'font-size': '13px'}"> Action </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button class="background-button" *ngIf="element.registerId && !element.isShop" matTooltip="Edit" (click)="doUse(element.mobile)" 
-            style="width: 32px; height: 32px;">
+          <button mat-button class="background-button" *ngIf="element.registerId && !element.isShop" matTooltip="Edit"
+            (click)="doUse(element.mobile)" style="width: 32px; height: 32px;">
             <svg-icon src="assets/images/svg/edit.svg" [svgStyle]="{ 'width.px':18,'height.px':18 }" inline=true>
             </svg-icon>
           </button>
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
 
-    <mat-paginator [pageSizeOptions]="[10, 20, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+    <div *ngIf="dataSource && this.dataSource.filteredData.length == 0"
+      style="width:100%; margin:auto; text-align: center;line-height: 50px;vertical-align: middle;">
+      No records found
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[20, 30, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
 
 </div>
