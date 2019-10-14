@@ -35,11 +35,13 @@
 }
 
 .resizable-widget {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  min-height: 400px;
   background-color: #fff;
   /* border: solid 1px #869fac; */
   padding: 0.5em;
+  padding-top: 24px;
+  padding-left: 8px
 }
 
 .widget-header {

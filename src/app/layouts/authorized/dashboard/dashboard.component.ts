@@ -42,6 +42,12 @@ export class DashboardComponent implements OnInit {
 
 
       this.options = {
+        // title: {
+        //   text: 'Activity'
+        // },
+        tooltip: {
+          trigger: 'axis'
+        },
         xAxis: {
           type: 'category',
           data: result.dayes
@@ -66,7 +72,7 @@ export class DashboardComponent implements OnInit {
           name: 'Registered'
         },
         {
-          data: result.mysql,
+          data: result.usedCouponWeek,
           type: 'line',
           name: 'Coupon Used'
         }]
