@@ -1,70 +1,91 @@
-<div style="margin-left: 20%;">
+<div style="padding: 16px 20%; width: 100%; padding-top: 88px">
 
-    <div class="card">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>QR CODE SCAN </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <span style="line-height: 100%;"  [countUp]="scanTotal">0</span>
-            </mat-card-content>
-        </mat-card>
-        <mat-card style="margin-top: 6%;">
-            <mat-card-header>
-                <mat-card-title>REGISTERED</mat-card-title>
-            </mat-card-header>
-            <mat-card-content style="line-height: 100%;" [countUp]="registerTotal">0</mat-card-content>
-        </mat-card>
+
+    <div style="display: flex; flex-direction: row; width: 100%; height: 256px;">
+
+        <div class="card" style="width: 24%; height: 100%;">
+            <mat-card style="height: 122px">
+                <mat-card-header>
+                    <mat-card-title style="font-weight: 400!important; font-size: .9375rem; color: #98a6ad !important">
+                        QR CODE SCAN </mat-card-title>
+                </mat-card-header>
+                <mat-card-content style="line-height: 100%; text-align: center" [countUp]="scanTotal">
+                    0
+                </mat-card-content>
+            </mat-card>
+            <div style="flex: 1 0 auto; height: 12px;">&nbsp;</div>
+            <mat-card style="height: 122px;">
+                <mat-card-header>
+                    <mat-card-title style="font-weight: 400!important; font-size: .9375rem; color: #98a6ad !important">
+                        REGISTERED</mat-card-title>
+                </mat-card-header>
+                <mat-card-content style="line-height: 100%;  text-align: center" [countUp]="registerTotal">0
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div style="flex: 0 1 auto; width: 1%">&nbsp;</div>
+
+        <div class="card" style="width: 24%;  height: 100%;">
+            <mat-card style="height: 122px">
+                <mat-card-header>
+                    <mat-card-title style="font-weight: 400!important; font-size: .9375rem; color: #98a6ad !important">
+                        COUPON USED</mat-card-title>
+                </mat-card-header>
+                <mat-card-content style="line-height: 99%; text-align: center" [countUp]="usedCouponTotal">0
+                </mat-card-content>
+            </mat-card>
+            <div style="flex: 1 0 auto; height: 12px;">&nbsp;</div>
+            <mat-card style="height: 122px">
+                <mat-card-header>
+                    <mat-card-title style="font-weight: 400!important; font-size: .9375rem; color: #98a6ad !important">
+                        PENDING COUPON</mat-card-title>
+                </mat-card-header>
+                <mat-card-content style="line-height: 99%; text-align: center" [countUp]="pendingCouponTotal">0
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div style="flex: 0 1 auto; width: 1%">&nbsp;</div>
+
+        <div class="cart-container" style="width: 50%; display: flex; flex-direction: row; height: 100%;">
+            <mat-card class="card" style="flex-grow: 1">
+                <mat-card-title
+                    style="font-weight: 700; font-size: 0.875rem;letter-spacing: .02em; line-height: 1.1; color: #6c757d">
+                    REGISTRATION RATE</mat-card-title>
+                <mat-card-content style="text-align: center">
+                    <circle-progress [percent]="scanPercentage" [radius]="80" [outerStrokeWidth]="6" [showSubtitle]=false [clockwise]=true 
+                        [innerStrokeWidth]="2" [title]="scanPercentage" [outerStrokeColor]="'#ff0000'"
+                        [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000" maxPercent=1000>
+                        {{scanPercentage}}
+                    </circle-progress>
+                </mat-card-content>
+            </mat-card>
+
+            <div style="flex: 0 1 auto; width: 2%">&nbsp;</div>
+
+            <mat-card class="card" style="flex-grow: 1">
+                <mat-card-title
+                    style="font-weight: 700; font-size: 0.875rem;letter-spacing: .02em; line-height: 1.1; color: #6c757d">
+                    COUPON USED RATE</mat-card-title>
+                <mat-card-content style="text-align: center">
+                    <circle-progress [percent]="registartiontPercentage" [radius]="80" [outerStrokeWidth]="6" [showSubtitle]=false [clockwise]=true  
+                        [innerStrokeWidth]="2" [title]=registartiontPercentage [outerStrokeColor]="'#ff0000'"
+                        [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000" maxPercent=1000>
+                    </circle-progress>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
     </div>
 
-    <div class="card">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title> COUPON USED</mat-card-title>
-            </mat-card-header>
-            <mat-card-content style="line-height: 99%;" [countUp]="usedCouponTotal">0</mat-card-content>
-        </mat-card>
-        <mat-card style="margin-top: 6%;">
-            <mat-card-header>
-                <mat-card-title>PENDING COUPON</mat-card-title>
-            </mat-card-header>
-            <mat-card-content style="line-height: 99%;" [countUp]="pendingCouponTotal">0</mat-card-content>
-        </mat-card>
-    </div>
 
-    <div class="cart-container">
-        <mat-card class="card">
-            <mat-card-title>QR CODE SCAN</mat-card-title>
-            <mat-card-content>
-                <circle-progress [percent]="scanPercentage" [radius]="80" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
-                    [title]="scanPercentage" [outerStrokeColor]="'#ff0000'" [innerStrokeColor]="'#e7e8ea'"
-                    [animation]="true" [animationDuration]="1000" maxPercent=1000>{{scanPercentage}}
-                </circle-progress>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card class="card">
-            <mat-card-title>REGISTERED</mat-card-title>
-            <mat-card-content>
-                <circle-progress [percent]="registartiontPercentage" [radius]="80" [outerStrokeWidth]="2"
-                    [innerStrokeWidth]="2" [title]=registartiontPercentage [outerStrokeColor]="'#ff0000'"
-                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000" maxPercent=1000>
-                </circle-progress>
-            </mat-card-content>
-        </mat-card>
-
-    </div>
-
-    <br clear="all">
-
-</div>
-
-
-<div class="card card-accent-info" style="margin-left: 22%; height: auto; width: 55%!important;">
-    <div class="card-body">
+    <div class="card card-accent-info" style="height: auto; width: 100%; margin-top: 24px; box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)">
         <div style="width: 100%!important;" ngResizable class="resizable-widget mt-4 pb-4" rzContainment="#container"
             rzHandles="all">
             <div echarts [options]="options" [autoResize]="autoResize"></div>
         </div>
     </div>
+
 </div>

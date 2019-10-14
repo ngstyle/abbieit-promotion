@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
   options: any;
 
   constructor(private permissionService: PermissionService,
-              private router: Router,
-              private minisoService: MinisoService) {
+    private router: Router,
+    private minisoService: MinisoService) {
     if (!this.permissionService.isAdmin()) {
       this.router.navigate(['marchant']);
     }
@@ -37,9 +37,8 @@ export class DashboardComponent implements OnInit {
       this.registerTotal = result.registerTotal;
       this.usedCouponTotal = result.usedCouponTotal;
       this.pendingCouponTotal = result.totalPending;
-      this.scanPercentage = (parseFloat((this.scanTotal / this.registerTotal === 0 ? 1 : this.registerTotal).toString()).toFixed(2));
-      this.registartiontPercentage = (parseFloat((this.registerTotal / this.usedCouponTotal === 0
-        ? 1 : this.usedCouponTotal).toString()).toFixed(2));
+      this.scanPercentage = this.getPercent(this.registerTotal, this.scanTotal);
+      this.registartiontPercentage = this.getPercent(this.usedCouponTotal, this.registerTotal);
 
       this.options = {
         xAxis: {
@@ -73,4 +72,15 @@ export class DashboardComponent implements OnInit {
       };
     });
   }
+
+
+  getPercent(num, total) {
+    num = parseFloat(num);
+    total = parseFloat(total);
+    if (isNaN(num) || isNaN(total)) {
+      return '-';
+    }
+    return total <= 0 ? '0' : (Math.round(num / total * 10000) / 100.00);
+  }
+
 }
