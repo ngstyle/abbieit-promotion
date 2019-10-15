@@ -6,10 +6,10 @@
     </a>
 
     <a routerLink="/dashboard" routerLinkActive="active" class="menu-link link-order" style="margin-left: 1%;">
-      <button mat-button>DASHBOARD</button>
+      <button *ngIf="this.permissionService.isAdmin()" mat-button>DASHBOARD</button>
     </a>
     <a routerLink="/report" routerLinkActive="active" class="menu-link link-dashboard" style="margin-left: 1%;">
-      <button mat-button>REPORT</button>
+      <button *ngIf="this.permissionService.isAdmin()" mat-button>REPORT</button>
     </a>
     <a routerLink="/marchant" routerLinkActive="active" class="menu-link link-order" style="margin-left: 1%;">
       <button mat-button>MERCHANT</button>

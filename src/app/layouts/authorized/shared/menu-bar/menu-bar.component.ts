@@ -1,3 +1,4 @@
+import { PermissionService } from 'src/app/service/permission.service';
 import { Component, OnInit } from '@angular/core';
 import { SigninService } from 'src/app/service/signin.service';
 import { Router } from '@angular/router';
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class MenuBarComponent implements OnInit {
 
   constructor(private signinService: SigninService,
-              private router: Router) { }
+              private router: Router,
+              private permissionService: PermissionService) { }
 
   ngOnInit() {
   }
