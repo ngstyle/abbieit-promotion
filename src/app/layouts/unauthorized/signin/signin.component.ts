@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import * as $ from 'jquery';
 import { SigninService } from 'src/app/service/signin.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { PermissionService } from 'src/app/service/permission.service';
