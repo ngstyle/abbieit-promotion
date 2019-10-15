@@ -59,6 +59,9 @@ export class ReportComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
+    this.dataSource.filteredData.forEach(record => {
+      record.couponUsed = record.isShop ? 'Yes' : 'No';
+    });
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.filterValue = filterValue.trim().toLocaleLowerCase();
   }
