@@ -117,7 +117,7 @@ export class RegistrationComponent implements OnInit {
         this.showOTP = !this.showOTP;
       } else if (result.msg === 'invalid otp') {
         this.validateOtp();
-        this.otpMessage = 'Invalid OTP';
+        this.otpMessage = '*Invalid OTP';
       } else {
         this.message = '';
         this.isRegistered = true;

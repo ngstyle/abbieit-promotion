@@ -35,17 +35,14 @@
                 <mat-error
                     *ngIf="(registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('maxlength')) && registration.get('mobile').touched">
                     *Invalid Mobile Number</mat-error>
-
             </div>
+
             <br>
             <div class="field">
-                <input matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6" required
+                <input matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6" (keypress)=_keyPress($event) required
                     [hidden]="!showOTP">
-                <mat-error
-                    *ngIf="(registration.get('mobile').hasError('otp') || registration.get('otp').hasError('maxlength')) && registration.get('otp').touched">
-                    *Invalid OTP</mat-error>
-
-                <span *ngIf="isOtpMessage" style="display: felx; color: white; font-size: 15px; padding-right: 67%;">
+                    
+                <span *ngIf="isOtpMessage" style="display: felx; color: white; font-size: 15px; padding-right: 70%;">
                     {{otpMessage}}</span>
             </div>
 
