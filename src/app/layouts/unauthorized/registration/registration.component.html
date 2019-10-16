@@ -24,7 +24,7 @@
             <div class="ui action input" style="padding-right: 40%;">
                 <input matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
                     maxlength="10" minlength="10" required>
-                <button class="ui button" [disabled]="(registration.get('mobile').invalid)"
+                <button style="background-color: #3f51b5; color: white;" class="ui button" [disabled]="(registration.get('mobile').invalid)"
                     (click)="sendOTP(); showOtp();">Send
                     OTP</button>
             </div>
@@ -39,9 +39,9 @@
 
             <br>
             <div class="field">
-                <input matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6" (keypress)=_keyPress($event) required
-                    [hidden]="!showOTP">
-                    
+                <input matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6"
+                    (keypress)=_keyPress($event) required [hidden]="!showOTP">
+
                 <span *ngIf="isOtpMessage" style="display: felx; color: white; font-size: 15px; padding-right: 70%;">
                     {{otpMessage}}</span>
             </div>
