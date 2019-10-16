@@ -21,10 +21,10 @@
                 </mat-error>
             </div>
 
-            <div class="ui action input" style="padding-right: 40%;">
-                <input matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
+            <div class="ui action input" style="padding-right: 39%; width: 82%;">
+                <input style="width: 90%;" matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
                     maxlength="10" minlength="10" required>
-                <button style="background-color: #3f51b5; color: white;" class="ui button" [disabled]="(registration.get('mobile').invalid) || optCount !== 60" 
+                <button style="background-color: #3f51b5; color: white; width: 42%" class="ui button" [disabled]="(registration.get('mobile').invalid) || optCount !== 60" 
                     (click)="sendOTP();">{{optButtonLabel}}</button>
             </div>
             <div style="padding-left: 10%;">
