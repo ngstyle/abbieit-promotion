@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
-import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { MapsAPILoader } from '@agm/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { DISABLED } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-registration',
@@ -20,9 +19,12 @@ export class RegistrationComponent implements OnInit {
   message: any;
   otpMessage: any;
   isMessage = false;
-  isOtpMessage = false;
   showOTP = false;
+  optButtonLabel = 'Send OTP';
+  optCount = 60;
   private geoCoder;
+  interval: any;
+
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
@@ -99,10 +101,6 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  validateOtp() {
-    this.isOtpMessage = !this.isOtpMessage;
-  }
-
   doRegister() {
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
@@ -116,9 +114,9 @@ export class RegistrationComponent implements OnInit {
         this.isMessage = !this.isMessage;
         this.showOTP = !this.showOTP;
       } else if (result.msg === 'invalid otp') {
-        this.validateOtp();
         this.otpMessage = '*Invalid OTP';
       } else {
+        this.otpMessage = '';
         this.message = '';
         this.isRegistered = true;
         this.videoplayer.nativeElement.play();
@@ -140,14 +138,34 @@ export class RegistrationComponent implements OnInit {
     this.buildForm();
   }
 
-  showOtp() {
-    this.showOTP = true;
-  }
-
   sendOTP() {
+    this.showOTP = true;
+    this.resendCount();
     const data = this.registration.get('mobile').value;
     this.minisoService.sendOTP(data).subscribe(d => {
       const result: any = d;
+      if (result === '') {
+      } else {
+        this.message = 'Mobile number is already registered.';
+        this.registration.get('mobile').setValue('');
+        this.otpMessage = '';
+        this.isMessage = !this.isMessage;
+        this.showOTP = false;
+      }
     });
   }
+
+  resendCount() {
+    this.optCount -= 1;
+    if (this.optCount >= 0) {
+      setTimeout(() => {
+        this.optButtonLabel = this.optCount + ' Sec.';
+        this.resendCount();
+      }, 1000);
+    } else {
+      this.optCount = 60;
+      this.optButtonLabel = 'Resend OTP';
+   }
+  }
+
 }
