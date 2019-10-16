@@ -42,10 +42,7 @@ export class MinisoService {
   }
 
   sendOTP(data: any) {
-    let params = new HttpParams();
-    if (data !== '') {
-      params = params.set('mobileNumber', data);
-    }
+    const params = new HttpParams().set('mobileNumber', data);
     return this.http.get(`${environment.API_URL}/miniso/otp`, { params });
   }
 }
