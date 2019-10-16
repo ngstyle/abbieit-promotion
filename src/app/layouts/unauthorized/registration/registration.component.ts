@@ -18,15 +18,17 @@ export class RegistrationComponent implements OnInit {
   @ViewChild('videoPlayer') videoplayer: ElementRef;
   registration: FormGroup;
   message: any;
+  otpMessage: any;
   isMessage = false;
+  isOtpMessage = false;
   showOTP = false;
   private geoCoder;
 
   constructor(private formBuilder: FormBuilder,
-              private minisoService: MinisoService,
-              private mapsAPILoader: MapsAPILoader,
-              private route: Router,
-              private deviceService: DeviceDetectorService
+    private minisoService: MinisoService,
+    private mapsAPILoader: MapsAPILoader,
+    private route: Router,
+    private deviceService: DeviceDetectorService
   ) { }
 
   ngOnInit() {
@@ -143,6 +145,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   sendOTP() {
+
     const data = this.registration.get('mobile').value;
     this.minisoService.sendOTP(data).subscribe(d => {
       const result: any = d;
