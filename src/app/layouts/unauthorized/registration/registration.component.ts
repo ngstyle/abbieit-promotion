@@ -97,6 +97,10 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  validateOtp() {
+    this.isOtpMessage = !this.isOtpMessage;
+  }
+
   doRegister() {
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
@@ -106,12 +110,17 @@ export class RegistrationComponent implements OnInit {
       if (result.msg === 'alreadyExists') {
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
+        this.otpMessage = '';
+        this.isMessage = !this.isMessage;
+        this.showOTP = !this.showOTP;
+      } else if (result.msg === 'invalid otp') {
+        this.validateOtp();
+        this.otpMessage = 'Invalid OTP';
       } else {
         this.message = '';
         this.isRegistered = true;
         this.videoplayer.nativeElement.play();
       }
-      this.isMessage = !this.isMessage;
     });
   }
 
@@ -134,7 +143,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   sendOTP() {
-    console.log("cc");
     const data = this.registration.get('mobile').value;
     this.minisoService.sendOTP(data).subscribe(d => {
       const result: any = d;
