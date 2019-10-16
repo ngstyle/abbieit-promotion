@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./layouts/unauthorized/registration/registration.module').then(mod => mod.RegistrationModule),
+  },
+  {
+    path: 'coupon/:coupon',
+    loadChildren: () => import('./layouts/unauthorized/coupon/coupon.module').then(mod => mod.CouponModule),
   }
 ];
 
@@ -22,4 +26,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

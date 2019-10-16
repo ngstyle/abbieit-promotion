@@ -142,7 +142,7 @@ export class RegistrationComponent implements OnInit {
     const data = this.registration.get('mobile').value;
     this.minisoService.sendOTP(data).subscribe(d => {
       const result: any = d;
-      if (result === '') {
+      if (result.msg === '') {
         this.showOTP = true;
         this.resendCount();
       } else {
