@@ -1,11 +1,12 @@
 <div class="background" [hidden]="isRegistered">
 
-    <div class="form-container" style="padding-top: 55%; min-height: 600px;">
+    <div class="form-container" style="padding-top: 52%; min-height: 600px;">
 
         <div *ngIf="isMessage" style="padding-top:10%; color: white; font-size: 15px; margin-right: 14%;">
             {{message}}.
             <br>
-            <a href="javascript:void(0);" (click)="toggle()" style="font-size: 18px; margin-right: 2%;">Try with another mobile number</a>
+            <a href="javascript:void(0);" (click)="toggle()" style="font-size: 18px; margin-right: 2%;">Try with another
+                mobile number</a>
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
 
@@ -20,20 +21,30 @@
                 </mat-error>
             </div>
 
-            <div class="field">
+            <div class="ui action input" style="padding-right: 40%;">
                 <input matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
                     maxlength="10" minlength="10" required>
+                <button class="ui button" [disabled]="(registration.get('mobile').invalid)"
+                    (click)="sendOTP(); showOtp();">Send
+                    OTP</button><br><br>
+            </div>
+            <div style="padding-left: 10%;">
                 <mat-error
                     *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">
                     *Mobile Number is required</mat-error>
                 <mat-error
                     *ngIf="(registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('maxlength')) && registration.get('mobile').touched">
-                    Invalid Mobile Number</mat-error>
+                    *Invalid Mobile Number</mat-error>
+            </div>
+            <br>
+            <div class="field">
+                <input matInput placeholder="OTP*" formControlName="otp" maxlength="100" required [hidden]="!showOTP">
             </div>
 
-            <button style="width: 70%; margin-right: 20%;" [disabled]="registration.invalid" (click)="doRegister()"
+            <button style="width: 57%; margin-right: 23%;" [disabled]="registration.invalid" (click)="doRegister()"
                 mat-raised-button color="primary">Get
                 Offer</button>
+
         </form>
     </div>
 

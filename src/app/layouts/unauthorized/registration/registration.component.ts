@@ -4,6 +4,7 @@ import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { DISABLED } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-registration',
@@ -18,14 +19,15 @@ export class RegistrationComponent implements OnInit {
   registration: FormGroup;
   message: any;
   isMessage = false;
+  showOTP = false;
   private geoCoder;
 
   constructor(private formBuilder: FormBuilder,
-    private minisoService: MinisoService,
-    private mapsAPILoader: MapsAPILoader,
-    private route: Router,
-    private deviceService: DeviceDetectorService
-    ) { }
+              private minisoService: MinisoService,
+              private mapsAPILoader: MapsAPILoader,
+              private route: Router,
+              private deviceService: DeviceDetectorService
+  ) { }
 
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
@@ -90,6 +92,8 @@ export class RegistrationComponent implements OnInit {
       mobile: ['', Validators.compose([
         Validators.required, Validators.maxLength(10), Validators.minLength(10),
         Validators.pattern(/(\(?[0-9]{3}\)?-?\s?[0-9]{3}-?[0-9]{4})/)])],
+      otp: ['', Validators.compose([
+        Validators.required, Validators.maxLength(6), Validators.minLength(6)])]
     });
   }
 
@@ -125,4 +129,16 @@ export class RegistrationComponent implements OnInit {
     this.buildForm();
   }
 
+  showOtp() {
+    this.showOTP = !this.showOTP;
+  }
+
+  sendOTP() {
+    console.log("cc");
+    const data = this.registration.get('mobile').value;
+    this.minisoService.sendOTP(data).subscribe(d => {
+      const result: any = d;
+      console.log("result=" + result);
+    });
+  }
 }

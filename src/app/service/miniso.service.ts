@@ -40,4 +40,12 @@ export class MinisoService {
   findAll() {
     return this.http.get(`${environment.API_URL}/miniso`);
   }
+
+  sendOTP(data: any) {
+    let params = new HttpParams();
+    if (data !== '') {
+      params = params.set('mobileNumber', data);
+    }
+    return this.http.get(`${environment.API_URL}/miniso/otp`, { params });
+  }
 }
