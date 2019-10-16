@@ -45,4 +45,10 @@ export class MinisoService {
     const params = new HttpParams().set('mobileNumber', data);
     return this.http.get(`${environment.API_URL}/miniso/otp`, { params });
   }
+
+  coupon(coupon: any) {
+    const params = new HttpParams().set('mobileNumber', coupon);
+    return this.http.get(`${environment.API_URL}/miniso/coupon`, { params });
+  }
+
 }
