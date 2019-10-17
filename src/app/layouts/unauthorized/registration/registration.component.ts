@@ -24,6 +24,7 @@ export class RegistrationComponent implements OnInit {
   optCount = 60;
   private geoCoder;
   interval: any;
+  isSubmit = false;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -139,12 +140,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   sendOTP() {
+    this.resendCount();
     const data = this.registration.get('mobile').value;
     this.minisoService.sendOTP(data).subscribe(d => {
       const result: any = d;
       if (result.msg === '') {
         this.showOTP = true;
-        this.resendCount();
       } else {
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');

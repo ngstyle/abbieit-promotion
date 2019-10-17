@@ -44,7 +44,7 @@
                     {{otpMessage}}</span>
             </div>
 
-            <button style="width: 57%; margin-right: 23%;" [disabled]="registration.invalid" (click)="doRegister()"
+            <button style="width: 57%; margin-right: 23%;" [disabled]="registration.invalid || isSubmit" (click)="doRegister()"
                 mat-raised-button color="primary">Get
                 Offer</button>
 

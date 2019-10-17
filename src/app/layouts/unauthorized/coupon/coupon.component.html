@@ -1,8 +1,12 @@
-<div style="margin-left: 30%;">
+<div style="margin-left: 30%;margin-top:30px;">
 
-  <ngx-barcode [bc-value]="value" [bc-display-value]="true" [bc-height] = "100"></ngx-barcode>
   <div *ngIf="isValid">
+    <ngx-barcode [bc-value]="value" [bc-display-value]="true" [bc-height] = "100"></ngx-barcode>
     Discount {{discount}} - Minimum Amount - {{minimumAmount}}
+  </div>
+
+  <div *ngIf="!isValid">
+    <span style="color: red; font-size: 20px;">{{errorMsg}}</span>
   </div>
 
 </div>

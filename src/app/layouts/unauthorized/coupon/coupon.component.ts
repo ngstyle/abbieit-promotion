@@ -14,13 +14,12 @@ export class CouponComponent implements OnInit {
   discount: any = 100;
   minimumAmount: any = 1199;
   isValid = false;
+  errorMsg: any = '';
 
   constructor(private route: ActivatedRoute,
               private minisoService: MinisoService) {
     this.route.paramMap.subscribe(params => {
       this.coupon = params.get('coupon');
-      this.value = this.coupon;
-      this.isValid = true;
     });
   }
 
@@ -31,10 +30,16 @@ export class CouponComponent implements OnInit {
         if (result.msg === '') {
           this.value = this.coupon;
           this.isValid = true;
-        } else if (result.msg === 'invalidCoupon') {
-
+          this.discount = result.data.discount;
+          this.minimumAmount = result.data.minimumAmount;
+          this.errorMsg = '';
+        } else if (result.msg === 'invalid') {
+          this.errorMsg = 'Invalid Coupon.';
+          this.isValid = false;
         } else if (result.msg === 'used') {
-
+          this.value = '';
+          this.errorMsg = 'Coupon already used.';
+          this.isValid = false;
         }
       });
     }

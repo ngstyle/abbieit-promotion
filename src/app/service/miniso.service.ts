@@ -47,7 +47,7 @@ export class MinisoService {
   }
 
   coupon(coupon: any) {
-    const params = new HttpParams().set('mobileNumber', coupon);
+    const params = new HttpParams().set('coupan', coupon);
     return this.http.get(`${environment.API_URL}/miniso/coupon`, { params });
   }
 
