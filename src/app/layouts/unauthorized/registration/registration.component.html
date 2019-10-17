@@ -1,7 +1,7 @@
 <div class="background" [hidden]="isRegistered">
     <div style="height: 26%;"></div>
 
-    <div style="margin: auto; width: 90%;">
+    <div>
 
         <div *ngIf="isMessage">
             {{message}}.
@@ -9,9 +9,9 @@
             <a href="javascript:void(0);" (click)="toggle()">Try with another
                 mobile number</a>
         </div>
-        <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
+        <form [formGroup]="registration" *ngIf="!isMessage" class="ui form" style="padding: 0 6%;">
             <div class="field">
-                <input style="width: 98%;" matInput placeholder="Name*" formControlName="userName" maxlength="100"
+                <input style="width: 100%;" matInput placeholder="Name*" formControlName="userName" maxlength="100"
                     required>
                 <mat-error
                     *ngIf="registration.get('userName').hasError('required') && registration.get('userName').touched">
@@ -23,9 +23,9 @@
             </div>
 
             <div class="field">
-                <input style="width: 63%;" matInput placeholder="Mobile Number*" formControlName="mobile"
+                <input style="width: 68%;" matInput placeholder="Mobile Number*" formControlName="mobile"
                     (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
-                <button style="width: 35%; color: white; background-color: #d7232f;" mat-raised-button class="ui button"
+                <button style="width: 32%; color: white; background-color: #d7232f; margin: 0;" mat-raised-button class="ui button"
                     [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
                     (click)="sendOTP();"><span>{{optButtonLabel}}</span></button>
 
@@ -46,7 +46,7 @@
                     {{otpMessage}}</span>
             </div>
 
-            <button class="fieldButton" style="color: white; background-color: #d7232f;"
+            <button style="color: white; background-color: #d7232f; width: 100%;"
                 [disabled]="registration.invalid || isSubmit" (click)="doRegister()" mat-raised-button>Get
                 Offer</button>
 
