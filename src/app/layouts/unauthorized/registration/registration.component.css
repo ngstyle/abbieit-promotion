@@ -24,10 +24,8 @@
 }
 
 .field {
-    width: 81%; 
+    width: 90%; 
     margin: auto;
-   padding-right: 15%;
-   padding-left: 9%;
 }
 .mat-error {
     color: white;

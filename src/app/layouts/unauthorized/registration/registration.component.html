@@ -10,7 +10,7 @@
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
 
-            <div class="field">
+            <div class="field" style="width: 80%;">
                 <input matInput placeholder="Name*" formControlName="userName" maxlength="100" required>
                 <mat-error
                     *ngIf="registration.get('userName').hasError('required') && registration.get('userName').touched">
@@ -21,7 +21,7 @@
                 </mat-error>
             </div>
 
-            <div class="ui action input" style="padding-right: 39%; width: 82%;">
+            <div class="ui action input" style="width: 80%;">
                 <input style="width: 90%;" matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
                     maxlength="10" minlength="10" required>
                 <button style="background-color: #3f51b5; color: white; width: 42%" class="ui button" [disabled]="(registration.get('mobile').invalid) || optCount !== 60" 
