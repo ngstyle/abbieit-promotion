@@ -118,11 +118,10 @@ export class RegistrationComponent implements OnInit {
         this.otpMessage = '*Invalid OTP';
       } else {
         this.otpMessage = '';
-        this.message = '';
         this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
-        this.videoplayer.nativeElement.play();
+        alert(result.link + ' : ' + result.amount);
       }
     });
   }

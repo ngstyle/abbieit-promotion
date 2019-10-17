@@ -1,4 +1,4 @@
-<div class="background" [hidden]="isRegistered">
+<div class="background">
     <div style="height: 26%;"></div>
 
     <div style="margin: auto; width: 90%;">
@@ -6,8 +6,7 @@
         <div *ngIf="isMessage">
             {{message}}.
             <br>
-            <a href="javascript:void(0);" (click)="toggle()">Try with another
-                mobile number</a>
+            <a href="javascript:void(0);" (click)="toggle()">Try with another mobile number</a>
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
             <div class="field">
@@ -57,11 +56,4 @@
         </form>
     </div>
 
-</div>
-
-<div [hidden]="! isRegistered" class="video" style="margin-left: 2%; margin-right: 2%;">
-    <video controls #videoPlayer style="max-width: 100%; height: auto;" #videoPlayer>
-        <source src="/assets/images/miniso_register.mp4" type="video/mp4" />
-        Browser not supported
-    </video>
 </div>
