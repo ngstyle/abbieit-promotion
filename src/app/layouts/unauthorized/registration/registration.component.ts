@@ -1,11 +1,12 @@
 import { RegistartionDialogComponent } from './registartionDialog/registartionDialog.component';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -28,6 +29,10 @@ export class RegistrationComponent implements OnInit {
   interval: any;
   isSubmit = false;
 
+  private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
+  public imgWidth: number;
+  public imgHeight: number;
+
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
@@ -36,6 +41,7 @@ export class RegistrationComponent implements OnInit {
     private deviceService: DeviceDetectorService,
     private matDialog: MatDialog
   ) { }
+
 
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
@@ -55,6 +61,21 @@ export class RegistrationComponent implements OnInit {
       }
     });
     this.buildForm();
+
+    this.getScreenSize().subscribe(width => {
+
+      if (window.innerWidth >= 500) {
+        this.imgWidth = 500;
+        this.imgHeight = 1107;
+      } else {
+        this.imgWidth = window.innerWidth;
+        this.imgHeight = 1107 * window.innerWidth / 500;
+      }
+
+      console.log('screenWidth: ' + window.innerWidth + ' - imgWidth: ' + this.imgWidth);
+      console.log('screenHeight: ' + window.innerHeight + ' - imgHeight: ' + this.imgHeight);
+    });
+
   }
 
   showPosition(position: any) {
@@ -190,6 +211,15 @@ export class RegistrationComponent implements OnInit {
       this.optCount = 60;
       this.optButtonLabel = 'Resend OTP';
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenSize$.next(event.target.innerWidth);
+  }
+
+  getScreenSize(): Observable<number> {
+    return this.screenSize$.asObservable();
   }
 
 }
