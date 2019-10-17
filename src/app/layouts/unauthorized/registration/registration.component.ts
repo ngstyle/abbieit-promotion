@@ -136,6 +136,7 @@ export class RegistrationComponent implements OnInit {
   toggle() {
     this.isMessage = !this.isMessage;
     this.message = '';
+    this.optButtonLabel = 'Send OTP';
     this.buildForm();
   }
 
@@ -147,6 +148,8 @@ export class RegistrationComponent implements OnInit {
       if (result.msg === '') {
         this.showOTP = true;
       } else {
+        this.optCount = -1;
+        this.optButtonLabel = 'Send OTP';
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
         this.otpMessage = '';
