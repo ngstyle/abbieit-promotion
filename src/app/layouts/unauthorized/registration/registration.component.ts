@@ -32,6 +32,8 @@ export class RegistrationComponent implements OnInit {
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
   public imgHeight: number;
+  public confirmHeight: number;
+  public confirmWidth: number;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -39,7 +41,7 @@ export class RegistrationComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private route: Router,
     private deviceService: DeviceDetectorService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
   ) { }
 
 
@@ -67,15 +69,22 @@ export class RegistrationComponent implements OnInit {
       if (window.innerWidth >= 500) {
         this.imgWidth = 500;
         this.imgHeight = 1107;
+        this.confirmHeight = 40;
+        this.confirmWidth = 20;
       } else {
         this.imgWidth = window.innerWidth;
         this.imgHeight = 1107 * window.innerWidth / 500;
+        if (window.innerWidth > 350) {
+          this.confirmHeight = 100;
+        } else {
+          this.confirmHeight = 60;
+        }
+        this.confirmWidth = 80;
       }
 
       console.log('screenWidth: ' + window.innerWidth + ' - imgWidth: ' + this.imgWidth);
       console.log('screenHeight: ' + window.innerHeight + ' - imgHeight: ' + this.imgHeight);
     });
-
   }
 
   showPosition(position: any) {
@@ -126,15 +135,18 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  submitDialog() {
+  submitDialog(link: any) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '20vw';
-    dialogConfig.height = '20vw';
+    dialogConfig.width = this.confirmWidth.toString() + '%';
+    dialogConfig.height = this.confirmHeight.toString() + '%';
     dialogConfig.autoFocus = false;
     dialogConfig.panelClass = ['nopadding-dialog-container'];
 
     const dialogRef = this.matDialog.open(RegistartionDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        window.open(link, '_self');
+      }
     });
 
   }
@@ -158,8 +170,7 @@ export class RegistrationComponent implements OnInit {
         this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
-        this.submitDialog();
-        //alert(result.link + ' : ' + result.amount);
+        this.submitDialog(result.link);
       }
     });
   }

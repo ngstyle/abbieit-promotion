@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatToolbarModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -28,7 +28,8 @@ const RegistrationRouter = RouterModule.forChild(routes);
     MatButtonModule,
     AgmCoreModule,
     MatButtonToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
   ],
   declarations: [RegistrationComponent, RegistartionDialogComponent],
   entryComponents: [
