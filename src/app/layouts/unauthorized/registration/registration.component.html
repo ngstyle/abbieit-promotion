@@ -1,7 +1,7 @@
 <div class="background" [hidden]="isRegistered">
-    <div style="height: 25%;"></div>
+    <div style="height: 26%;"></div>
 
-    <div style="margin: auto; width: 98%;">
+    <div style="margin: auto; width: 90%;">
 
         <div *ngIf="isMessage">
             {{message}}.
@@ -11,7 +11,8 @@
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
             <div class="field">
-                <input matInput placeholder="Name*" formControlName="userName" maxlength="100" required>
+                <input style="width: 98%;" matInput placeholder="Name*" formControlName="userName" maxlength="100"
+                    required>
                 <mat-error
                     *ngIf="registration.get('userName').hasError('required') && registration.get('userName').touched">
                     *Name is required</mat-error>
@@ -24,7 +25,7 @@
             <div class="field">
                 <input style="width: 63%;" matInput placeholder="Mobile Number*" formControlName="mobile"
                     (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
-                <button style="width: 35%; color: white;" mat-raised-button color="primary" class="ui button"
+                <button style="width: 35%; color: white; background-color: #d7232f;" mat-raised-button class="ui button"
                     [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
                     (click)="sendOTP();"><span>{{optButtonLabel}}</span></button>
 
@@ -38,15 +39,20 @@
 
 
             <div class="field">
-                <input matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6"
+                <input style="width: 98%;" matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6"
                     (keypress)=_keyPress($event) required [hidden]="!showOTP">
 
                 <span *ngIf="otpMessage ? true : false">
                     {{otpMessage}}</span>
             </div>
 
-            <button class="field" style="color: white;" [disabled]="registration.invalid || isSubmit"
-                (click)="doRegister()" mat-raised-button color="primary">Get Offer</button>
+            <button class="fieldButton" style="color: white; background-color: #d7232f;"
+                [disabled]="registration.invalid || isSubmit" (click)="doRegister()" mat-raised-button>Get
+                Offer</button>
+
+            <div class="blank">
+
+            </div>
 
         </form>
     </div>

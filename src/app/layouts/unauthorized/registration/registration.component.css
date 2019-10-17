@@ -15,6 +15,10 @@
     color: white;
     display: flex;
 }
+.fieldButton {
+    width: 98% !important;
+    margin: auto;
+}
 
 @media screen and (max-width: 600px) {
     .background {
@@ -29,5 +33,13 @@
         width: 100% !important;
         margin: auto;
     }
+
+.fieldButton {
+        width: 97% !important;
+        margin: auto;
+    }
+.blank {
+    height: 20%;
+}
 }
 
