@@ -12,10 +12,7 @@
         background-repeat: no-repeat;
         background-size: 100%  100%;
         width: 100%;
-        margin: auto;  
-        padding-left: 15%;
-        padding-top: 20%;  
-        padding-top: 2%;
+        margin: auto; 
     }
 }
 
@@ -24,7 +21,7 @@
 }
 
 .field {
-    width: 90%; 
+    width: 85%; 
     margin: auto;
 }
 .mat-error {
