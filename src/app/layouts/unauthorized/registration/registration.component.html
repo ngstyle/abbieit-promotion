@@ -1,15 +1,15 @@
-<div class="background" [hidden]="isRegistered">
+<div class="background">
+    <div style="height: 25%;"></div>
 
-    <div class="form-container" style="padding-top: 51%; min-height: 600px;">
+    <div style="margin: auto; width: 98%;">
 
-        <div *ngIf="isMessage" style="color: white; font-size: 15px; ">
+        <div *ngIf="isMessage">
             {{message}}.
             <br>
-            <a href="javascript:void(0);" (click)="toggle()" style="font-size: 18px; ">Try with another
+            <a href="javascript:void(0);" (click)="toggle()">Try with another
                 mobile number</a>
         </div>
         <form [formGroup]="registration" *ngIf="!isMessage" class="ui form">
-
             <div class="field">
                 <input matInput placeholder="Name*" formControlName="userName" maxlength="100" required>
                 <mat-error
@@ -22,11 +22,12 @@
             </div>
 
             <div class="field">
-                <input style="width: 58%;" matInput placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event)
-                    maxlength="10" minlength="10" required>
-                <button style="background-color: #3f51b5; color: white; width: 40%; height: 40px;" class="ui button" [disabled]="(registration.get('mobile').invalid) || optCount !== 60" 
-                    (click)="sendOTP();"><span style="font-size: 12px;">{{optButtonLabel}}</span></button>
-    
+                <input style="width: 63%;" matInput placeholder="Mobile Number*" formControlName="mobile"
+                    (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
+                <button style="width: 35%; color: white;" mat-raised-button color="primary" class="ui button"
+                    [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
+                    (click)="sendOTP();"><span>{{optButtonLabel}}</span></button>
+
                 <mat-error
                     *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">
                     *Mobile Number is required</mat-error>
@@ -35,26 +36,19 @@
                     *Invalid Mobile Number</mat-error>
             </div>
 
+
             <div class="field">
                 <input matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6"
                     (keypress)=_keyPress($event) required [hidden]="!showOTP">
 
-                <span *ngIf="otpMessage ? true : false" style="display: felx; color: white; font-size: 15px;">
+                <span *ngIf="otpMessage ? true : false">
                     {{otpMessage}}</span>
             </div>
 
-            <button style="width: 57%; margin-right: 23%;" [disabled]="registration.invalid || isSubmit" (click)="doRegister()"
-                mat-raised-button color="primary">Get
-                Offer</button>
+            <button class="field" style="color: white;" [disabled]="registration.invalid || isSubmit" (click)="doRegister()" mat-raised-button
+                color="primary">Get Offer</button>
 
         </form>
     </div>
 
-</div>
-
-<div [hidden]="! isRegistered" class="video" style="margin-left: 2%; margin-right: 2%;">
-    <video controls #videoPlayer style="max-width: 100%; height: auto;" #videoPlayer>
-        <source src="/assets/images/miniso_register.mp4" type="video/mp4" />
-        Browser not supported
-    </video>
 </div>

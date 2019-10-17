@@ -1,31 +1,33 @@
 .background {
-    background-image: url("/assets/images/background.svg");
+    background-image: url("/assets/images/background.jpg");
     background-repeat: no-repeat;
-    width: 35%;
+    height: 100%;
+    width: 26%;
     margin: auto;
-    min-height: 100% !important;
-}
-
-@media screen and (max-width: 600px) {
-    .background {
-        background-image: url("/assets/images/background.svg");
-        background-repeat: no-repeat;
-        background-size: 100%  100%;
-        width: 100% !important;
-        margin: auto; 
-    }
-}
-
-.form-container {
-    text-align: center;
 }
 
 .field {
-    width: 80%; 
+    width: 100%;
     margin: auto;
-    padding: 0 20px;
+    color: white;
 }
 .mat-error {
     color: white;
     display: flex;
 }
+
+@media screen and (max-width: 600px) {
+    .background {
+        background-image: url("/assets/images/background.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%  100%;
+        height: 700px !important;
+        margin: auto;
+        width: 100% !important;
+    }
+.field {
+        width: 100% !important;
+        margin: auto;
+    }
+}
+
