@@ -1,3 +1,4 @@
+import { RegistartionDialogComponent } from './registartionDialog/registartionDialog.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,7 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/ma
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { MatDialogModule } from '@angular/material/dialog';
 const routes: Routes = [
   { path: '', component: RegistrationComponent }
 ];
@@ -26,9 +27,13 @@ const RegistrationRouter = RouterModule.forChild(routes);
     MatInputModule,
     MatButtonModule,
     AgmCoreModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
   ],
-  declarations: [RegistrationComponent]
+  declarations: [RegistrationComponent, RegistartionDialogComponent],
+  entryComponents: [
+    RegistartionDialogComponent
+  ],
 })
 
 export class RegistrationModule { }

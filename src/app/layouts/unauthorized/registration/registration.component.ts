@@ -1,9 +1,11 @@
+import { RegistartionDialogComponent } from './registartionDialog/registartionDialog.component';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-registration',
@@ -31,7 +33,8 @@ export class RegistrationComponent implements OnInit {
     private minisoService: MinisoService,
     private mapsAPILoader: MapsAPILoader,
     private route: Router,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -102,6 +105,19 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  submitDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '20vw';
+    dialogConfig.height = '20vw';
+    dialogConfig.autoFocus = false;
+    dialogConfig.panelClass = ['nopadding-dialog-container'];
+
+    const dialogRef = this.matDialog.open(RegistartionDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+    });
+
+  }
+
   doRegister() {
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
@@ -121,7 +137,8 @@ export class RegistrationComponent implements OnInit {
         this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
-        alert(result.link + ' : ' + result.amount);
+        this.submitDialog();
+        //alert(result.link + ' : ' + result.amount);
       }
     });
   }
@@ -172,7 +189,7 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.optCount = 60;
       this.optButtonLabel = 'Resend OTP';
-   }
+    }
   }
 
 }
