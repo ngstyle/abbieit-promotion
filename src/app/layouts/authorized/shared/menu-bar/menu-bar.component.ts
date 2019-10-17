@@ -12,7 +12,7 @@ export class MenuBarComponent implements OnInit {
 
   constructor(private signinService: SigninService,
               private router: Router,
-              private permissionService: PermissionService) { }
+              public permissionService: PermissionService) { }
 
   ngOnInit() {
   }

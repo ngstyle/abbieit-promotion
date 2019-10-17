@@ -28,7 +28,7 @@ export class ReportComponent implements OnInit {
   ];
 
   dataSource: MatTableDataSource<any>;
-  @ViewChild(MatPaginator, {}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(private permissionService: PermissionService,
     private router: Router,

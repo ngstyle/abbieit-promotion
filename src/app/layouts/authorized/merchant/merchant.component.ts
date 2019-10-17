@@ -21,7 +21,7 @@ export class MerchantComponent implements OnInit {
   filteredShops: Observable<any[]>;
   public store: FormControl = new FormControl();
 
-  @ViewChild('singleSelect') singleSelect: MatSelect;
+  @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,

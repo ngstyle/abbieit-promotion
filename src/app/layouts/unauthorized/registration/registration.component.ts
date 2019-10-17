@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   isRegistered = false;
   scanId: any;
-  @ViewChild('videoPlayer') videoplayer: ElementRef;
+  @ViewChild('videoPlayer', { static: true }) videoplayer: ElementRef;
   registration: FormGroup;
   message: any;
   otpMessage: any;
