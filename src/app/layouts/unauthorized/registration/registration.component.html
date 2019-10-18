@@ -24,7 +24,7 @@
 
             <div class="field">
                 <input style="width: 68%;
-                    border-top-right-radius: 0;border-bottom-right-radius:0; border-right-color: transparent" matInput
+                    border-top-right-radius: 0;border-bottom-right-radius:0; border-right-color: transparent" pattern=^[6-9]\d{9}$ matInput
                     placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10"
                     minlength="10" required>
                 <button
@@ -37,7 +37,7 @@
                     *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">
                     *Mobile Number is required</mat-error>
                 <mat-error
-                    *ngIf="(registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('maxlength')) && registration.get('mobile').touched">
+                    *ngIf="(registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('pattern') || registration.get('mobile').hasError('maxlength')) && registration.get('mobile').touched">
                     *Invalid Mobile Number</mat-error>
             </div>
 
