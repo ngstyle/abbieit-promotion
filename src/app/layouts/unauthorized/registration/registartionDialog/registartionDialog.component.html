@@ -18,20 +18,15 @@
     </div>
 
     <div *ngIf="!data.amount" style="margin: auto; ">
-        <mat-toolbar class="toolbar">
-            Happy Diwali! <span class="example-fill-remaining-space"></span>
-        </mat-toolbar>
-        <div style="margin-top: 15%;font-size:22px;">
-            Mobile number is already registered
+        <h1 mat-dialog-title>Happy Diwali!</h1>
+        <div>
+            <p> Mobile number is already registered</p>
+            <p>Try with another mobile number <br> Or <br> <a href="">Resend Link</a></p>
         </div>
-        <div style="margin-top: 10%;font-size:15px;">
-            Try with another mobile number
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="close()">Ok</button>
         </div>
-        <div style="margin-top: 15%">
-            <button mat-raised-button color="accent" (click)="close()" class="ui button" type="submit"
-                style="background-color: #e82936;">OK</button>
-        </div>
-        <br>
+        <br> <br>
         <div></div>
     </div>
 

@@ -129,14 +129,12 @@ export class RegistrationComponent implements OnInit {
 
   submitDialog(link: any, amount: any) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = this.confirmWidth.toString() + '%';
     dialogConfig.autoFocus = false;
     dialogConfig.panelClass = ['nopadding-dialog-container'];
-
     const dialogRef = this.matDialog.open(RegistartionDialogComponent, {
-      data: { amount }
+      width: '250px',
+      data: {amount}
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         window.open(link, '_self');
@@ -144,7 +142,6 @@ export class RegistrationComponent implements OnInit {
         this.route.navigate(['/registration']);
       }
     });
-
   }
 
   doRegister() {
