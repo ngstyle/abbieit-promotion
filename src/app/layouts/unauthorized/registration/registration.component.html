@@ -16,7 +16,7 @@
             </div>
 
             <div class="ui action input" style="width: 100%;">
-                <input style="width: 0;" pattern=^[6-9]\d{9}$ value="9354926844" matInput placeholder="Mobile Number*" formControlName="mobile"
+                <input style="width: 0;" pattern=^[6-9]\d{9}$ matInput placeholder="Mobile Number*" formControlName="mobile"
                     (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
                 <button style="color: white; background-color: #d7232f; margin: 0;" class="ui button"
                     [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
