@@ -40,7 +40,7 @@
 
             <div class="field">
                 <input style="width: 100%;" matInput placeholder="OTP*" formControlName="otp" maxlength="6"
-                    minlength="6" (keypress)=_keyPress($event) required >
+                    minlength="6" (keypress)=_keyPress($event) required [hidden]="!showOTP">
 
                 <span *ngIf="otpMessage ? true : false">
                     {{otpMessage}}</span>
