@@ -10,7 +10,7 @@ export class RegistartionDialogComponent implements OnInit {
 
   amount: any;
   constructor(public dialogRef: MatDialogRef<RegistartionDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     this.amount = data.amount;
   }
 
@@ -21,4 +21,7 @@ export class RegistartionDialogComponent implements OnInit {
     this.dialogRef.close('close');
   }
 
+  close() {
+    this.dialogRef.close();
+  }
 }

@@ -28,7 +28,6 @@ export class RegistrationComponent implements OnInit {
   private geoCoder;
   interval: any;
   isSubmit = false;
-  amount: any;
 
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
@@ -67,18 +66,14 @@ export class RegistrationComponent implements OnInit {
 
     this.getScreenSize().subscribe(width => {
 
-      if (window.innerWidth >= 500) {
+      if (window.innerWidth >= 400) {
         this.imgWidth = 500;
         this.imgHeight = 1107;
         this.confirmHeight = 40;
-        this.confirmWidth = 20;
+        this.confirmWidth = 80;
       } else {
         this.imgWidth = window.innerWidth;
         this.imgHeight = 1107 * window.innerWidth / 500;
-      }
-      if (window.innerWidth > 400) {
-        this.confirmWidth = 60;
-      } else {
         this.confirmWidth = 80;
       }
     });
@@ -139,12 +134,14 @@ export class RegistrationComponent implements OnInit {
     dialogConfig.panelClass = ['nopadding-dialog-container'];
 
     const dialogRef = this.matDialog.open(RegistartionDialogComponent, {
-      data: {amount: this.amount}
+      data: { amount }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         window.open(link, '_self');
+      } else {
+        this.route.navigate(['/registration']);
       }
     });
 
@@ -162,8 +159,7 @@ export class RegistrationComponent implements OnInit {
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
         this.otpMessage = '';
-        this.isMessage = !this.isMessage;
-        this.showOTP = !this.showOTP;
+        this.submitDialog(null, null);
       } else if (result.msg === 'invalid otp') {
         this.otpMessage = '*Invalid OTP';
       } else {
@@ -205,12 +201,13 @@ export class RegistrationComponent implements OnInit {
         this.optButtonLabel = 'Send OTP';
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
+        this.submitDialog(null, null);
         this.otpMessage = '';
         this.isMessage = !this.isMessage;
         this.showOTP = false;
       }
     }, error => {
-      alert('Error');
+      alert('Server error.Please try again');
     });
   }
 

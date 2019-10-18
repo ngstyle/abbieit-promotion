@@ -1,20 +1,38 @@
 <div style="margin: auto; text-align: center;">
+    <div *ngIf="data.amount">
+        <mat-toolbar class="toolbar">
+            Happy Diwali! <span class="example-fill-remaining-space"></span>
+        </mat-toolbar>
+        <div style="margin-top: 15%;font-size:15px;">
+            Successfully received Rs.{{data.amount}} Coupon!
+        </div>
+        <div style="margin-top: 4%;font-size:13px;">
+            Check the link in the message on your registered mobile number
+        </div>
 
-    <mat-toolbar class="toolbar">
-        Happy Diwali! <span class="example-fill-remaining-space"></span>
-    </mat-toolbar>
-    <div style="margin-top: 15%;font-size:15px;">
-        Successfully received Rs.{{data.amount}} Coupon!
+        <div style="margin-top: 15%">
+            <button mat-raised-button color="accent" (click)="closeDialog()" class="ui button" type="submit"
+                style="background-color: #e82936;">Check Status</button>
+        </div>
+        <br><br><br>
     </div>
-    <div style="margin-top: 4%;font-size:11px;">
-        Check the link in the message on your registered mobile number
+
+    <div *ngIf="!data.amount" style="margin: auto; ">
+        <mat-toolbar class="toolbar">
+            Happy Diwali! <span class="example-fill-remaining-space"></span>
+        </mat-toolbar>
+        <div style="margin-top: 15%;font-size:22px;">
+            Mobile number is already registered
+        </div>
+        <div style="margin-top: 10%;font-size:15px;">
+            Try with another mobile number
+        </div>
+        <div style="margin-top: 15%">
+            <button mat-raised-button color="accent" (click)="close()" class="ui button" type="submit"
+                style="background-color: #e82936;">OK</button>
+        </div>
+        <br>
+        <div></div>
     </div>
-
-
-    <div style="margin-top: 15%">            
-        <button mat-raised-button color="accent" (click)="closeDialog()"  class="ui button" type="submit" style="background-color: #e82936;">Check Status</button>        
-    </div>
-    <br><br><br>
-
 
 </div>

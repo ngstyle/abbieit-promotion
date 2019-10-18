@@ -2,12 +2,7 @@
     <div style="height: 25%;"></div>
 
     <div>
-        <div *ngIf="isMessage">
-            {{message}}.
-            <br>
-            <a href="javascript:void(0);" (click)="toggle()">Try with another mobile number</a>
-        </div>
-        <form [formGroup]="registration" *ngIf="!isMessage" class="ui form" style="padding: 0 6%;">
+        <form [formGroup]="registration" class="ui form" style="padding: 0 6%;">
             <div class="field">
                 <input style="width: 100%;" matInput placeholder="Name*" formControlName="userName" maxlength="100"
                     required>
