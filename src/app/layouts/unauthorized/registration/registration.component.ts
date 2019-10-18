@@ -74,16 +74,12 @@ export class RegistrationComponent implements OnInit {
       } else {
         this.imgWidth = window.innerWidth;
         this.imgHeight = 1107 * window.innerWidth / 500;
-        if (window.innerWidth > 350) {
-          this.confirmHeight = 100;
-        } else {
-          this.confirmHeight = 60;
-        }
+      }
+      if (window.innerWidth > 400) {
+        this.confirmWidth = 60;
+      } else {
         this.confirmWidth = 80;
       }
-
-      console.log('screenWidth: ' + window.innerWidth + ' - imgWidth: ' + this.imgWidth);
-      console.log('screenHeight: ' + window.innerHeight + ' - imgHeight: ' + this.imgHeight);
     });
   }
 
@@ -138,7 +134,6 @@ export class RegistrationComponent implements OnInit {
   submitDialog(link: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = this.confirmWidth.toString() + '%';
-    dialogConfig.height = this.confirmHeight.toString() + '%';
     dialogConfig.autoFocus = false;
     dialogConfig.panelClass = ['nopadding-dialog-container'];
 
