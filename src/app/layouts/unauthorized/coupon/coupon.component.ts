@@ -1,5 +1,6 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import { MinisoService } from './../../../service/miniso.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,6 +16,12 @@ export class CouponComponent implements OnInit {
   minimumAmount: any = 1199;
   isValid = false;
   errorMsg: any = '';
+
+  private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
+  public imgWidth: number;
+  public imgHeight: number;
+  public confirmHeight: number;
+  public confirmWidth: number;
 
   constructor(private route: ActivatedRoute,
               private minisoService: MinisoService) {
@@ -43,6 +50,27 @@ export class CouponComponent implements OnInit {
         }
       });
     }
+    this.getScreenSize().subscribe(width => {
+
+      if (window.innerWidth >= 500) {
+        this.imgWidth = 500;
+        this.imgHeight = 1107;
+        this.confirmHeight = 40;
+        this.confirmWidth = 20;
+      } else {
+        this.imgWidth = window.innerWidth;
+        this.imgHeight = 1107 * window.innerWidth / 500;
+      }
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenSize$.next(event.target.innerWidth);
+  }
+
+  getScreenSize(): Observable<number> {
+    return this.screenSize$.asObservable();
   }
 
 }
