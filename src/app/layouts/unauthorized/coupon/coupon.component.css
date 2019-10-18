@@ -2,4 +2,16 @@
     background-color: #FFC0CB;
     margin: auto;
   }
-  
+
+.card {
+  width: 80%; 
+  margin: auto;
+  margin-top: 10%;
+  text-align: center;
+}
+
+md-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
