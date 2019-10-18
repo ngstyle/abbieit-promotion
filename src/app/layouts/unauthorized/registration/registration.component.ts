@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit {
   private geoCoder;
   interval: any;
   isSubmit = false;
+  amount: any;
 
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
@@ -131,13 +132,16 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  submitDialog(link: any) {
+  submitDialog(link: any, amount: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = this.confirmWidth.toString() + '%';
     dialogConfig.autoFocus = false;
     dialogConfig.panelClass = ['nopadding-dialog-container'];
 
-    const dialogRef = this.matDialog.open(RegistartionDialogComponent, dialogConfig);
+    const dialogRef = this.matDialog.open(RegistartionDialogComponent, {
+      data: {amount: this.amount}
+    });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         window.open(link, '_self');
@@ -167,7 +171,7 @@ export class RegistrationComponent implements OnInit {
         this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
-        this.submitDialog(result.link);
+        this.submitDialog(result.link, result.amount);
       }
     }, error => {
       this.isSubmit = false;

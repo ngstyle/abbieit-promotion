@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-registartionDialog',
@@ -8,7 +8,11 @@ import { MatDialogRef } from '@angular/material';
 })
 export class RegistartionDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<RegistartionDialogComponent>) { }
+  amount: any;
+  constructor(public dialogRef: MatDialogRef<RegistartionDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.amount = data.amount;
+  }
 
   ngOnInit() {
   }
