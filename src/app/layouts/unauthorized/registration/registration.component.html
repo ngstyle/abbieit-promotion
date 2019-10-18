@@ -1,9 +1,7 @@
-
 <div class="background" [style.width.px]="imgWidth" [style.height.px]="imgHeight" [hidden]="isRegistered">
-    <div style="height: 26%;"></div>
+    <div style="height: 25%;"></div>
 
     <div>
-
         <div *ngIf="isMessage">
             {{message}}.
             <br>
@@ -22,17 +20,15 @@
                 </mat-error>
             </div>
 
-            <div class="field">
-                <input style="width: 68%;
-                    border-top-right-radius: 0;border-bottom-right-radius:0; border-right-color: transparent" pattern=^[6-9]\d{9}$ matInput
-                    placeholder="Mobile Number*" formControlName="mobile" (keypress)=_keyPress($event) maxlength="10"
-                    minlength="10" required>
-                <button
-                    style="width: 32%; color: white; background-color: #d7232f; margin: 0;padding-left: 12px; padding-right: 12px;
-                    border-top-left-radius:0; border-bottom-left-radius: 0; border-left-color: transparent; font-size: 1.04rem;"
-                    class="ui button" [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
+            <div class="ui action input" style="width: 100%;">
+                <input style="width: 0;" pattern=^[6-9]\d{9}$ matInput placeholder="Mobile Number*" formControlName="mobile"
+                    (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
+                <button style="color: white; background-color: #d7232f; margin: 0;" class="ui button"
+                    [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
                     (click)="sendOTP();"><span>{{optButtonLabel}}</span></button>
+            </div>
 
+            <div style="margin: 0 0 1em;">
                 <mat-error
                     *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">
                     *Mobile Number is required</mat-error>
@@ -43,8 +39,8 @@
 
 
             <div class="field">
-                <input style="width: 98%;" matInput placeholder="OTP*" formControlName="otp" maxlength="6" minlength="6"
-                    (keypress)=_keyPress($event) required [hidden]="!showOTP">
+                <input style="width: 100%;" matInput placeholder="OTP*" formControlName="otp" maxlength="6"
+                    minlength="6" (keypress)=_keyPress($event) required >
 
                 <span *ngIf="otpMessage ? true : false">
                     {{otpMessage}}</span>
