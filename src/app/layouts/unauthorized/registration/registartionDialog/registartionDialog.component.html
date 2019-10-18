@@ -2,7 +2,8 @@
 <div *ngIf="data.amount">
     <div>
         Successfully received Rs.{{data.amount}} Coupon!
-        Check the <a href="">link</a> in the message on your registered mobile number
+        Check the <a style="cursor: pointer;" (click)="closeDialog()">link</a> in the message on your registered mobile
+        number
     </div>
 
     <mat-dialog-actions align="end">
@@ -12,7 +13,8 @@
 
 <div *ngIf="!data.amount" style="margin: auto; ">
     <div>
-        <p> Mobile number is already registered, Try with another mobile number Or <a href="">Resend Link</a></p>
+        <p> Mobile number is already registered, Try with another mobile number Or <a style="cursor: pointer;"
+                (click)="resendLink()">Resend Link</a></p>
     </div>
 
     <mat-dialog-actions align="end">

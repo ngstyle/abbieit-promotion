@@ -51,4 +51,9 @@ export class MinisoService {
     return this.http.get(`${environment.API_URL}/miniso/coupon`, { params });
   }
 
+  resendLink(mobileNumber: any) {
+    const params = new HttpParams().set('mobileNumber', mobileNumber);
+    return this.http.get(`${environment.API_URL}/miniso/couponLink`, { params });
+  }
+
 }

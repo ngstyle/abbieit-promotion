@@ -127,18 +127,23 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  submitDialog(link: any, amount: any) {
+  submitDialog(link: any, amount: any, mobile: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = false;
     // dialogConfig.panelClass = ['nopadding-dialog-container'];
     const dialogRef = this.matDialog.open(RegistartionDialogComponent, {
       width: '90vw',
-      data: {amount}
+      data: {
+        amount,
+        mobile
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         window.open(link, '_self');
       } else {
+        this.registration.reset();
+        this.registration.clearValidators();
         this.route.navigate(['/registration']);
       }
     });
@@ -156,7 +161,7 @@ export class RegistrationComponent implements OnInit {
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
         this.otpMessage = '';
-        this.submitDialog(null, null);
+        this.submitDialog(null, null,  result.mobile);
       } else if (result.msg === 'invalid otp') {
         this.otpMessage = '*Invalid OTP';
       } else {
@@ -164,7 +169,7 @@ export class RegistrationComponent implements OnInit {
         this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
-        this.submitDialog(result.link, result.amount);
+        this.submitDialog(result.link, result.amount, result.mobile);
       }
     }, error => {
       this.isSubmit = false;
@@ -198,7 +203,7 @@ export class RegistrationComponent implements OnInit {
         this.optButtonLabel = 'Send OTP';
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
-        this.submitDialog(null, null);
+        this.submitDialog(null, null, data);
         this.otpMessage = '';
         this.isMessage = !this.isMessage;
         this.showOTP = false;

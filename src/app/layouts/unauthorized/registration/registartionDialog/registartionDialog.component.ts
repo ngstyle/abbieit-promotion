@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { MinisoService } from './../../../../service/miniso.service';
+import { Component, OnInit, Inject, NgModule } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 
 @Component({
@@ -9,9 +10,12 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/mate
 export class RegistartionDialogComponent implements OnInit {
 
   amount: any;
+  mobile: any;
   constructor(public dialogRef: MatDialogRef<RegistartionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private minisoService: MinisoService) {
     this.amount = data.amount;
+    this.mobile = data.mobile;
   }
 
   ngOnInit() {
@@ -23,5 +27,11 @@ export class RegistartionDialogComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  resendLink() {
+    this.close();
+    this.minisoService.resendLink(this.mobile).subscribe(data => {
+    });
   }
 }
