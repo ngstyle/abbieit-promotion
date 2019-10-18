@@ -52,15 +52,32 @@ export class CouponComponent implements OnInit {
     }
     this.getScreenSize().subscribe(width => {
 
+      // if (window.innerWidth >= 500) {
+      //   this.imgWidth = 500;
+      //   this.imgHeight = 1107;
+      //   this.confirmHeight = 40;
+      //   this.confirmWidth = 20;
+      // } else {
+      //   this.imgWidth = window.innerWidth;
+      //   this.imgHeight = 1107 * window.innerWidth / 500;
+      // }
+
       if (window.innerWidth >= 500) {
         this.imgWidth = 500;
-        this.imgHeight = 1107;
-        this.confirmHeight = 40;
-        this.confirmWidth = 20;
+
+        if (window.innerHeight > 900) {
+          this.imgHeight = 900;
+        } else {
+          this.imgHeight = window.innerHeight;
+        }
       } else {
         this.imgWidth = window.innerWidth;
-        this.imgHeight = 1107 * window.innerWidth / 500;
+        this.imgHeight = 900 * window.innerWidth / 500;
+        if (this.imgHeight > window.innerHeight) {
+          this.imgHeight = window.innerHeight;
+        }
       }
+
     });
   }
 

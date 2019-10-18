@@ -5,6 +5,7 @@ import { CouponComponent } from './coupon.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { MatDividerModule, MatListModule } from '@angular/material';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const routes: Routes = [
   { path: '', component: CouponComponent }
@@ -19,7 +20,8 @@ const CouponRouter = RouterModule.forChild(routes);
     NgxBarcodeModule,
     MatCardModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    AngularSvgIconModule
   ],
   declarations: [CouponComponent]
 })

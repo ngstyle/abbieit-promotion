@@ -1,22 +1,47 @@
 <div class="background" [style.width.px]="imgWidth" [style.height.px]="imgHeight">
-  &nbsp;
-  <div class="card">
-    <mat-card>
-      
-    </mat-card>
-  </div>
-
-</div>
-
-<!-- <div style="margin-top:30px;">
-
   <div *ngIf="isValid">
-    <ngx-barcode [bc-value]="value" [bc-display-value]="true" [bc-height] = "100"></ngx-barcode>
-    Discount {{discount}} - Minimum Amount - {{minimumAmount}}
+
+    <mat-card>
+
+      <ngx-barcode [bc-value]="value" [bc-height]="100"></ngx-barcode>
+
+      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
+        <svg-icon src="assets/images/svg/coupon_200.svg" [svgStyle]="{ 'width.px':144,'height.px':106 }">
+        </svg-icon>
+      </div>
+
+      <p style="text-align: center; padding: 0 16px; color: #313131; margin-bottom: 2px;">
+        <!-- Your free discount coupon to enjoy Miniso Diwali offer big sale -->
+        Enjoy Miniso Diwali offer,Use the coupon on the shopping of 200 repectively
+      </p>
+
+      <div style="width: 100%; padding: 4px 16px;">
+        <hr style="border: 1px dashed #e1e1e1;" />
+      </div>
+
+      <p style="text-align: center; padding: 0 16px; color: #D6D1D6; letter-spacing: 3px; margin-bottom: 6px;">
+        Your Coupon Code
+      </p>
+
+      <p style="text-align: center; padding: 0 16px;color: #333333; font-size: 18px;">
+        190700170315105
+      </p>
+
+    </mat-card>
+
+    <!-- [bc-display-value]="true" -->
+    <!-- <div *ngIf="isValid">
+      <ngx-barcode [bc-value]="value" [bc-height] = "100"></ngx-barcode>
+      Discount {{discount}} - Minimum Amount - {{minimumAmount}}
+    </div>
+  
+    <div *ngIf="!isValid">
+      <span style="color: red; font-size: 20px;">{{errorMsg}}</span>
+    </div> -->
+
   </div>
 
   <div *ngIf="!isValid">
     <span style="color: red; font-size: 20px;">{{errorMsg}}</span>
   </div>
-
-</div> -->
+</div>

@@ -1,17 +1,14 @@
 .background {
-    background-color: #FFC0CB;
-    margin: auto;
-  }
-
-.card {
-  width: 80%; 
+  background-image: url("/assets/images/coupon_bg.jpg");
+  background-size: 100% 100%; 
   margin: auto;
-  margin-top: 10%;
-  text-align: center;
+  padding: 0 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-md-grid-list {
+::ng-deep .barcode {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
