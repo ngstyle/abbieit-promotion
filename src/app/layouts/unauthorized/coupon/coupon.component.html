@@ -1,11 +1,16 @@
 <div class="background" [style.width.px]="imgWidth" [style.height.px]="imgHeight">
-  <div *ngIf="isValid">
 
-    <mat-card>
+ <mat-card> 
 
+    <div *ngIf="errorMsg === 'used' " style="text-align: center;color: white; background-color: green;">
+      <h3 style="line-height: 60px;">The coupon was redeemed</h3>
+    </div>
+  
+
+    <div *ngIf="errorMsg === 'valid' || errorMsg === 'used' " style="padding: 16px;">
       <ngx-barcode [bc-value]="value" [bc-height]="100"></ngx-barcode>
 
-      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
+      <div style="display: flex; justify-content: center; padding-bottom: 16px; padding: -10px;">
         <svg-icon [src]="couponImage" [svgStyle]="{ 'width.px':144,'height.px':106 }">
         </svg-icon>
       </div>
@@ -26,22 +31,13 @@
       <p style="text-align: center; padding: 0 16px;color: #333333; font-size: 18px;">
         {{value}}
       </p>
-
-    </mat-card>
-
-    <!-- [bc-display-value]="true" -->
-    <!-- <div *ngIf="isValid">
-      <ngx-barcode [bc-value]="value" [bc-height] = "100"></ngx-barcode>
-      Discount {{discount}} - Minimum Amount - {{minimumAmount}}
     </div>
-  
-    <div *ngIf="!isValid">
-      <span style="color: red; font-size: 20px;">{{errorMsg}}</span>
-    </div> -->
 
-  </div>
+    <div *ngIf="errorMsg === 'invalid'">
+      <div class="invalid">
+        <h1>Invalid Coupon !</h1>
+      </div>
+    </div>
+  </mat-card>
 
-  <div *ngIf="!isValid">
-    <span style="color: red; font-size: 20px;">{{errorMsg}}</span>
-  </div>
 </div>

@@ -35,35 +35,21 @@ export class CouponComponent implements OnInit {
     if (this.coupon) {
       this.minisoService.coupon(this.coupon).subscribe(data => {
         const result: any = data;
-        if (result.msg === '') {
+        if (result.msg === '' || result.msg === 'used') {
           this.value = this.coupon;
-          this.isValid = true;
           this.discount = result.data.discount;
           this.minimumAmount = result.data.minimumAmount;
           this.errorMsg = '';
-          this.couponImage = 'assets/images/svg/' + (result.data.discount === 200 ? 'coupon_200.svg' : result.data.discount === 100 
+          this.couponImage = 'assets/images/svg/' + (result.data.discount === 200 ? 'coupon_200.svg' : result.data.discount === 100
                                 ? 'coupon_100.svg' : result.data.discount === 50 ? 'coupon_50.svg' : '');
+
+          this.errorMsg = result.msg === '' ? 'valid'  : 'used';
         } else if (result.msg === 'invalid') {
-          this.errorMsg = 'Invalid Coupon.';
-          this.isValid = false;
-        } else if (result.msg === 'used') {
-          this.value = '';
-          this.errorMsg = 'Coupon already used.';
-          this.isValid = false;
+          this.errorMsg = 'invalid';
         }
       });
     }
     this.getScreenSize().subscribe(width => {
-
-      // if (window.innerWidth >= 500) {
-      //   this.imgWidth = 500;
-      //   this.imgHeight = 1107;
-      //   this.confirmHeight = 40;
-      //   this.confirmWidth = 20;
-      // } else {
-      //   this.imgWidth = window.innerWidth;
-      //   this.imgHeight = 1107 * window.innerWidth / 500;
-      // }
 
       if (window.innerWidth >= 500) {
         this.imgWidth = 500;

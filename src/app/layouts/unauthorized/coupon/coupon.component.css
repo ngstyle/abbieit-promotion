@@ -12,3 +12,24 @@
   display: flex;
   justify-content: center;
 }
+
+.invalid {
+  height: 100px; 
+  width: 300px; 
+  text-align: center; 
+  vertical-align: middle; 
+  color: red; 
+  margin-top: 18%;
+}
+
+.used {
+  height: 200px; 
+  width: 300px; 
+  text-align: center; 
+  vertical-align: middle; 
+  color: red; 
+}
+
+.mat-card {
+  padding: 0px;
+ }
