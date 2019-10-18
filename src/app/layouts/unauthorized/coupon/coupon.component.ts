@@ -12,10 +12,11 @@ export class CouponComponent implements OnInit {
 
   value: any;
   coupon: any;
-  discount: any = 100;
-  minimumAmount: any = 1199;
+  discount: any;
+  minimumAmount: any;
   isValid = false;
   errorMsg: any = '';
+  couponImage: any;
 
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
@@ -40,6 +41,8 @@ export class CouponComponent implements OnInit {
           this.discount = result.data.discount;
           this.minimumAmount = result.data.minimumAmount;
           this.errorMsg = '';
+          this.couponImage = 'assets/images/svg/' + (result.data.discount === 200 ? 'coupon_200.svg' : result.data.discount === 100 
+                                ? 'coupon_100.svg' : result.data.discount === 50 ? 'coupon_50.svg' : '');
         } else if (result.msg === 'invalid') {
           this.errorMsg = 'Invalid Coupon.';
           this.isValid = false;
