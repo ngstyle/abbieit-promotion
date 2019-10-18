@@ -150,7 +150,9 @@ export class RegistrationComponent implements OnInit {
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
     data.scanId = this.scanId;
+    this.isSubmit = true;
     this.minisoService.registration(this.registration.value).subscribe(d => {
+      this.isSubmit = false;
       const result: any = d;
       if (result.msg === 'alreadyExists') {
         this.message = 'Mobile number is already registered.';
@@ -167,6 +169,8 @@ export class RegistrationComponent implements OnInit {
         this.registration.clearValidators();
         this.submitDialog(result.link);
       }
+    }, error => {
+      this.isSubmit = false;
     });
   }
 
