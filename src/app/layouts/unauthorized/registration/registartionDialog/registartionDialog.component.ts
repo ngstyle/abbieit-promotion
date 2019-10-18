@@ -11,11 +11,13 @@ export class RegistartionDialogComponent implements OnInit {
 
   amount: any;
   mobile: any;
+  counter: any;
   constructor(public dialogRef: MatDialogRef<RegistartionDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private minisoService: MinisoService) {
     this.amount = data.amount;
     this.mobile = data.mobile;
+    this.counter = data.counter;
   }
 
   ngOnInit() {

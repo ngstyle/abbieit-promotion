@@ -127,7 +127,7 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  submitDialog(link: any, amount: any, mobile: any) {
+  submitDialog(link: any, amount: any, mobile: any, counter: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = false;
     // dialogConfig.panelClass = ['nopadding-dialog-container'];
@@ -135,7 +135,8 @@ export class RegistrationComponent implements OnInit {
       width: '90vw',
       data: {
         amount,
-        mobile
+        mobile,
+        counter
       }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -144,6 +145,7 @@ export class RegistrationComponent implements OnInit {
       } else {
         this.registration.reset();
         this.registration.clearValidators();
+        this.optButtonLabel = 'Send OTP';
         this.route.navigate(['/registration']);
       }
     });
@@ -161,7 +163,7 @@ export class RegistrationComponent implements OnInit {
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
         this.otpMessage = '';
-        this.submitDialog(null, null,  result.mobile);
+        this.submitDialog(null, null,  result.mobile, result.counter);
       } else if (result.msg === 'invalid otp') {
         this.otpMessage = '*Invalid OTP';
       } else {
@@ -169,7 +171,7 @@ export class RegistrationComponent implements OnInit {
         this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
-        this.submitDialog(result.link, result.amount, result.mobile);
+        this.submitDialog(result.link, result.amount, result.mobile, result.counter);
       }
     }, error => {
       this.isSubmit = false;
@@ -200,10 +202,11 @@ export class RegistrationComponent implements OnInit {
         this.showOTP = true;
       } else {
         this.optCount = -1;
+
         this.optButtonLabel = 'Send OTP';
         this.message = 'Mobile number is already registered.';
         this.registration.get('mobile').setValue('');
-        this.submitDialog(null, null, data);
+        this.submitDialog(null, null, data, result.counter);
         this.otpMessage = '';
         this.isMessage = !this.isMessage;
         this.showOTP = false;

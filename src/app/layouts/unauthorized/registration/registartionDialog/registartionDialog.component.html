@@ -13,8 +13,8 @@
 
 <div *ngIf="!data.amount" style="margin: auto; ">
     <div>
-        <p> Mobile number is already registered, Try with another mobile number Or <a style="cursor: pointer;"
-                (click)="resendLink()">Resend Link</a></p>
+        <p> Mobile number is already registered, Try with another mobile number <span *ngIf="counter < 3"> Or <a style="cursor: pointer;"
+                (click)="resendLink()">Resend Link</a></span></p>
     </div>
 
     <mat-dialog-actions align="end">
