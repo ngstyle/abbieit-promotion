@@ -160,6 +160,8 @@ export class RegistrationComponent implements OnInit {
         this.registration.get('mobile').setValue('');
         this.otpMessage = '';
         this.submitDialog(null, null,  result.mobile, result.counter);
+        this.optCount = -1;
+        this.optButtonLabel = 'Send OTP';
       } else if (result.msg === 'invalid otp') {
         this.otpMessage = '*Invalid OTP';
       } else {
@@ -169,6 +171,8 @@ export class RegistrationComponent implements OnInit {
         this.registration.reset();
         this.registration.clearValidators();
         this.submitDialog(result.link, result.amount, result.mobile, result.counter);
+        this.optCount = -1;
+        this.optButtonLabel = 'Send OTP';
       }
     }, error => {
       this.isSubmit = false;
