@@ -32,9 +32,6 @@ export class RegistrationComponent implements OnInit {
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
   public imgHeight: number;
-  public confirmHeight: number;
-  public confirmWidth: number;
-
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
@@ -66,15 +63,12 @@ export class RegistrationComponent implements OnInit {
 
     this.getScreenSize().subscribe(width => {
 
-      if (window.innerWidth >= 400) {
+      if (window.innerWidth > 500) {
         this.imgWidth = 500;
         this.imgHeight = 1107;
-        this.confirmHeight = 40;
-        this.confirmWidth = 80;
       } else {
         this.imgWidth = window.innerWidth;
         this.imgHeight = 1107 * window.innerWidth / 500;
-        this.confirmWidth = 80;
       }
     });
 
@@ -134,7 +128,6 @@ export class RegistrationComponent implements OnInit {
   submitDialog(link: any, amount: any, mobile: any, counter: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = false;
-    // dialogConfig.panelClass = ['nopadding-dialog-container'];
     const dialogRef = this.matDialog.open(RegistartionDialogComponent, {
       width: '90vw',
       data: {
