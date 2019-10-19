@@ -165,7 +165,6 @@ export class RegistrationComponent implements OnInit {
         this.otpMessage = '*Invalid OTP';
       } else {
         this.otpMessage = '';
-        this.isRegistered = true;
         this.registration.reset();
         this.registration.clearValidators();
         this.submitDialog(result.link, result.amount, result.mobile, result.counter);
