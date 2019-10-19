@@ -40,8 +40,8 @@ export class CouponComponent implements OnInit {
           this.discount = result.data.discount;
           this.minimumAmount = result.data.minimumAmount;
           this.errorMsg = '';
-          this.couponImage = 'assets/images/svg/' + (result.data.discount === 200 ? 'coupon_200.svg' : result.data.discount === 100
-                                ? 'coupon_100.svg' : result.data.discount === 50 ? 'coupon_50.svg' : '');
+          this.couponImage = 'assets/images/' + (result.data.discount === 200 ? '200.jpg' : result.data.discount === 100
+                                ? '100.jpg' : result.data.discount === 50 ? '50.jpg' : '');
 
           this.errorMsg = result.msg === '' ? 'valid'  : 'used';
         } else if (result.msg === 'invalid') {

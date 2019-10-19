@@ -11,8 +11,7 @@
       <ngx-barcode [bc-value]="value" [bc-height]="100"></ngx-barcode>
 
       <div style="display: flex; justify-content: center; padding-bottom: 16px; padding: -10px;">
-        <svg-icon [src]="couponImage" [svgStyle]="{ 'width.px':144,'height.px':106 }">
-        </svg-icon>
+        <img [src]="couponImage" [style]="{ 'width.px':144,'height.px':106 }"/>
       </div>
 
       <p style="text-align: center; padding: 0 16px; color: #313131; margin-bottom: 2px;">
