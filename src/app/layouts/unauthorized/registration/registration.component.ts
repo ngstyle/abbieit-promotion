@@ -77,6 +77,10 @@ export class RegistrationComponent implements OnInit {
         this.confirmWidth = 80;
       }
     });
+
+    this.registration.get('otp').valueChanges.subscribe(data => {
+      this.otpMessage = '';
+    });
   }
 
   showPosition(position: any) {

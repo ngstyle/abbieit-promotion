@@ -16,8 +16,8 @@
             </div>
 
             <div class="ui action input" style="width: 100%;">
-                <input style="width: 0;" pattern=^[6-9]\d{9}$ matInput placeholder="Mobile Number*" formControlName="mobile"
-                    (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
+                <input style="width: 0;" pattern=^[6-9]\d{9}$ matInput placeholder="Mobile Number*"
+                    formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
                 <button style="color: white; background-color: #d7232f; margin: 0;" class="ui button"
                     [disabled]="(registration.get('mobile').invalid) || optCount !== 60"
                     (click)="sendOTP();"><span>{{optButtonLabel}}</span></button>
@@ -32,17 +32,18 @@
                     *Invalid Mobile Number</mat-error>
             </div>
 
-
             <div class="field">
                 <input style="width: 100%;" matInput placeholder="OTP*" formControlName="otp" maxlength="6"
                     minlength="6" (keypress)=_keyPress($event) required [hidden]="!showOTP">
 
-                <span *ngIf="otpMessage ? true : false">
+                <mat-error *ngIf="registration.get('otp').hasError('required') && registration.get('otp').touched">
+                    *OTP is required</mat-error>
+                <span *ngIf="otpMessage && !registration.get('otp').hasError('required') ? true : false">
                     {{otpMessage}}</span>
             </div>
 
-            <button style="color: white; background-color: #d7232f; width: 100%;"
-                [disabled]="registration.invalid || isSubmit" (click)="doRegister()" mat-raised-button>Get
+            <button style="color: white; background-color: #d7232f; width: 100%;" class="ui button"
+                [disabled]="(registration.invalid || isSubmit)" (click)="doRegister()" mat-raised-button>Get
                 Offer</button>
 
             <div class="blank">
@@ -51,5 +52,4 @@
 
         </form>
     </div>
-
 </div>
