@@ -15,7 +15,6 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class RegistrationComponent implements OnInit {
 
-  isRegistered = false;
   scanId: any;
   @ViewChild('videoPlayer', { static: true }) videoplayer: ElementRef;
   registration: FormGroup;
@@ -165,6 +164,8 @@ export class RegistrationComponent implements OnInit {
         this.otpMessage = '*Invalid OTP';
       } else {
         this.otpMessage = '';
+        this.optCount = -1;
+        this.optButtonLabel = 'Send OTP';
         this.registration.reset();
         this.registration.clearValidators();
         this.submitDialog(result.link, result.amount, result.mobile, result.counter);
