@@ -1,22 +1,22 @@
 <div class="background" [style.width.px]="imgWidth" [style.height.px]="imgHeight">
-
- <mat-card> 
+  <img src="assets/images/miniso_logo.png" height="80px;" style="margin: 48px 0 24px;" />
+  <mat-card>
 
     <div *ngIf="errorMsg === 'used' " style="text-align: center;color: white; background-color: green;">
       <h3 style="line-height: 60px;">The coupon was redeemed</h3>
     </div>
-  
+
 
     <div *ngIf="errorMsg === 'valid' || errorMsg === 'used' " style="padding: 16px;">
       <ngx-barcode [bc-value]="value" [bc-height]="100"></ngx-barcode>
 
-      <div style="display: flex; justify-content: center; padding-bottom: 16px; padding: -10px;">
-        <img [src]="couponImage" [style]="{ 'width.px':144,'height.px':106 }"/>
+      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
+        <img [src]="couponImage" height="98px;" />
       </div>
 
       <p style="text-align: center; padding: 0 16px; color: #313131; margin-bottom: 2px;">
         <!-- Your free discount coupon to enjoy Miniso Diwali offer big sale -->
-        Enjoy Miniso Diwali offer,Use the coupon on the shopping of Rs.{{minimumAmount}} repectively
+        Use the coupon on the shopping of Rs.{{minimumAmount}} repectively, Kindly visit <a href="https://www.minisoindia.com/store-locator/">store-locator</a> for MINISO stores.
       </p>
 
       <div style="width: 100%; padding: 4px 16px;">

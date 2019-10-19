@@ -4,8 +4,10 @@
   margin: auto;
   padding: 0 6%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 ::ng-deep .barcode {
