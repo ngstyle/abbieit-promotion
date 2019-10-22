@@ -28,6 +28,50 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.minisoDashboard();
+
+    if ($('#sparklinedash').length > 0) {
+      ($('#sparklinedash') as any).sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+        type: 'bar',
+        height: '20',
+        barWidth: '3',
+        resize: true,
+        barSpacing: '3',
+        barColor: '#4caf50'
+      });
+    }
+
+    if ($('#sparklinedash2').length > 0) {
+      ($('#sparklinedash2') as any).sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+        type: 'bar',
+        height: '20',
+        barWidth: '3',
+        resize: true,
+        barSpacing: '3',
+        barColor: '#9675ce'
+      });
+    }
+
+    if ($('#sparklinedash3').length > 0) {
+      ($('#sparklinedash3') as any).sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+        type: 'bar',
+        height: '20',
+        barWidth: '3',
+        resize: true,
+        barSpacing: '3',
+        barColor: '#03a9f3'
+      });
+    }
+
+    if ($('#sparklinedash4').length > 0) {
+      ($('#sparklinedash4') as any).sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+        type: 'bar',
+        height: '20',
+        barWidth: '3',
+        resize: true,
+        barSpacing: '3',
+        barColor: '#f96262'
+      });
+    }
   }
 
   minisoDashboard() {
@@ -64,17 +108,44 @@ export class DashboardComponent implements OnInit {
         series: [{
           data: result.scanWeek,
           type: 'line',
-          name: 'QR Code Scan'
+          name: 'QR Code Scan',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              color: '#4caf50',
+              lineStyle: {
+                color: '#4caf50'
+              }
+            }
+          }
         },
         {
           data: result.registerWeek,
           type: 'line',
-          name: 'Registered'
+          name: 'Registered',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              color: '#9675ce',
+              lineStyle: {
+                color: '#9675ce'
+              }
+            }
+          }
         },
         {
           data: result.usedCouponWeek,
           type: 'line',
-          name: 'Coupon Used'
+          name: 'Coupon Used',
+          smooth: true,
+          itemStyle: {
+            normal: {
+              color: '#03a9f3',
+              lineStyle: {
+                color: '#03a9f3'
+              }
+            }
+          }
         }]
       };
     });

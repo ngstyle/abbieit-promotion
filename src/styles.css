@@ -3,12 +3,121 @@
 html,
 body {
   height: 100%;
+  color: #72777a;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, Arial, sans-serif;
+}
+
+button {
+  outline: none !important;
 }
 
 .overflow-hidden-dialog-container .mat-dialog-container {
   overflow-y: hidden;
+}
+
+.gap-20 {
+  margin: -10px !important;
+}
+
+.gap-20 > * {
+  padding: 10px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.bgc-white,
+.bgcH-white:hover {
+  background-color: white;
+}
+
+.bd {
+  border: 1px solid rgba(0, 0, 0, 0.0625) !important;
+}
+
+.mB-10 {
+  margin-bottom: 10px !important;
+}
+
+.layers {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.peers {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.peer {
+  display: block;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.peer-greed {
+  flex: 1 1 auto;
+}
+
+.fxw-nw {
+  flex-wrap: nowrap;
+}
+
+.progress {
+  height: 4px;
+  background-color: #eaeef3;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.mT-10 {
+  margin-top: 10px;
+}
+
+.m-progress-bar {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items:center;
+  -webkit-box-pack:center;
+  -ms-flex-pack:center;
+  justify-content: center;
+  color: #fff;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }

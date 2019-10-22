@@ -1,7 +1,7 @@
 <mat-toolbar class="menu-header">
   <mat-toolbar-row style="padding-left: 25px">
 
-    <a routerLink="/dashboard" class="menu-link" style="height: 30px">
+    <a routerLink="/dashboard" class="menu-link">
       <img src="assets/images/miniso-logo.png" height="30px;" />
     </a>
 
@@ -12,13 +12,13 @@
       <button *ngIf="this.permissionService.isAdmin()" mat-button>REPORT</button>
     </a>
     <a routerLink="/marchant" routerLinkActive="active" class="menu-link link-order" style="margin-left: 1%;">
-      <button mat-button>MERCHANT</button>
+      <button mat-button disabled>MERCHANT</button>
     </a>
 
     <span class="example-fill-remaining-space"></span>
 
-    <button mat-button class="background-button" [matMenuTriggerFor]="user" style="width: 24px; height: 24px;">
-      <svg-icon src="assets/images/user.svg" [svgStyle]="{ 'width.px':24,'height.px':24}" inline=true>
+    <button mat-button class="background-button" [matMenuTriggerFor]="user">
+      <svg-icon src="assets/images/user.svg" [svgStyle]="{ 'width.px':26,'height.px':26}">
       </svg-icon>
     </button>
 
