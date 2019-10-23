@@ -99,11 +99,13 @@ export class DashboardComponent implements OnInit {
       },
       legend: {
         x: 'center',
-        y: 'top',
-        data: ['QR Code Scan', 'Registered', 'Coupon Used']
+        y: 'bottom',
+        data: ['QR Code Scan', 'Registered', 'Coupon Used'],
       },
       toolbox: {
         show: true,
+        itemSize: 32,
+        right: '9%',
         feature: {
           myTool1: {
             show: true,
@@ -135,7 +137,7 @@ export class DashboardComponent implements OnInit {
         },
         tooltip: { // 和 option.tooltip 的配置项相同
           show: true,
-          formatter: function (param) {
+          formatter(param) {
             return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
           },
           backgroundColor: '#222',

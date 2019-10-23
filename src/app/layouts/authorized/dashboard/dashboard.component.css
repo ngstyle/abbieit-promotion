@@ -19,8 +19,6 @@
   min-height: 400px;
   background-color: #fff;
   /* border: solid 1px #869fac; */
-  padding: 0.5em;
-  padding-top: 24px;
   padding-left: 8px
 }
 
@@ -44,12 +42,4 @@
     padding: 16px 2%; 
     padding-top: 72px
   }
-}
-
-
-
-
-toolbox.iconStyle {
-  width: 300px;
-  height: 300;
 }

@@ -1,19 +1,19 @@
 <mat-toolbar class="menu-header">
-  <mat-toolbar-row style="padding-left: 25px">
+  <mat-toolbar-row style="padding-left: 16px">
 
     <a routerLink="/dashboard" class="menu-link">
       <img src="assets/images/miniso-logo.png" height="30px;" />
     </a>
 
-    <a routerLink="/dashboard" routerLinkActive="active" class="menu-link link-order" style="margin-left: 1%;">
+    <a routerLink="/dashboard" routerLinkActive="active" class="menu-link link-order" style="margin-left: 8px;">
       <button *ngIf="this.permissionService.isAdmin()" mat-button>DASHBOARD</button>
     </a>
-    <a routerLink="/report" routerLinkActive="active" class="menu-link link-dashboard" style="margin-left: 1%;">
+    <a routerLink="/report" routerLinkActive="active" class="menu-link link-dashboard">
       <button *ngIf="this.permissionService.isAdmin()" mat-button>REPORT</button>
     </a>
-    <a routerLink="/marchant" routerLinkActive="active" class="menu-link link-order" style="margin-left: 1%;">
+    <!-- <a routerLink="/marchant" routerLinkActive="active" class="menu-link link-order" >
       <button mat-button disabled>MERCHANT</button>
-    </a>
+    </a> -->
 
     <span class="example-fill-remaining-space"></span>
 
