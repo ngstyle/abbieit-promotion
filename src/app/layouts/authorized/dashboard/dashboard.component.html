@@ -213,8 +213,8 @@
     <div class="card card-accent-info"
         style="height: auto; width: 100%; margin-top: 12px; border: 1px solid rgba(0, 0, 0, 0.0625)">
         <div style="width: 100%!important;" ngResizable class="resizable-widget mt-4 pb-4" rzContainment="#container"
-            rzHandles="all">
-            <div echarts [options]="options" autoResize=true></div>
+            rzHandles="all">            
+            <div echarts [options]="options" [merge]= "options" autoResize = "true" (chartInit)="onChartInit($event)"></div>
         </div>
     </div>
 

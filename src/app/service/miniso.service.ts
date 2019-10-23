@@ -33,8 +33,9 @@ export class MinisoService {
     return this.http.post(`${environment.API_URL}/miniso/scan`, data);
   }
 
-  minisoDashboard() {
-    return this.http.get(`${environment.API_URL}/miniso/dashboard`);
+  minisoDashboard(noOfDays: any) {
+    const params = new HttpParams().set('noOfDays', noOfDays);
+    return this.http.get(`${environment.API_URL}/miniso/dashboard`, {params});
   }
 
   findAll() {
