@@ -9,18 +9,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
-const routes: Routes = [
-  { path: '', component: RegistrationComponent }
-];
 
-const RegistrationRouter = RouterModule.forChild(routes);
+// const routes: Routes = [
+//   { path: '', component: RegistrationComponent }
+// ];
+
+// const RegistrationRouter = RouterModule.forChild(routes);
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RegistrationRouter,
+    // RegistrationRouter,
     MatButtonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
