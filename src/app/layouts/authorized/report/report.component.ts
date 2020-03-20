@@ -4,7 +4,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PermissionService } from 'src/app/service/permission.service';
 import { Router } from '@angular/router';
 import { MinisoService } from 'src/app/service/miniso.service';
-import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+// import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator  } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-report',

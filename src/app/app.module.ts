@@ -13,7 +13,11 @@ import { TokenService } from './service/token.service';
 import { AgmCoreModule } from '@agm/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { CommonModule } from '@angular/common';
-import { MatInputModule, MatSelectModule, MatAutocompleteModule, MatToolbarModule } from '@angular/material';
+// import { MatInputModule, MatSelectModule, MatAutocompleteModule, MatToolbarModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

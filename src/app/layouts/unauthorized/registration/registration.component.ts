@@ -5,7 +5,7 @@ import { MinisoService } from 'src/app/service/miniso.service';
 import { Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Component({

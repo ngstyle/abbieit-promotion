@@ -7,7 +7,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CountUpModule } from 'countup.js-angular2';
-import { MatDatepickerModule, MatNativeDateModule, MatIconModule } from '@angular/material';
+// import { MatDatepickerModule, MatNativeDateModule, MatIconModule } from '@angular/material';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
 import { FormsModule } from '@angular/forms';
 

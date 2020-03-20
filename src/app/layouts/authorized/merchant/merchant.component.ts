@@ -2,9 +2,10 @@ import { Observable } from 'rxjs';
 import { MinisoService } from './../../../service/miniso.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSelect } from '@angular/material';
+// import { MatSelect } from '@angular/material';
 import { Router } from '@angular/router';
 import { map, startWith } from 'rxjs/operators';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-merchant',

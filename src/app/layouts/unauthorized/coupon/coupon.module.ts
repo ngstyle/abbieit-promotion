@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CouponComponent } from './coupon.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgxBarcodeModule } from 'ngx-barcode';
-import { MatDividerModule, MatListModule } from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const routes: Routes = [

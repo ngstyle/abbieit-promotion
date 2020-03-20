@@ -1,6 +1,7 @@
 import { MinisoService } from './../../../../service/miniso.service';
 import { Component, OnInit, Inject, NgModule } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-registartionDialog',
