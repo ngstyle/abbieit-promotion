@@ -5,7 +5,7 @@
     
     <div [hidden]=submitted>
         <p style="text-align: center; line-height: 56px; background: #F6F3F2; font-weight: 400; color: #333; font-size: 16px; margin-bottom: 0;">Request a Test drive</p>
-        <form [formGroup]="registration" class="ui form" style="padding: 0 6%; margin-top: 24px;">
+        <form [formGroup]="registration" class="ui form" style="padding: 0 6%; margin-top: 16px;">
 
             <!-- Salutation -->
             <div class="ui form">
@@ -138,12 +138,12 @@
                     {{otpMessage}}</span>
             </div> -->
 
-            <p>
+            <!-- <p>
                 Form Value: {{ registration.value | json}}
             </p>
             <p>
                 Form Status: {{ registration.status }}
-            </p>
+            </p> -->
 
             <button style="color: white; background-color: #1E3371; width: 100%;" class="ui button"
                 [disabled]="(registration.invalid || isSubmit)" (click)="doRegister()" mat-raised-button>
