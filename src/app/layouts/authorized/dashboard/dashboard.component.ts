@@ -1,5 +1,5 @@
 import { MinisoService } from 'src/app/service/miniso.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PermissionService } from 'src/app/service/permission.service';
 import { Router } from '@angular/router';
 
@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   options: any;
   noOfDays = 7;
   echartsIntance: any;
+  createDate: any;
 
   constructor(private permissionService: PermissionService,
     private router: Router,
@@ -29,6 +30,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 6);
+
+    this.createDate = {
+      begin : currentDate,
+      end: new Date()
+    };
 
     this.minisoDashboard();
 
@@ -107,33 +116,13 @@ export class DashboardComponent implements OnInit {
         itemSize: 32,
         right: '9%',
         feature: {
-          myTool1: {
-            show: true,
-            title: '7 Days',
-            icon: 'image://assets/images/svg/7.svg',
-            onclick: () => {
-              this.noOfDays = 7;
-              this.minisoDashboard();
-            }
-          },
-          myTool2: {
-            show: true,
-            title: '15 Days',
-            icon: 'image://assets/images/svg/15.svg',
-            onclick: () => {
-              this.noOfDays = 15;
-              this.minisoDashboard();
-            }
-          },
-          myTool3: {
-            show: true,
-            title: '30 Days',
-            icon: 'image://assets/images/svg/30.svg',
-            onclick: () => {
-              this.noOfDays = 30;
-              this.minisoDashboard();
-            }
-          },
+          // myTool1: {
+          //   show: true,
+          //   title: 'Calendar',
+          //   icon: 'image://assets/images/svg/calendar.svg',
+          //   onclick: () => {
+          //   }
+          // }
         },
         tooltip: { // 和 option.tooltip 的配置项相同
           show: true,
@@ -200,7 +189,7 @@ export class DashboardComponent implements OnInit {
 
     this.options = {};
 
-    this.minisoService.minisoDashboard(this.noOfDays).subscribe(data => {
+    this.minisoService.minisoDashboard(this.createFilter()).subscribe(data => {
       const result: any = data;
       this.scanTotal = result.scanTotal;
       this.registerTotal = result.registerTotal;
@@ -213,6 +202,17 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  createFilter() {
+    const filterData: any = {};
+    if (this.createDate) {
+      filterData.startDate = this.convertDate(new Date(this.createDate.begin)),
+      filterData.endDate = this.convertDate(new Date(this.createDate.end));
+    } else {
+      filterData.noOfDays = 7;
+    }
+    return filterData;
+  }
+
 
   getPercent(num, total) {
     num = parseFloat(num);
@@ -221,6 +221,19 @@ export class DashboardComponent implements OnInit {
       return '-';
     }
     return total <= 0 ? '0' : (Math.round(num / total * 10000) / 100.00);
+  }
+
+  convertDate(date: Date) {
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
+    const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+
+    return year + '-' + month + '-' + day;
+  }
+
+  closeDatePicker() {
+    this.minisoDashboard();
   }
 
 }

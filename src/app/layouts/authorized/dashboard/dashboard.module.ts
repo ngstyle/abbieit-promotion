@@ -7,6 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CountUpModule } from 'countup.js-angular2';
+import { MatDatepickerModule, MatNativeDateModule, MatIconModule } from '@angular/material';
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent }
@@ -18,6 +21,7 @@ const DashboardRouter = RouterModule.forChild(routes);
   imports: [
     CommonModule,
     DashboardRouter,
+    FormsModule,
     NgCircleProgressModule.forRoot({
       backgroundPadding: 7,
       radius: 80,
@@ -43,7 +47,12 @@ const DashboardRouter = RouterModule.forChild(routes);
     MatCardModule,
     MatButtonModule,
     NgxEchartsModule,
-    CountUpModule
+    CountUpModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    SatDatepickerModule,
+    SatNativeDateModule,
+    MatIconModule
   ],
   declarations: [DashboardComponent]
 })

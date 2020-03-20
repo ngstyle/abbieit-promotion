@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TokenService } from './service/token.service';
-import {SuiModule} from 'ng2-semantic-ui';
+// import {SuiModule} from 'ng2-semantic-ui';
 import { AgmCoreModule } from '@agm/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularSvgIconModule,
-    SuiModule,
+    // SuiModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAf0aX6Jgz6HbqvFIhI9BejpKdx3tVhjTk&libraries=places'
     }),

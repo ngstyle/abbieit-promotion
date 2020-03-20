@@ -12,10 +12,10 @@ const routes: Routes = [
     path: 'signin',
     loadChildren: () => import('./layouts/unauthorized/signin/signin.module').then(mod => mod.SigninModule),
   },
-  // {
-  //   path: 'registration',
-  //   loadChildren: () => import('./layouts/unauthorized/registration/registration.module').then(mod => mod.RegistrationModule),
-  // },
+  {
+    path: 'registration',
+    loadChildren: () => import('./layouts/unauthorized/registration/registration.module').then(mod => mod.RegistrationModule),
+  },
   {
     path: 'coupon/:coupon',
     loadChildren: () => import('./layouts/unauthorized/coupon/coupon.module').then(mod => mod.CouponModule),

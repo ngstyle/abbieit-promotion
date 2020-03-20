@@ -31,6 +31,7 @@ export class RegistrationComponent implements OnInit {
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
   public imgHeight: number;
+  public imgSrc: String;
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
@@ -50,30 +51,70 @@ export class RegistrationComponent implements OnInit {
         }, () => {
           const data: any = {};
           data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-          this.minisoService.scan(data).subscribe(result => {
-            this.scanId = result;
-          });
+          // this.minisoService.scan(data).subscribe(result => {
+          //   this.scanId = result;
+          // });
         });
       } else {
         console.log('Geolocation is not supported by this browser.');
       }
     });
+
+    $('.ui.radio.checkbox').checkbox();
+    $('.ui.selection.dropdown').dropdown({
+      onChange: (value, text, $selectedItem) => {
+        this.registration.patchValue({
+          interested: value
+        });
+      }
+    });
+    ($('#date_calendar') as any).calendar({
+        type: 'date',
+        onSelect: (date,mode) => {
+          // console.log(date.toLocaleDateString());
+          this.registration.patchValue({
+            date: date.toLocaleDateString()
+          });
+        }
+    });
+
     this.buildForm();
 
     this.getScreenSize().subscribe(width => {
 
-      if (window.innerWidth > 500) {
-        this.imgWidth = 500;
-        this.imgHeight = 1107;
-      } else {
+      // if (window.innerWidth > 500) {
+      //   this.imgWidth = 500;
+      //   this.imgHeight = 1107;
+      // } else {
+      //   this.imgWidth = window.innerWidth;
+      //   this.imgHeight = 1107 * window.innerWidth / 500;
+      // }
+
+      if (window.innerWidth <= 768) {
+        // phone 1842*1711
+        this.imgSrc = "/assets/images/Hyundai_phone.jpg";
         this.imgWidth = window.innerWidth;
-        this.imgHeight = 1107 * window.innerWidth / 500;
+        this.imgHeight = 1711 * this.imgWidth / 1842;
+      } else if (window.innerWidth <= 1842) {
+        // web 1  1860*540
+        // 显示大图，且占据屏宽
+        this.imgSrc = "/assets/images/Hyundai_web.jpg";
+        this.imgWidth = window.innerWidth;
+        this.imgHeight = 540 * this.imgWidth / 1842;
+      } else {
+        // window.innerWidth > 1842
+        // 显示大图，图片居中显示
+        this.imgSrc = "/assets/images/Hyundai_web.jpg";
+        this.imgWidth = 1842;
+        this.imgHeight = 540;
       }
+
+
     });
 
-    this.registration.get('otp').valueChanges.subscribe(data => {
-      this.otpMessage = '';
-    });
+    // this.registration.get('otp').valueChanges.subscribe(data => {
+    //   this.otpMessage = '';
+    // });
   }
 
   showPosition(position: any) {
@@ -99,9 +140,9 @@ export class RegistrationComponent implements OnInit {
           }
           data.address = results[0].formatted_address;
           data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-          this.minisoService.scan(data).subscribe(result => {
-            this.scanId = result;
-          });
+          // this.minisoService.scan(data).subscribe(result => {
+          //   this.scanId = result;
+          // });
         } else {
           window.alert('No results found');
         }
@@ -114,13 +155,19 @@ export class RegistrationComponent implements OnInit {
 
   buildForm() {
     this.registration = this.formBuilder.group({
+      gender: ['Male', Validators.required],
       userName: ['', Validators.compose([
         Validators.required, Validators.maxLength(100), Validators.minLength(3)])],
+      email: ['', Validators.compose(
+        [Validators.required,Validators.maxLength(100),
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')])],
       mobile: ['', Validators.compose([
         Validators.required, Validators.maxLength(10), Validators.minLength(10),
         Validators.pattern(/(\(?[0-9]{3}\)?-?\s?[0-9]{3}-?[0-9]{4})/)])],
-      otp: ['', Validators.compose([
-        Validators.required, Validators.maxLength(6), Validators.minLength(6)])]
+      interested: ['Venue', Validators.required],
+      date: ['', Validators.required],
+      vehicle: [''],
+      comments: [''],
     });
   }
 

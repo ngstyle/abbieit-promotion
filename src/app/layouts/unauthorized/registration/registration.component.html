@@ -1,8 +1,36 @@
-<div class="background" [style.width.px]="imgWidth" [style.height.px]="imgHeight">
-    <div style="height: 25%;"></div>
+<!-- <div class="background" [style.width.px]="imgWidth" [style.height.px]="imgHeight"> -->
+<div style="margin: auto; padding-bottom: 24px;">
+    <img [src]="imgSrc" [style.width.px]="imgWidth" [style.height.px]="imgHeight">
+
+    <p style="text-align: center; line-height: 56px; background: #F6F3F2; font-weight: 00; color: #333; font-size: 16px;">Request a Test drive</p>
 
     <div>
         <form [formGroup]="registration" class="ui form" style="padding: 0 6%;">
+
+            <!-- Salutation -->
+            <div class="ui form">
+                <div class="grouped fields">
+                  <label for="gender">Salutation</label>
+
+                  <div style="display: flex; flex-direction: row;">
+                      <div class="field">
+                        <div class="ui radio checkbox">
+                          <input type="radio" formControlName="gender" value="Male" class="hidden">
+                          <label>Mr.</label>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <div class="ui radio checkbox">
+                          <input type="radio" formControlName="gender" value="Female" class="hidden">
+                          <label>Ms.</label>
+                        </div>
+                      </div>
+                  </div>
+
+                </div>
+            </div>
+
+            <!-- Name -->
             <div class="field">
                 <input style="width: 100%;" matInput placeholder="Name*" formControlName="userName" maxlength="100"
                     required>
@@ -15,7 +43,75 @@
                 </mat-error>
             </div>
 
-            <div class="ui action input" style="width: 100%;">
+            <!-- Email -->
+            <div class="field">
+                <input style="width: 100%;" matInput placeholder="Email*" formControlName="email" maxlength="100"
+                    required>
+                <mat-error
+                    *ngIf="registration.get('email').hasError('required') && registration.get('email').touched">
+                    *Email is required</mat-error>
+                <mat-error
+                    *ngIf="(registration.get('email').hasError('maxlength') || registration.get('email').hasError('pattern')) && registration.get('email').touched">
+                    *Invalid Email
+                </mat-error>
+            </div>
+
+            <!-- Mobile -->
+            <div class="field">
+                <input style="width: 100%;" matInput placeholder="Mobile*" formControlName="mobile" maxlength="100" required>
+                <mat-error
+                    *ngIf="registration.get('mobile').hasError('required') && registration.get('mobile').touched">
+                    *Mobile is required</mat-error>
+                <mat-error
+                    *ngIf="(registration.get('mobile').hasError('minlength') || registration.get('mobile').hasError('pattern') || registration.get('mobile').hasError('maxlength')) && registration.get('mobile').touched">
+                    *Invalid Mobile Number</mat-error>
+            </div>
+
+            <!-- Model Interested In -->
+            <div class="field">
+                <!-- <label>Model Interested In*</label> -->
+                <div class="ui selection dropdown">
+                    <input matInput formControlName="interested" required value="Venue">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Model Interested In*</div>
+                    <!-- Hyundai ,Venue , Aura , i10 Nios . -->
+                    <div class="menu">
+                        <div class="item" data-value="Venue">Venue</div>
+                        <div class="item" data-value="i10 Nios">i10 Nios</div>
+                        <div class="item" data-value="Aura">Aura</div>
+                    </div>
+                </div>
+                <mat-error
+                    *ngIf="registration.get('interested').hasError('required') && registration.get('interested').touched">
+                    *Model Interested In is required
+                </mat-error>
+            </div>
+            
+            <!-- Choose Date (for the test drive)  -->
+            <div class="field">
+                <div class="ui calendar" id="date_calendar">
+                    <div class="ui input right icon">
+                      <i class="calendar icon"></i>
+                      <input type="text" placeholder="Choose Date (for the test drive)*" formControlName="date">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Vehicle -->
+            <div class="field">
+                <input matInput placeholder="Current vehicle" formControlName="vehicle" maxlength="100">
+            </div>
+
+            <!-- Comments -->
+            <div class="field">
+                <!-- <label>Comments</label> -->
+                <textarea formControlName="comments" placeholder="Your comments here..."></textarea>
+            </div>
+
+
+            <!-- <div class="ui action input" style="width: 100%;">
                 <input style="width: 0;" pattern=^[6-9]\d{9}$ matInput placeholder="Mobile Number*"
                     formControlName="mobile" (keypress)=_keyPress($event) maxlength="10" minlength="10" required>
                 <button style="color: white; background-color: #d7232f; margin: 0;" class="ui button"
@@ -40,15 +136,19 @@
                     *OTP is required</mat-error>
                 <span *ngIf="otpMessage && !registration.get('otp').hasError('required') ? true : false">
                     {{otpMessage}}</span>
-            </div>
+            </div> -->
 
-            <button style="color: white; background-color: #d7232f; width: 100%;" class="ui button"
-                [disabled]="(registration.invalid || isSubmit)" (click)="doRegister()" mat-raised-button>Get
-                Offer</button>
+            <p>
+                Form Value: {{ registration.value | json}}
+            </p>
+            <p>
+                Form Status: {{ registration.status }}
+            </p>
 
-            <div class="blank">
-
-            </div>
+            <button style="color: white; background-color: #1E3371; width: 100%;" class="ui button"
+                [disabled]="(registration.invalid || isSubmit)" (click)="doRegister()" mat-raised-button>
+                Submit
+            </button>
 
         </form>
     </div>

@@ -33,8 +33,14 @@ export class MinisoService {
     return this.http.post(`${environment.API_URL}/miniso/scan`, data);
   }
 
-  minisoDashboard(noOfDays: any) {
-    const params = new HttpParams().set('noOfDays', noOfDays);
+  minisoDashboard(filterData: any) {
+    let params = new HttpParams();
+    if (filterData.startDate) {
+      params = params.set('startDate', filterData.startDate);
+      params = params.set('endDate', filterData.endDate);
+    } else {
+      params = params.set('noOfDays', filterData.noOfDays);
+    }
     return this.http.get(`${environment.API_URL}/miniso/dashboard`, {params});
   }
 

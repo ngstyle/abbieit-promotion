@@ -1,4 +1,4 @@
-<div style="" id="content">
+<div id="content">
 
     <div class="row gap-20" style="padding: 10px 0;">
 
@@ -125,9 +125,6 @@
         </div>
     </div>
 
-
-
-
     <!-- <div style="display: flex; flex-direction: row; width: 100%; height: 256px;">
 
         <div class="card" style="width: 24%; height: 100%;">
@@ -209,12 +206,22 @@
 
     </div> -->
 
+    <div style="padding-left: 89%;">
+        <input style="width: 100%;text-align: center;" matInput [(ngModel)]="createDate" placeholder="Date range" [satDatepicker]="startDateRange"
+            (click)="startDateRange.open()" readonly (dateChange)="closeDatePicker();">
+        <sat-datepicker #startDateRange [rangeMode]="true"></sat-datepicker>
+        <!-- <button mat-button *ngIf="createDate" matSuffix mat-icon-button aria-label="Clear" (click)="closeDatePicker()">
+            <mat-icon (click)="closeDatePicker()">close</mat-icon>
+        </button> -->
+        <!-- <sat-datepicker-toggle matSuffix [for]="startDateRange"></sat-datepicker-toggle> -->
+    </div>
 
     <div class="card card-accent-info"
         style="height: auto; width: 100%; margin-top: 12px; border: 1px solid rgba(0, 0, 0, 0.0625)">
         <div style="width: 100%!important;" ngResizable class="resizable-widget mt-4 pb-4" rzContainment="#container"
-            rzHandles="all">            
-            <div echarts [options]="options" [merge]= "options" autoResize = "true" (chartInit)="onChartInit($event)"></div>
+            rzHandles="all">
+            <div echarts [options]="options" [merge]="options" autoResize="true" (chartInit)="onChartInit($event)">
+            </div>
         </div>
     </div>
 

@@ -5,6 +5,7 @@
     "types": [
       "node",
       "jquery",
+      "semantic-ui",
       "googlemaps"
     ]
   },
