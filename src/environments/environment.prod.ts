@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://miniso.abbieit.in/api'
+  API_URL: 'https://hyundai.marketing.billionbroadcaster.in/api'
 };
