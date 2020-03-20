@@ -28,10 +28,13 @@ export class RegistrationComponent implements OnInit {
   interval: any;
   isSubmit = false;
 
+  addressInfo: string;
+  submitted = false;
+
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
   public imgWidth: number;
   public imgHeight: number;
-  public imgSrc: String;
+  public imgSrc: string;
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
@@ -140,6 +143,9 @@ export class RegistrationComponent implements OnInit {
           }
           data.address = results[0].formatted_address;
           data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
+
+
+          this.addressInfo = results[0].formatted_address;
           // this.minisoService.scan(data).subscribe(result => {
           //   this.scanId = result;
           // });
@@ -197,33 +203,40 @@ export class RegistrationComponent implements OnInit {
   doRegister() {
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-    data.scanId = this.scanId;
-    this.isSubmit = true;
-    this.minisoService.registration(this.registration.value).subscribe(d => {
-      this.isSubmit = false;
-      const result: any = d;
-      if (result.msg === 'alreadyExists') {
-        this.message = 'Mobile number is already registered.';
-        this.registration.get('mobile').setValue('');
-        this.otpMessage = '';
-        this.submitDialog(null, null,  result.mobile, result.counter);
-        this.optCount = -1;
-        this.optButtonLabel = 'Send OTP';
-      } else if (result.msg === 'invalid otp') {
-        this.otpMessage = '*Invalid OTP';
-      } else {
-        this.otpMessage = '';
-        this.optCount = -1;
-        this.optButtonLabel = 'Send OTP';
-        this.registration.reset();
-        this.registration.clearValidators();
-        this.submitDialog(result.link, result.amount, result.mobile, result.counter);
-        this.optCount = -1;
-        this.optButtonLabel = 'Send OTP';
-      }
-    }, error => {
-      this.isSubmit = false;
-    });
+    data.address = this.addressInfo;
+
+    console.log(data);
+
+    // success show successful page, otherwise try again.
+
+
+    // data.scanId = this.scanId;
+    // this.isSubmit = true;
+    // this.minisoService.registration(this.registration.value).subscribe(d => {
+    //   this.isSubmit = false;
+    //   const result: any = d;
+    //   if (result.msg === 'alreadyExists') {
+    //     this.message = 'Mobile number is already registered.';
+    //     this.registration.get('mobile').setValue('');
+    //     this.otpMessage = '';
+    //     this.submitDialog(null, null,  result.mobile, result.counter);
+    //     this.optCount = -1;
+    //     this.optButtonLabel = 'Send OTP';
+    //   } else if (result.msg === 'invalid otp') {
+    //     this.otpMessage = '*Invalid OTP';
+    //   } else {
+    //     this.otpMessage = '';
+    //     this.optCount = -1;
+    //     this.optButtonLabel = 'Send OTP';
+    //     this.registration.reset();
+    //     this.registration.clearValidators();
+    //     this.submitDialog(result.link, result.amount, result.mobile, result.counter);
+    //     this.optCount = -1;
+    //     this.optButtonLabel = 'Send OTP';
+    //   }
+    // }, error => {
+    //   this.isSubmit = false;
+    // });
   }
 
   _keyPress(event: any) {

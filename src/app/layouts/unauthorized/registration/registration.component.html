@@ -2,10 +2,10 @@
 <div style="margin: auto; padding-bottom: 24px;">
     <img [src]="imgSrc" [style.width.px]="imgWidth" [style.height.px]="imgHeight">
 
-    <p style="text-align: center; line-height: 56px; background: #F6F3F2; font-weight: 00; color: #333; font-size: 16px;">Request a Test drive</p>
-
-    <div>
-        <form [formGroup]="registration" class="ui form" style="padding: 0 6%;">
+    
+    <div [hidden]=submitted>
+        <p style="text-align: center; line-height: 56px; background: #F6F3F2; font-weight: 400; color: #333; font-size: 16px; margin-bottom: 0;">Request a Test drive</p>
+        <form [formGroup]="registration" class="ui form" style="padding: 0 6%; margin-top: 24px;">
 
             <!-- Salutation -->
             <div class="ui form">
@@ -151,5 +151,24 @@
             </button>
 
         </form>
+    </div>
+
+    <div [hidden]=!submitted style="padding-top: 24px;">
+
+        <div style="width: 100%; text-align: center;">
+
+            <span role="img" aria-label="check-circle" style="color: #52c41a; font-size: 72px;">
+                <svg viewBox="64 64 896 896" focusable="false" class="" data-icon="check-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z">
+                    </path>
+                </svg>
+            </span>
+
+        </div>
+
+        <p style="line-height: 56px; font-size: 24px; text-align: center; width: 100%; color: #333; padding-bottom: 0; margin-bottom: 0;">Submission Success</p>
+        <p style="padding: 0 12%; text-align: center; line-height: 24px;"> 
+            Thank you! Dear customer, Your test drive have been booked .Our customers service department will contact you to assist your request. 
+        </p>
     </div>
 </div>
