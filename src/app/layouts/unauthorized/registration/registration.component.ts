@@ -7,6 +7,7 @@ import { MapsAPILoader } from '@agm/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { RegistrationService } from 'src/app/service/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -42,6 +43,7 @@ export class RegistrationComponent implements OnInit {
     private route: Router,
     private deviceService: DeviceDetectorService,
     private matDialog: MatDialog,
+    private registrationService: RegistrationService
   ) { }
 
 
@@ -206,6 +208,14 @@ export class RegistrationComponent implements OnInit {
     data.address = this.addressInfo;
 
     console.log(data);
+
+    this.registrationService.doRegistration(data).subscribe( (data: any) => {
+      if (data.code === 200) {
+        this.submitted = !this.submitted;
+      } else {
+        alert('Hello');
+      }
+    });
 
     // success show successful page, otherwise try again.
 
