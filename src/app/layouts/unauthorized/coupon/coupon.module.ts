@@ -18,7 +18,7 @@ const CouponRouter = RouterModule.forChild(routes);
   imports: [
     CommonModule,
     CouponRouter,
-    NgxBarcodeModule,
+    // NgxBarcodeModule,
     MatCardModule,
     MatDividerModule,
     MatListModule,
