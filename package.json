@@ -44,7 +44,6 @@
     "select2": "^4.0.13",
     "tilt.js": "^1.2.1",
     "tslib": "^1.11.1",
-    "typescript": "^3.6.4",
     "zone.js": "^0.10.3"
   },
   "devDependencies": {

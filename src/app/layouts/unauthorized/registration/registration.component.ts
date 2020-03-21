@@ -17,6 +17,7 @@ import { RegistrationService } from 'src/app/service/registration.service';
 export class RegistrationComponent implements OnInit {
 
   scanId: any;
+  isShow = false;
   @ViewChild('videoPlayer', { static: true }) videoplayer: ElementRef;
   registration: FormGroup;
   message: any;
@@ -29,7 +30,7 @@ export class RegistrationComponent implements OnInit {
   interval: any;
   isSubmit = false;
 
-  addressInfo: string;
+  addressInfo: any = {};
   submitted = false;
 
   private screenSize$ = new BehaviorSubject<number>(window.innerWidth);
@@ -147,7 +148,9 @@ export class RegistrationComponent implements OnInit {
           data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
 
 
-          this.addressInfo = results[0].formatted_address;
+          this.addressInfo.address = results[0].formatted_address;
+          this.addressInfo.city = data.city;
+          this.addressInfo.state = data.state;
           // this.minisoService.scan(data).subscribe(result => {
           //   this.scanId = result;
           // });
@@ -203,18 +206,20 @@ export class RegistrationComponent implements OnInit {
   }
 
   doRegister() {
+
+    this.isShow = true;
+
     const data = this.registration.value;
     data.phoneDetail = this.deviceService.getDeviceInfo().userAgent;
-    data.address = this.addressInfo;
-
-    console.log(data);
+    data.address = this.addressInfo.address;
+    data.city = this.addressInfo.city;
+    data.state = this.addressInfo.state;
 
     this.registrationService.doRegistration(data).subscribe( (data: any) => {
-      if (data.code === 200) {
-        this.submitted = !this.submitted;
-      } else {
-        alert('Hello');
-      }
+      this.submitted = !this.submitted;
+      this.isShow = false;
+    }, error => {
+      this.isShow = false;
     });
 
     // success show successful page, otherwise try again.

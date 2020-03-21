@@ -146,7 +146,7 @@
             </p> -->
 
             <button style="color: white; background-color: #1E3371; width: 100%;" class="ui button"
-                [disabled]="(registration.invalid || isSubmit)" (click)="doRegister()" mat-raised-button>
+                [disabled]="(registration.invalid || isSubmit || isShow)" (click)="doRegister()" mat-raised-button>
                 Submit
             </button>
 

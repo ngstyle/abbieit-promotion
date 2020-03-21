@@ -29,7 +29,7 @@
             ],
             "scripts": [
               "./node_modules/exceljs/dist/exceljs.min.js",
-              "./node_modules/tilt.js/dest/tilt.jquery.min.js",
+              "./node_modules/tilt.js/dest/tilt.jquery.min.js"
             ],
             "es5BrowserSupport": true
           },
@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "abbieit-promotion"
+  "defaultProject": "abbieit-promotion",
+  "cli": {
+    "analytics": "b5ec9127-e90f-4c7b-a3cd-c586b2ad7413"
+  }
 }
