@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
   optCount = 60;
   private geoCoder;
   interval: any;
-  isSubmit = false;
+  // isSubmit = false;
 
   addressInfo: any = {};
   submitted = false;
@@ -37,6 +37,76 @@ export class RegistrationComponent implements OnInit {
   public imgWidth: number;
   public imgHeight: number;
   public imgSrc: string;
+
+  isInterestedModelTouched = false;
+  isDelarTouched = false;
+
+  dealers = [
+    {
+      id: 1, number: 'N2229',
+      dealership: 'MAHADEV HYUNDAI', name: 'MAHADEV HYUNDAI', city: 'FARIDABAD'
+    },
+    {
+      id: 2, number: 'N2233',
+      dealership: 'BOHRA HYUNDAI', name: 'BOHRA HYUNDAI', city: 'FARIDABAD'
+    },
+    {
+      id: 3, number: 'N3253',
+      dealership: 'TRIUMPH (FARIDABAD)', name: 'TRIUMPH (FARIDABAD)', city: 'FARIDABAD'
+    },
+    {
+      id: 4, number: 'N2A03',
+      dealership: 'MAHADEV (DBU)', name: 'MAHADEV (DBU)', city: 'FARIDABAD'
+    },
+    {
+      id: 5, number: 'N2205',
+      dealership: 'SAFDRJANG HYUNDAI', name: 'SAFRADJANG HYUNDAI', city: 'GURUGRAM'
+    },
+    {
+      id: 6, number: 'N2209',
+      dealership: 'SUPERON HYUNDAI', name: 'SUPERON HYUNDAI', city: 'GURUGRAM'
+    },
+    {
+      id: 7, number: 'N2226',
+      dealership: 'HIMGIRI HYUNDAI', name: 'HIMGIRI HYUNDAI', city: 'GURUGRAM'
+    },
+    {
+      id: 8, number: 'N2228',
+      dealership: 'DEE EMM HYUNDAI', name: 'DEE EMM HYUNDAI', city: 'GURUGRAM'
+    },
+    {
+      id: 9, number: 'N2238',
+      dealership: 'DEE EMM HYUNDAI', name: 'DEE EMM HYUNDAI', city: 'GURUGRAM'
+    },
+    {
+      id: 10, number: 'N2A00',
+      dealership: 'SUPERON (DBU)', name: 'SUPERON (DBU)', city: 'GURUGRAM'
+    },
+    {
+      id: 11, number: 'N2230',
+      dealership: 'TRIUMPH (MANESAR)', name: 'TRIUMPH (MANESAR)', city: 'MANESAR'
+    },
+    {
+      id: 12, number: 'N3206',
+      dealership: 'NIMBUS HYUNDAI', name: 'NIMBUS HYUNDAI', city: 'NOIDA'
+    },
+    {
+      id: 13, number: 'N3223',
+      dealership: 'CAPITAL HYUNDAI', name: 'CAPITAL HYUNDAI', city: 'NOIDA'
+    },
+    {
+      id: 14, number: 'N3271',
+      dealership: 'KARMA HYUNDAI', name: 'KARMA HYUNDAI', city: 'NOIDA'
+    },
+    {
+      id: 15, number: 'N3272',
+      dealership: 'DREAM HYUDAI NOIDA', name: 'DREAM HYUDAI NOIDA', city: 'NOIDA'
+    },
+    {
+      id: 16, number: 'N3232',
+      dealership: 'FORTUNE HYUNDAI', name: 'FORTUNE HYUNDAI', city: 'GREATER NOIDA'
+    },
+  ];
 
   constructor(private formBuilder: FormBuilder,
     private minisoService: MinisoService,
@@ -67,13 +137,30 @@ export class RegistrationComponent implements OnInit {
     });
 
     $('.ui.radio.checkbox').checkbox();
-    $('.ui.selection.dropdown').dropdown({
+    $('.ui.selection.dropdown.interested').dropdown({
       onChange: (value, text, $selectedItem) => {
         this.registration.patchValue({
           interested: value
         });
+      },
+      onHide: () => {
+        // console.log('isInterestedModelTouched onHide');
+        this.isInterestedModelTouched = true;
       }
     });
+
+    $('.ui.selection.dropdown.dealer').dropdown({
+      onChange: (value, text, $selectedItem) => {
+        this.registration.patchValue({
+          dealer: value
+        });
+      },
+      onHide: () => {
+        // console.log('isDelarTouched onHide');
+        this.isDelarTouched = true;
+      }
+    });
+
     ($('#date_calendar') as any).calendar({
         type: 'date',
         onSelect: (date,mode) => {
@@ -98,19 +185,19 @@ export class RegistrationComponent implements OnInit {
 
       if (window.innerWidth <= 768) {
         // phone 1842*1711
-        this.imgSrc = "/assets/images/Hyundai_phone.jpg";
+        this.imgSrc = '/assets/images/Hyundai_phone.jpg';
         this.imgWidth = window.innerWidth;
         this.imgHeight = 1711 * this.imgWidth / 1842;
       } else if (window.innerWidth <= 1842) {
         // web 1  1860*540
         // 显示大图，且占据屏宽
-        this.imgSrc = "/assets/images/Hyundai_web.jpg";
+        this.imgSrc = '/assets/images/Hyundai_web.jpg';
         this.imgWidth = window.innerWidth;
         this.imgHeight = 540 * this.imgWidth / 1842;
       } else {
         // window.innerWidth > 1842
         // 显示大图，图片居中显示
-        this.imgSrc = "/assets/images/Hyundai_web.jpg";
+        this.imgSrc = '/assets/images/Hyundai_web.jpg';
         this.imgWidth = 1842;
         this.imgHeight = 540;
       }
@@ -175,10 +262,11 @@ export class RegistrationComponent implements OnInit {
       mobile: ['', Validators.compose([
         Validators.required, Validators.maxLength(10), Validators.minLength(10),
         Validators.pattern(/(\(?[0-9]{3}\)?-?\s?[0-9]{3}-?[0-9]{4})/)])],
-      interested: ['Venue', Validators.required],
+      interested: ['', Validators.required],
+      dealer: ['', Validators.required],
       date: ['', Validators.required],
       vehicle: [''],
-      comments: [''],
+      comments: ['']
     });
   }
 
@@ -206,6 +294,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   doRegister() {
+    this.isInterestedModelTouched = true;
+    this.isDelarTouched = true;
 
     this.isShow = true;
 
