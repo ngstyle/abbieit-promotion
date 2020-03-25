@@ -44,67 +44,67 @@ export class RegistrationComponent implements OnInit {
   dealers = [
     {
       id: 1, number: 'N2229',
-      dealership: 'MAHADEV HYUNDAI', name: 'MAHADEV HYUNDAI', city: 'FARIDABAD'
+      dealership: 'MAHADEV HYUNDAI', name: 'MAHADEV HYUNDAI', city: 'FARIDABAD', mobile: '8588840609'
     },
     {
       id: 2, number: 'N2233',
-      dealership: 'BOHRA HYUNDAI', name: 'BOHRA HYUNDAI', city: 'FARIDABAD'
-    },
+      dealership: 'BOHRA HYUNDAI', name: 'BOHRA HYUNDAI', city: 'FARIDABAD', mobile: '8588840609'
+    }, 
     {
       id: 3, number: 'N3253',
-      dealership: 'TRIUMPH (FARIDABAD)', name: 'TRIUMPH (FARIDABAD)', city: 'FARIDABAD'
+      dealership: 'TRIUMPH (FARIDABAD)', name: 'TRIUMPH (FARIDABAD)', city: 'FARIDABAD', mobile: '8588840609'
     },
     {
       id: 4, number: 'N2A03',
-      dealership: 'MAHADEV (DBU)', name: 'MAHADEV (DBU)', city: 'FARIDABAD'
+      dealership: 'MAHADEV (DBU)', name: 'MAHADEV (DBU)', city: 'FARIDABAD', mobile: '8588840609'
     },
     {
       id: 5, number: 'N2205',
-      dealership: 'SAFDRJANG HYUNDAI', name: 'SAFRADJANG HYUNDAI', city: 'GURUGRAM'
+      dealership: 'SAFDRJANG HYUNDAI', name: 'SAFRADJANG HYUNDAI', city: 'GURUGRAM', mobile: '9999609946'
     },
     {
       id: 6, number: 'N2209',
-      dealership: 'SUPERON HYUNDAI', name: 'SUPERON HYUNDAI', city: 'GURUGRAM'
+      dealership: 'SUPERON HYUNDAI', name: 'SUPERON HYUNDAI', city: 'GURUGRAM', mobile: '9999609946'
     },
     {
       id: 7, number: 'N2226',
-      dealership: 'HIMGIRI HYUNDAI', name: 'HIMGIRI HYUNDAI', city: 'GURUGRAM'
+      dealership: 'HIMGIRI HYUNDAI', name: 'HIMGIRI HYUNDAI', city: 'GURUGRAM', mobile: '9999609946'
     },
     {
       id: 8, number: 'N2228',
-      dealership: 'DEE EMM HYUNDAI', name: 'DEE EMM HYUNDAI', city: 'GURUGRAM'
+      dealership: 'DEE EMM HYUNDAI', name: 'DEE EMM HYUNDAI', city: 'GURUGRAM', mobile: '9999609946'
     },
     {
       id: 9, number: 'N2238',
-      dealership: 'DEE EMM HYUNDAI', name: 'DEE EMM HYUNDAI', city: 'GURUGRAM'
+      dealership: 'DEE EMM HYUNDAI', name: 'DEE EMM HYUNDAI', city: 'GURUGRAM', mobile: '9999609946'
     },
     {
       id: 10, number: 'N2A00',
-      dealership: 'SUPERON (DBU)', name: 'SUPERON (DBU)', city: 'GURUGRAM'
+      dealership: 'SUPERON (DBU)', name: 'SUPERON (DBU)', city: 'GURUGRAM', mobile: '9999609946'
     },
     {
       id: 11, number: 'N2230',
-      dealership: 'TRIUMPH (MANESAR)', name: 'TRIUMPH (MANESAR)', city: 'MANESAR'
+      dealership: 'TRIUMPH (MANESAR)', name: 'TRIUMPH (MANESAR)', city: 'MANESAR', mobile: '9999609946'
     },
     {
       id: 12, number: 'N3206',
-      dealership: 'NIMBUS HYUNDAI', name: 'NIMBUS HYUNDAI', city: 'NOIDA'
+      dealership: 'NIMBUS HYUNDAI', name: 'NIMBUS HYUNDAI', city: 'NOIDA', mobile: '7290041386'
     },
     {
       id: 13, number: 'N3223',
-      dealership: 'CAPITAL HYUNDAI', name: 'CAPITAL HYUNDAI', city: 'NOIDA'
+      dealership: 'CAPITAL HYUNDAI', name: 'CAPITAL HYUNDAI', city: 'NOIDA', mobile: '7290041386'
     },
     {
       id: 14, number: 'N3271',
-      dealership: 'KARMA HYUNDAI', name: 'KARMA HYUNDAI', city: 'NOIDA'
+      dealership: 'KARMA HYUNDAI', name: 'KARMA HYUNDAI', city: 'NOIDA', mobile: '7290041386'
     },
     {
       id: 15, number: 'N3272',
-      dealership: 'DREAM HYUDAI NOIDA', name: 'DREAM HYUDAI NOIDA', city: 'NOIDA'
+      dealership: 'DREAM HYUDAI NOIDA', name: 'DREAM HYUDAI NOIDA', city: 'NOIDA', mobile: '7290041386'
     },
     {
       id: 16, number: 'N3232',
-      dealership: 'FORTUNE HYUNDAI', name: 'FORTUNE HYUNDAI', city: 'GREATER NOIDA'
+      dealership: 'FORTUNE HYUNDAI', name: 'FORTUNE HYUNDAI', city: 'GREATER NOIDA', mobile: '964328031'
     },
   ];
 
@@ -304,6 +304,13 @@ export class RegistrationComponent implements OnInit {
     data.address = this.addressInfo.address;
     data.city = this.addressInfo.city;
     data.state = this.addressInfo.state;
+
+    const dealerId = data.dealer;
+    
+    const selectedDealer = this.dealers.filter(dealer => dealer.id === +dealerId);
+
+    data.dealerName = selectedDealer[0].name;
+    data.dealerMobile = selectedDealer[0].mobile;
 
     this.registrationService.doRegistration(data).subscribe( (data: any) => {
       this.submitted = !this.submitted;

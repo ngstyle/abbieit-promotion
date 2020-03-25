@@ -159,15 +159,15 @@
                     {{otpMessage}}</span>
             </div> -->
 
-            <p>
+            <!-- <p>
                 Form Value: {{ registration.value | json}}
             </p>
             <p>
                 Form Status: {{ registration.status }}
-            </p>
+            </p> -->
 
             <button style="color: white; background-color: #1E3371; width: 100%;" class="ui button"
-                [disabled]="(registration.invalid || isSubmit || isShow)" (click)="doRegister()" mat-raised-button>
+                [disabled]="(registration.invalid || isShow)" (click)="doRegister()" mat-raised-button>
                 Submit
             </button>
 
